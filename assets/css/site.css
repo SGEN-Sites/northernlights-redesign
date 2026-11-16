@@ -1666,3 +1666,4 @@ html { font-synthesis: none; }
 :is(.kicker, .hero__k, .scard__n, .sp__k, .sw__k, .season__k, .mega__title, .drawer__title, .ftr__col summary, .sinfo__h, .read__tt) { font-family: var(--f-label); font-weight: 700; }
 :is(.kicker, .hero__k) { letter-spacing: .26em; }
 .ftr__word { font-size: calc(clamp(2.6rem, 11.4vw, 11.2rem) * 1.1); }
+.js [data-split] em.w { padding: 0 .07em; margin: 0 -.07em; }

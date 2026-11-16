@@ -194,7 +194,11 @@
           const parts = n.textContent.split(/(\s+)/); const frag = d.createDocumentFragment();
           parts.forEach((p) => { if (/^\s+$/.test(p) || !p) frag.appendChild(d.createTextNode(p)); else { const s = d.createElement('span'); s.className = 'w'; s.style.setProperty('--wi', i++); s.textContent = p; frag.appendChild(s); } });
           n.replaceWith(frag);
-        } else if (n.nodeType === 1) walk(n);
+        } else if (n.nodeType === 1) {
+          // a gradient accent (<em>, background-clip: text) rises as ONE piece: WebKit/Safari does not paint the parent's
+          // clipped gradient through animated inline-block children, so splitting it made the word invisible on iPhone
+          if (n.tagName === 'EM') { n.classList.add('w'); n.style.setProperty('--wi', i++); } else walk(n);
+        }
       });
     };
     walk(h);
