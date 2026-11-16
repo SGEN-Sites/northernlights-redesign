@@ -22,6 +22,13 @@
   CLEAN, smoke 13/13 live (new: the splash plays first and hands off to the 21+ gate with focus on Yes), menus 29/29
   live, splash behaviour on the live URL for first visit (phone, desktop), returning visitor, menu-page landing,
   ?splash=off and reduced motion (private/splash-live.mjs).
+- Round 6.1 (2026-11-16, main 1fe9508, gh-pages 7a60739): the owner's iPhone showed the hero's gradient accent word
+  ("Broadway.") invisible. Cause: WebKit does not paint a parent's background-clip:text gradient through animated
+  inline-block children, and the split-word reveal wrapped each word of the accent in one. Fix: the accent <em> rises as
+  one piece (src/scripts/site.js) with a hair of padding for the italic overhang. Reproduced and verified in Playwright
+  WebKit (0.0% -> 34% painted). publish.sh now also runs private/webkit-smoke.mjs (9/9 live: splash -> gate -> store,
+  switcher by tab and map light, storefront photo, sticky bar, no errors) and private/webkit-accent.mjs. Smoke 13/13,
+  menus 29/29 live.
 
 ## Checks on record
 
