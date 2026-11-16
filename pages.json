@@ -1,0 +1,492 @@
+[
+ {
+  "path": "/",
+  "title": "Northern Lights Dispensary | Whitehall & Menands, NY",
+  "type": "home",
+  "store": null,
+  "category": null
+ },
+ {
+  "path": "/shop/",
+  "title": "Shop Cannabis Online | Northern Lights Whitehall & Menands",
+  "type": "menu",
+  "store": null,
+  "category": "all"
+ },
+ {
+  "path": "/deals/",
+  "title": "Dispensary Deals & Price Match | Northern Lights",
+  "type": "menu",
+  "store": null,
+  "category": "specials"
+ },
+ {
+  "path": "/whitehall/",
+  "title": "Whitehall Dispensary Menu | Northern Lights",
+  "type": "menu",
+  "store": "whitehall",
+  "category": "all"
+ },
+ {
+  "path": "/whitehall/flower/",
+  "title": "Flower in Whitehall, NY | Northern Lights",
+  "type": "menu",
+  "store": "whitehall",
+  "category": "flower"
+ },
+ {
+  "path": "/whitehall/pre-rolls/",
+  "title": "Pre-Rolls in Whitehall, NY | Northern Lights",
+  "type": "menu",
+  "store": "whitehall",
+  "category": "pre-rolls"
+ },
+ {
+  "path": "/whitehall/vaporizers/",
+  "title": "Vapes in Whitehall, NY | Northern Lights",
+  "type": "menu",
+  "store": "whitehall",
+  "category": "vaporizers"
+ },
+ {
+  "path": "/whitehall/concentrates/",
+  "title": "Concentrates in Whitehall, NY | Northern Lights",
+  "type": "menu",
+  "store": "whitehall",
+  "category": "concentrates"
+ },
+ {
+  "path": "/whitehall/edibles/",
+  "title": "Edibles in Whitehall, NY | Northern Lights",
+  "type": "menu",
+  "store": "whitehall",
+  "category": "edibles"
+ },
+ {
+  "path": "/whitehall/orals/",
+  "title": "Orals in Whitehall, NY | Northern Lights",
+  "type": "menu",
+  "store": "whitehall",
+  "category": "orals"
+ },
+ {
+  "path": "/whitehall/tinctures/",
+  "title": "Tinctures in Whitehall, NY | Northern Lights",
+  "type": "menu",
+  "store": "whitehall",
+  "category": "tinctures"
+ },
+ {
+  "path": "/whitehall/topicals/",
+  "title": "Topicals in Whitehall, NY | Northern Lights",
+  "type": "menu",
+  "store": "whitehall",
+  "category": "topicals"
+ },
+ {
+  "path": "/whitehall/accessories/",
+  "title": "Accessories in Whitehall, NY | Northern Lights",
+  "type": "menu",
+  "store": "whitehall",
+  "category": "accessories"
+ },
+ {
+  "path": "/whitehall/specials/",
+  "title": "Cannabis Deals in Whitehall, NY | Northern Lights",
+  "type": "menu",
+  "store": "whitehall",
+  "category": "specials"
+ },
+ {
+  "path": "/whitehall/brands/",
+  "title": "Cannabis Brands in Whitehall, NY | Northern Lights",
+  "type": "menu",
+  "store": "whitehall",
+  "category": "brands"
+ },
+ {
+  "path": "/menands/",
+  "title": "Menands Dispensary Menu | Northern Lights",
+  "type": "menu",
+  "store": "menands",
+  "category": "all"
+ },
+ {
+  "path": "/menands/flower/",
+  "title": "Flower in Menands, NY | Northern Lights",
+  "type": "menu",
+  "store": "menands",
+  "category": "flower"
+ },
+ {
+  "path": "/menands/pre-rolls/",
+  "title": "Pre-Rolls in Menands, NY | Northern Lights",
+  "type": "menu",
+  "store": "menands",
+  "category": "pre-rolls"
+ },
+ {
+  "path": "/menands/vaporizers/",
+  "title": "Vapes in Menands, NY | Northern Lights",
+  "type": "menu",
+  "store": "menands",
+  "category": "vaporizers"
+ },
+ {
+  "path": "/menands/concentrates/",
+  "title": "Concentrates in Menands, NY | Northern Lights",
+  "type": "menu",
+  "store": "menands",
+  "category": "concentrates"
+ },
+ {
+  "path": "/menands/edibles/",
+  "title": "Edibles in Menands, NY | Northern Lights",
+  "type": "menu",
+  "store": "menands",
+  "category": "edibles"
+ },
+ {
+  "path": "/menands/tinctures/",
+  "title": "Tinctures in Menands, NY | Northern Lights",
+  "type": "menu",
+  "store": "menands",
+  "category": "tinctures"
+ },
+ {
+  "path": "/menands/topicals/",
+  "title": "Topicals in Menands, NY | Northern Lights",
+  "type": "menu",
+  "store": "menands",
+  "category": "topicals"
+ },
+ {
+  "path": "/menands/cbd/",
+  "title": "CBD in Menands, NY | Northern Lights",
+  "type": "menu",
+  "store": "menands",
+  "category": "cbd"
+ },
+ {
+  "path": "/menands/accessories/",
+  "title": "Accessories in Menands, NY | Northern Lights",
+  "type": "menu",
+  "store": "menands",
+  "category": "accessories"
+ },
+ {
+  "path": "/menands/apparel/",
+  "title": "Apparel in Menands, NY | Northern Lights",
+  "type": "menu",
+  "store": "menands",
+  "category": "apparel"
+ },
+ {
+  "path": "/menands/specials/",
+  "title": "Cannabis Deals in Menands, NY | Northern Lights",
+  "type": "menu",
+  "store": "menands",
+  "category": "specials"
+ },
+ {
+  "path": "/menands/brands/",
+  "title": "Cannabis Brands in Menands, NY | Northern Lights",
+  "type": "menu",
+  "store": "menands",
+  "category": "brands"
+ },
+ {
+  "path": "/locations/",
+  "title": "Our Stores in Whitehall & Menands, NY | Northern Lights",
+  "type": "locations",
+  "store": null,
+  "category": null
+ },
+ {
+  "path": "/locations/whitehall-ny/",
+  "title": "Whitehall, NY Dispensary on Broadway | Northern Lights",
+  "type": "store",
+  "store": "whitehall",
+  "category": null
+ },
+ {
+  "path": "/locations/menands-ny/",
+  "title": "Menands, NY Dispensary off I-787 | Northern Lights",
+  "type": "store",
+  "store": "menands",
+  "category": null
+ },
+ {
+  "path": "/delivery/",
+  "title": "Free Same-Day Cannabis Delivery | Northern Lights",
+  "type": "delivery",
+  "store": null,
+  "category": null
+ },
+ {
+  "path": "/dispensary-near/",
+  "title": "Dispensary Near You: Towns We Serve | Northern Lights",
+  "type": "areas",
+  "store": null,
+  "category": null
+ },
+ {
+  "path": "/dispensary-near/granville-ny/",
+  "title": "Dispensary near Granville, NY | Northern Lights",
+  "type": "area",
+  "store": "whitehall",
+  "category": null
+ },
+ {
+  "path": "/dispensary-near/fort-ann-ny/",
+  "title": "Dispensary near Fort Ann, NY | Northern Lights",
+  "type": "area",
+  "store": "whitehall",
+  "category": null
+ },
+ {
+  "path": "/dispensary-near/hudson-falls-ny/",
+  "title": "Dispensary near Hudson Falls, NY | Northern Lights",
+  "type": "area",
+  "store": "whitehall",
+  "category": null
+ },
+ {
+  "path": "/dispensary-near/glens-falls-ny/",
+  "title": "Dispensary near Glens Falls, NY | Northern Lights",
+  "type": "area",
+  "store": "whitehall",
+  "category": null
+ },
+ {
+  "path": "/dispensary-near/lake-george-ny/",
+  "title": "Dispensary near Lake George, NY | Northern Lights",
+  "type": "area",
+  "store": "whitehall",
+  "category": null
+ },
+ {
+  "path": "/dispensary-near/ticonderoga-ny/",
+  "title": "Dispensary near Ticonderoga, NY | Northern Lights",
+  "type": "area",
+  "store": "whitehall",
+  "category": null
+ },
+ {
+  "path": "/dispensary-near/fair-haven-vt/",
+  "title": "Dispensary near Fair Haven, VT | Northern Lights",
+  "type": "area",
+  "store": "whitehall",
+  "category": null
+ },
+ {
+  "path": "/dispensary-near/rutland-vt/",
+  "title": "Dispensary near Rutland, VT | Northern Lights",
+  "type": "area",
+  "store": "whitehall",
+  "category": null
+ },
+ {
+  "path": "/dispensary-near/albany-ny/",
+  "title": "Dispensary near Albany, NY | Northern Lights",
+  "type": "area",
+  "store": "menands",
+  "category": null
+ },
+ {
+  "path": "/dispensary-near/troy-ny/",
+  "title": "Dispensary near Troy, NY | Northern Lights",
+  "type": "area",
+  "store": "menands",
+  "category": null
+ },
+ {
+  "path": "/dispensary-near/watervliet-ny/",
+  "title": "Dispensary near Watervliet, NY | Northern Lights",
+  "type": "area",
+  "store": "menands",
+  "category": null
+ },
+ {
+  "path": "/dispensary-near/cohoes-ny/",
+  "title": "Dispensary near Cohoes, NY | Northern Lights",
+  "type": "area",
+  "store": "menands",
+  "category": null
+ },
+ {
+  "path": "/dispensary-near/colonie-ny/",
+  "title": "Dispensary near Colonie, NY | Northern Lights",
+  "type": "area",
+  "store": "menands",
+  "category": null
+ },
+ {
+  "path": "/dispensary-near/latham-ny/",
+  "title": "Dispensary near Latham, NY | Northern Lights",
+  "type": "area",
+  "store": "menands",
+  "category": null
+ },
+ {
+  "path": "/dispensary-near/rensselaer-ny/",
+  "title": "Dispensary near Rensselaer, NY | Northern Lights",
+  "type": "area",
+  "store": "menands",
+  "category": null
+ },
+ {
+  "path": "/dispensary-near/schenectady-ny/",
+  "title": "Dispensary near Schenectady, NY | Northern Lights",
+  "type": "area",
+  "store": "menands",
+  "category": null
+ },
+ {
+  "path": "/learn/",
+  "title": "Cannabis guides and our blog | Northern Lights",
+  "type": "learn",
+  "store": null,
+  "category": null
+ },
+ {
+  "path": "/learn/first-visit/",
+  "title": "First visit: what to bring and expect | Northern Lights",
+  "type": "guide",
+  "store": null,
+  "category": null
+ },
+ {
+  "path": "/learn/cannabis-products/",
+  "title": "Cannabis product types, explained | Northern Lights",
+  "type": "guide",
+  "store": null,
+  "category": null
+ },
+ {
+  "path": "/learn/strain-types/",
+  "title": "Indica, sativa and hybrid, explained | Northern Lights",
+  "type": "guide",
+  "store": null,
+  "category": null
+ },
+ {
+  "path": "/learn/new-york-cannabis-laws/",
+  "title": "New York cannabis laws: the basics | Northern Lights",
+  "type": "guide",
+  "store": null,
+  "category": null
+ },
+ {
+  "path": "/blog/",
+  "title": "The Northern Lights Blog | Northern Lights",
+  "type": "blog",
+  "store": null,
+  "category": null
+ },
+ {
+  "path": "/blog/same-day-delivery-whitehall-menands/",
+  "title": "How our free same-day delivery works | Northern Lights",
+  "type": "post",
+  "store": null,
+  "category": null
+ },
+ {
+  "path": "/blog/how-our-price-match-works/",
+  "title": "How our price match works | Northern Lights",
+  "type": "post",
+  "store": null,
+  "category": null
+ },
+ {
+  "path": "/blog/four-seasons-on-broadway/",
+  "title": "Four seasons on Broadway in Whitehall | Northern Lights",
+  "type": "post",
+  "store": null,
+  "category": null
+ },
+ {
+  "path": "/blog/rewards-aurora-to-northern-light/",
+  "title": "Rewards, from Aurora to Northern Light | Northern Lights",
+  "type": "post",
+  "store": null,
+  "category": null
+ },
+ {
+  "path": "/faq/",
+  "title": "FAQ: shopping, delivery and rewards | Northern Lights",
+  "type": "faq",
+  "store": null,
+  "category": null
+ },
+ {
+  "path": "/brands/",
+  "title": "Cannabis Brands We Carry | Northern Lights",
+  "type": "brands",
+  "store": null,
+  "category": null
+ },
+ {
+  "path": "/about-us/",
+  "title": "About Northern Lights Dispensary | Whitehall & Menands",
+  "type": "about",
+  "store": null,
+  "category": null
+ },
+ {
+  "path": "/reviews/",
+  "title": "Customer Reviews | Northern Lights Dispensary",
+  "type": "reviews",
+  "store": null,
+  "category": null
+ },
+ {
+  "path": "/events/",
+  "title": "Music & Pop-Up Nights at Our Stores | Northern Lights",
+  "type": "events",
+  "store": null,
+  "category": null
+ },
+ {
+  "path": "/careers/",
+  "title": "Careers at a Family-Run Dispensary | Northern Lights",
+  "type": "careers",
+  "store": null,
+  "category": null
+ },
+ {
+  "path": "/contact/",
+  "title": "Contact Northern Lights | Whitehall & Menands, NY",
+  "type": "contact",
+  "store": null,
+  "category": null
+ },
+ {
+  "path": "/vendor-intake/",
+  "title": "Vendor Intake | Northern Lights Dispensary",
+  "type": "contact",
+  "store": null,
+  "category": null
+ },
+ {
+  "path": "/loyalty-program/",
+  "title": "Rewards Program: 50 Points to Start | Northern Lights",
+  "type": "rewards",
+  "store": null,
+  "category": null
+ },
+ {
+  "path": "/policies/",
+  "title": "Policies | Northern Lights Dispensary",
+  "type": "policies",
+  "store": null,
+  "category": null
+ },
+ {
+  "path": "/sitemap/",
+  "title": "Site Map | Northern Lights Dispensary",
+  "type": "sitemap",
+  "store": null,
+  "category": null
+ }
+]
