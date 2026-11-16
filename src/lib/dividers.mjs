@@ -13,9 +13,10 @@
 // --wv-a). Everywhere else it is transparent, so each section's own background shows through untouched (even the
 // lamp band's radial gradient). Colours, heights and placement live in src/styles/dividers.css.
 //
-// Seam rule table (from > to): where the band sits. "mid" = centred on the seam, half in each section's padding;
-// "top" = inside the lower section's top padding (the upper colour drawn down to the crest); "bot" = inside the upper
-// section's bottom padding (the lower colour drawn up to the crest).
+// Seam rule table (from > to): where the band sits. "mid" = centred on the seam, half in each section's padding (in
+// front of both sections' backgrounds); "top" = inside the lower section's top padding (the upper colour drawn down to
+// the crest); "bot" = inside the upper section's bottom padding (the lower colour drawn up to the crest). A top / bot
+// band is the last child of its section, behind that section's content.
 //   dark  > lamp    top   (+ the aurora ribbon riding over it when the lamp band is #inside)
 //   dark  > paper   mid
 //   lamp  > paper   mid
@@ -28,7 +29,7 @@
 //   lamp  > footer  mid
 //   chapter breaks (home): hero > #choose (top, crest only), #deals > #rewards (mid, crest only)
 //   dark  > dark, dark > footer: no divider (dividers.css fades every dark band to --night at both edges)
-//   hero  > anything else: never touched (.hero, .phero, .shero already fade to --night)
+//   hero  > anything else: never touched (.hero, .phero, .shero and the .hx option heroes already fade to --night)
 // Any other pair is left alone and reported once by the build.
 
 const VOID = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr']);
@@ -60,7 +61,7 @@ const KNOWN = new Set(['band--tight', 'band--night', 'band--night-0', 'band--nig
 // the build's log line (build.mjs prints its older "ridges/ripples" line; this one carries the wave counts)
 export function summary() {
   stats.told = true;
-  return `waves: ${stats.wave + stats.chapter} glowing waves (${stats.wave} tone changes, ${stats.chapter} chapter breaks), ${stats.ribbon} ribbon on ${stats.pages} pages; most on one page ${stats.most} (live WebGL cap ${MAX_LIVE}/page, the rest static SVG)`;
+  return `waves: ${stats.wave + stats.chapter} glowing waves (${stats.wave} tone changes, ${stats.chapter} chapter breaks), ${stats.ribbon} ribbon on ${stats.pages} pages; most on one page ${stats.most} (at most ${MAX_LIVE} live WebGL at once, the rest on their static SVG)`;
 }
 process.once('beforeExit', () => { if (!stats.told && stats.pages) console.log(summary()); });
 
@@ -170,7 +171,7 @@ const classesOf = (attrs) => ((attrs.match(/\bclass\s*=\s*"([^"]*)"/) || [])[1] 
 const idOf = (attrs) => (attrs.match(/\bid\s*=\s*"([^"]*)"/) || [])[1] || '';
 function toneOf(tag, cls) {
   if (tag === 'footer') return 'footer';
-  if (cls.some((c) => c === 'hero' || c === 'phero' || c === 'shero')) return 'hero';
+  if (cls.some((c) => c === 'hero' || c === 'phero' || c === 'shero' || c === 'hx')) return 'hero'; // hx: lane H's option heroes
   if (cls.includes('menu')) return 'white';
   if (cls.includes('band--paper')) return 'paper';
   if (cls.includes('band--lamp')) return 'lamp';

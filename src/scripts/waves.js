@@ -8,8 +8,8 @@
    seam; everything else stays transparent, so both sections' own backgrounds meet the crest untouched. A fine pointer
    lifts the crest near it, eased in and out. Contexts are created as a wave nears the viewport; at most MAX live per
    page (the one farthest off screen hands its slot over and shows its SVG again). Off screen or in a hidden tab it
-   sleeps; under reduced motion it draws one still frame (t = 0: the SVG's own curve); with forced colours, or without
-   WebGL, the SVG stays. */
+   sleeps; under reduced motion it draws one still frame (t = 0: the SVG's own curve); without WebGL the SVG stays;
+   with forced colours dividers.css hides the whole band and this does nothing. */
 (() => {
   'use strict';
   const W = window, d = document;

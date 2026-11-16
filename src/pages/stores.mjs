@@ -1,7 +1,7 @@
 // stores.mjs: the locations hub, a page per store (Whitehall first), same-day delivery, and the areas we serve
 // (a hub + one page per nearby town, the local-search pages of the adopted IA). Copy: src/content/places.mjs.
 import { esc, href, img, icon, inline, attrs } from '../lib/html.mjs';
-import { pageHero, blocks, faqList, ctaRow, catGrid, kicker, dh, light, statusSpan, storeStrip, btn, floatObj } from '../lib/parts.mjs';
+import { pageHero, blocks, faqList, ctaRow, catGrid, kicker, dh, light, statusSpan, storeStrip, btn, floatObj, storeSwitch } from '../lib/parts.mjs';
 import { storeLd, storeCard } from '../lib/layout.mjs';
 import { livingMap } from '../lib/map.mjs';
 import { brand, stores, storeCats, storeById, DEFAULT_STORE } from '../content/site.mjs';
@@ -92,10 +92,19 @@ function hub() {
     crumbs: [{ label: 'Home', href: '/' }, { label: 'Locations', href: '/locations/' }],
     jsonld: stores.map(storeLd),
     main: pageHero({ kicker: c.kicker, h1: c.h1, lede: c.lede, image: 'lake-dawn', crumbs: [{ label: 'Home', href: '/' }, { label: 'Locations', href: '/locations/' }], variant: 'phero--short' }) + `
-<section class="band band--tight">
-  <div class="wrap lochub">
-    <div class="lochub__stores">${stores.map((s) => storeCard(s)).join('')}<a class="lochub__dl" href="${href('/delivery/')}">${icon('truck')}<span><b>Same-day delivery from both stores</b><small>Free, 11am–7pm</small></span>${icon('arrow')}</a></div>
-    <div class="lochub__map" data-reveal="zoom">${livingMap({ id: 'loc' })}</div>
+<section class="band band--tight lochub2">
+  <div class="wrap">
+    ${storeSwitch({ id: 'loc', h: 'h2' })}
+    <div class="lhb">
+      <a class="lhb__tile" href="${href('/delivery/')}" data-reveal>
+        <span class="lhb__img" aria-hidden="true">${img('delivery-road', { decorative: true, sizes: '(max-width: 900px) 92vw, 700px', min: 900 })}</span>
+        <span class="lhb__txt"><span class="lhb__ico">${icon('truck')}</span><b>Same-day delivery from both stores</b><small>Free, 11am–7pm. Order on the live menu and check your address at checkout.</small><span class="lhb__go">How delivery works${icon('arrow')}</span></span>
+      </a>
+      <a class="lhb__tile lhb__tile--areas" href="${href(P.areas.hub.slug)}" data-reveal style="--d:120">
+        <span class="lhb__img" aria-hidden="true">${img('canal-golden', { decorative: true, sizes: '(max-width: 900px) 92vw, 700px', min: 900 })}</span>
+        <span class="lhb__txt"><span class="lhb__ico">${icon('pin')}</span><b>${esc(P.areas.hub.h1)}</b><small>${esc(P.areas.hub.lede.replace(/^Two stores and one simple rule of thumb: /, '').replace(/^./, (m) => m.toUpperCase()))}</small><span class="lhb__go">${esc(P.areas.hub.kicker)}${icon('arrow')}</span></span>
+      </a>
+    </div>
   </div>
 </section>
 <section class="band band--night-2 band--tight">

@@ -646,58 +646,70 @@
    "source": "private/gen/out/cut-plant.result.json"
   },
   "store-whitehall": {
-   "alt": "The red clapboard storefront at 132 Broadway, Whitehall, with a group holding a Whitehall Chamber of Commerce banner on the steps",
+   "alt": "The red clapboard storefront at 132 Broadway, Whitehall, at blue hour, its lanterns and doorway lit",
    "ai": "edited",
-   "w": 1400,
-   "h": 2400,
+   "w": 1568,
+   "h": 2720,
    "files": [
     {
-     "file": "img/store-whitehall-520.webp",
-     "w": 520,
-     "h": 891,
-     "bytes": 83784
+     "file": "img/store-whitehall-600.webp",
+     "w": 600,
+     "h": 1041,
+     "bytes": 78714
     },
     {
      "file": "img/store-whitehall-900.webp",
      "w": 900,
-     "h": 1543,
-     "bytes": 182188
+     "h": 1561,
+     "bytes": 150966
     },
     {
-     "file": "img/store-whitehall-1400.webp",
-     "w": 1400,
-     "h": 2400,
-     "bytes": 327452
+     "file": "img/store-whitehall-1200.webp",
+     "w": 1200,
+     "h": 2082,
+     "bytes": 283502
+    },
+    {
+     "file": "img/store-whitehall-1568.webp",
+     "w": 1568,
+     "h": 2720,
+     "bytes": 541556
     }
    ],
-   "source": "private/gen/out/up-whitehall.result.json (Topaz High Fidelity V2 upscale of the client photo, no content change)"
+   "source": "private/gen/out/sf-whitehall.result.json (AI edit of the client photo, owner request 2026-11-16: people and their banner removed, relit to blue hour; the building, its signs and their text kept as photographed)"
   },
   "store-menands": {
-   "alt": "Aerial view of the Northern Lights Cannabis Dispensary storefront in Menands",
+   "alt": "Aerial view of the Northern Lights Cannabis Dispensary storefront in Menands at dusk, its green sign lit under an aurora sky",
    "ai": "edited",
-   "w": 1400,
-   "h": 2400,
+   "w": 1568,
+   "h": 2720,
    "files": [
     {
-     "file": "img/store-menands-520.webp",
-     "w": 520,
-     "h": 891,
-     "bytes": 51504
+     "file": "img/store-menands-600.webp",
+     "w": 600,
+     "h": 1041,
+     "bytes": 45342
     },
     {
      "file": "img/store-menands-900.webp",
      "w": 900,
-     "h": 1543,
-     "bytes": 115110
+     "h": 1561,
+     "bytes": 81444
     },
     {
-     "file": "img/store-menands-1400.webp",
-     "w": 1400,
-     "h": 2400,
-     "bytes": 224154
+     "file": "img/store-menands-1200.webp",
+     "w": 1200,
+     "h": 2082,
+     "bytes": 127894
+    },
+    {
+     "file": "img/store-menands-1568.webp",
+     "w": 1568,
+     "h": 2720,
+     "bytes": 197296
     }
    ],
-   "source": "private/gen/out/up-menands.result.json (Topaz High Fidelity V2 upscale of the client photo, no content change)"
+   "source": "private/gen/out/sf-menands.result.json (AI edit of the client photo, owner request 2026-11-16: third-party signs and cars removed, relit to dusk with an aurora sky; the building, its signs and their text kept as photographed)"
   }
  },
  "brand": {

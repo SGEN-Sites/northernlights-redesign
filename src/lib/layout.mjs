@@ -214,10 +214,10 @@ ${PREVIEW || p.noindex ? '<meta name="robots" content="noindex, nofollow">\n' : 
 <meta property="og:image" content="${esc(share)}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/webp" href="${asset('brand/favicon.webp')}">
-<link rel="preload" as="font" type="font/woff2" href="${asset('fonts/fraunces-normal.woff2')}" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="${asset('fonts/merriweather-normal.woff2')}" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="${asset('fonts/jost-normal.woff2')}" crossorigin>
 <link rel="stylesheet" href="${asset('css/site.css')}${stamp}">
-<script>(function(d){var r=d.documentElement;r.className=r.className.replace('no-js','js');try{var s=localStorage.getItem('nl.store');if(s==='whitehall'||s==='menands')r.setAttribute('data-store',s);if(!localStorage.getItem('nl.age')&&!/[?&]gate=off/.test(location.search))r.classList.add('gate-pending');}catch(e){}})(document);</script>
+<script>(function(d){var r=d.documentElement;r.className=r.className.replace('no-js','js');try{var s=localStorage.getItem('nl.store');if(s==='whitehall'||s==='menands')r.setAttribute('data-store',s);if(!localStorage.getItem('nl.age')&&!/[?&]gate=off/.test(location.search))r.classList.add('gate-pending');var m=location.search.match(/[?&]splash=([^&#]*)/),v=m?m[1]:sessionStorage.getItem('nl.splash');if(/^[123]$/.test(v)&&!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('splash-pending');}catch(e){}})(document);</script>
 ${p.head || ''}
 ${ld.map((j) => `<script type="application/ld+json">${JSON.stringify(j).replace(/</g, '\\u003c')}</script>`).join('\n')}
 </head>

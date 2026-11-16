@@ -6,6 +6,15 @@
 @font-face { font-family: 'Fraunces'; src: url('__BASE__assets/fonts/fraunces-italic.woff2') format('woff2'); font-weight: 100 900; font-style: italic; font-display: swap; }
 @font-face { font-family: 'Jost'; src: url('__BASE__assets/fonts/jost-normal.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: swap; }
 @font-face { font-family: 'Jost'; src: url('__BASE__assets/fonts/jost-italic.woff2') format('woff2'); font-weight: 100 900; font-style: italic; font-display: swap; }
+/* the owner's pick, round 5 ("Logo match"): Merriweather at its display optical size (opsz 144, from Google) and its
+   narrowest width (wdth 87, instanced into the files with fontTools, so the width can never drift; 99 KB each), weights
+   400-900, for display, like the logo's heavy "NORTHERN LIGHTS"; Roboto Slab bold, tracked wide, for the eyebrows, like
+   its "· DISPENSARY ·". The fallback is Georgia Bold scaled to Merriweather Black's width and vertical metrics
+   (measured on the font lab), so the swap does not re-wrap headings. */
+@font-face { font-family: 'Merriweather'; src: url('__BASE__assets/fonts/merriweather-normal.woff2') format('woff2'); font-weight: 400 900; font-stretch: 87%; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Merriweather'; src: url('__BASE__assets/fonts/merriweather-italic.woff2') format('woff2'); font-weight: 400 900; font-stretch: 87%; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Merriweather Fallback'; src: local('Georgia Bold'), local('Georgia-Bold'); font-weight: 400 900; size-adjust: 76.6%; ascent-override: 98.4%; descent-override: 27.3%; line-gap-override: 0%; }
+@font-face { font-family: 'Roboto Slab'; src: url('__BASE__assets/fonts/roboto-slab-normal.woff2') format('woff2'); font-weight: 500 800; font-style: normal; font-display: swap; }
 /* size-matched fallbacks so a late web font does not re-wrap headings */
 @font-face { font-family: 'Fraunces Fallback'; src: local('Georgia'); size-adjust: 104%; ascent-override: 92%; descent-override: 24%; }
 @font-face { font-family: 'Jost Fallback'; src: local('Arial'); size-adjust: 96%; ascent-override: 102%; descent-override: 30%; }
@@ -51,7 +60,8 @@
   --glass-hi: rgba(255, 255, 255, .07);
   --blur: 16px;
   /* type */
-  --f-display: 'Fraunces', 'Fraunces Fallback', Georgia, serif;
+  --f-display: 'Merriweather', 'Merriweather Fallback', Georgia, serif;
+  --f-label: 'Roboto Slab', Georgia, serif;
   --f-sans: 'Jost', 'Jost Fallback', 'Avenir Next', system-ui, sans-serif;
   --t-mega: clamp(3.3rem, 8.6vw, 8.4rem);
   --t-xl: clamp(2.6rem, 6vw, 5.6rem);

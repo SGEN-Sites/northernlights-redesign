@@ -39,10 +39,12 @@ const towns = [
 const W0 = stores.find((s) => s.id === 'whitehall').geo, M0 = stores.find((s) => s.id === 'menands').geo;
 const thread = [[W0.lat, W0.lng], [43.47, -73.44], [43.38, -73.5], [43.27, -73.585], [43.1, -73.6], [42.92, -73.66], [42.78, -73.7], [M0.lat, M0.lng]];
 
-export function livingMap({ id = 'map', compact = false, labels = true } = {}) {
+// switcher: the two lights and their labels become store pickers (data-set-store, handled by site.js) and follow the
+// visitor's store (data-store-card -> .is-mine); the labels are buttons, the lights a pointer shortcut (the svg stays aria-hidden)
+export function livingMap({ id = 'map', compact = false, labels = true, switcher = false } = {}) {
   const st = stores.map((s) => ({ s, xy: P(s.geo.lat, s.geo.lng) }));
   const tl = (t) => { const [x, y] = P(t[1], t[2]); const dx = t[3] === 'l' ? -6 : t[3] === 'r' ? 6 : 0, dy = t[3] === 'b' ? 14 : 4; return `<g class="lm__town"><circle cx="${x}" cy="${y}" r="1.8"/>${labels ? `<text x="${x + dx}" y="${y + dy}" text-anchor="${t[3] === 'l' ? 'end' : t[3] === 'r' ? 'start' : 'middle'}">${esc(t[0])}</text>` : ''}</g>`; };
-  return `<figure class="lm${compact ? ' lm--compact' : ''}" data-livemap aria-label="Map: Northern Lights Whitehall at the south tip of Lake Champlain and Northern Lights Menands near Albany, connected by a line of light">
+  return `<figure class="lm${compact ? ' lm--compact' : ''}${switcher ? ' lm--switch' : ''}" data-livemap aria-label="Map: Northern Lights Whitehall at the south tip of Lake Champlain and Northern Lights Menands near Albany, connected by a line of light">
   <svg class="lm__svg" viewBox="0 0 ${W} ${H}" role="img" aria-hidden="true" focusable="false">
     <defs>
       <linearGradient id="lm-th-${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#55FFD6"/><stop offset=".45" stop-color="#4089FF"/><stop offset="1" stop-color="#D369FF"/></linearGradient>
@@ -67,13 +69,15 @@ export function livingMap({ id = 'map', compact = false, labels = true } = {}) {
     <path class="lm__thread-glow" d="${smooth(thread)}" stroke="url(#lm-th-${id})" filter="url(#lm-blur-${id})"/>
     <path class="lm__thread" d="${smooth(thread)}" stroke="url(#lm-th-${id})" pathLength="100"/>
     <path class="lm__spark" d="${smooth(thread)}" pathLength="100"/>
-    ${st.map(({ s, xy }, i) => `<g class="lm__store lm__store--${s.id}${s.id === DEFAULT_STORE ? ' is-lead' : ''}" data-map-store="${s.id}" style="--i:${i}">
+    ${st.map(({ s, xy }, i) => `<g class="lm__store lm__store--${s.id}${s.id === DEFAULT_STORE ? ' is-lead' : ''}" data-map-store="${s.id}"${switcher ? ` data-set-store="${s.id}" data-store-card="${s.id}"` : ''} style="--i:${i}">
       <circle class="lm__halo" cx="${xy[0]}" cy="${xy[1]}" r="${s.id === DEFAULT_STORE ? 34 : 26}" fill="url(#${s.id === DEFAULT_STORE ? 'lm-glow' : 'lm-glow2'}-${id})"/>
       <circle class="lm__ring" cx="${xy[0]}" cy="${xy[1]}" r="${s.id === DEFAULT_STORE ? 11 : 9}"/>
       <circle class="lm__dot" cx="${xy[0]}" cy="${xy[1]}" r="${s.id === DEFAULT_STORE ? 5.2 : 4.4}"/>
     </g>`).join('')}
   </svg>
-  ${st.map(({ s, xy }) => `<a class="lm__pin lm__pin--${s.id}${s.id === DEFAULT_STORE ? ' is-lead' : ''}" href="${href(s.page)}" style="--x:${((xy[0] / W) * 100).toFixed(2)}%;--y:${((xy[1] / H) * 100).toFixed(2)}%" data-map-pin="${s.id}"><b>${esc(s.city)}</b><small>${esc(s.street)}</small></a>`).join('')}
+  ${st.map(({ s, xy }) => switcher
+    ? `<button class="lm__pin lm__pin--${s.id}${s.id === DEFAULT_STORE ? ' is-lead' : ''}" type="button" style="--x:${((xy[0] / W) * 100).toFixed(2)}%;--y:${((xy[1] / H) * 100).toFixed(2)}%" data-map-pin="${s.id}" data-set-store="${s.id}" data-store-card="${s.id}" aria-label="Shop at ${esc(s.city)}"><b>${esc(s.city)}</b><small>${esc(s.street)}</small></button>`
+    : `<a class="lm__pin lm__pin--${s.id}${s.id === DEFAULT_STORE ? ' is-lead' : ''}" href="${href(s.page)}" style="--x:${((xy[0] / W) * 100).toFixed(2)}%;--y:${((xy[1] / H) * 100).toFixed(2)}%" data-map-pin="${s.id}"><b>${esc(s.city)}</b><small>${esc(s.street)}</small></a>`).join('')}
   <figcaption class="sr-only">Northern Lights Whitehall, 132 Broadway, at the south end of Lake Champlain where the Champlain Canal begins; Northern Lights Menands, 100 Broadway, on the Hudson River just north of Albany.</figcaption>
 </figure>`;
 }

@@ -36,11 +36,11 @@
    so the page never moves), z-index 1 over both sections' backgrounds, the paddings keeping it off their content.
    .wv--top hangs inside the lower section's top padding and .wv--bot sits inside the upper section's bottom padding:
    each is the last child of that section, behind its content (z-index -1 in the band's own stacking context), so
-   anything floating up into the padding stays in front. --wv-a = the colour the upper section ends on, --wv-b = the
-   colour the lower one starts on (each is
-   painted only between the seam and the crest); --wv-ga / --wv-gb = how much halo spills above / below the crest
-   (less on the light bands, where light reads as a tint); --wv-light (default 1) scales all of the light, and 0
-   leaves the section colours alone, which is how private/wave-check.mjs --fills measures the seams exactly. */
+   anything floating up into the padding stays in front.
+   --wv-a = the colour the upper section ends on, --wv-b = the colour the lower one starts on (each is painted only
+   between the seam and the crest); --wv-ga / --wv-gb = how much halo spills above / below the crest (less on the
+   light bands, where light reads as a tint); --wv-light (default 1) scales all of the light, and 0 leaves the section
+   colours alone, which is how private/wave-check.mjs --fills measures the seams exactly. */
 .wv {
   position: relative; z-index: 1; height: var(--wv-h); margin-block: calc(var(--wv-h) * -.5); pointer-events: none;
   --wv-a: var(--night); --wv-b: var(--night); --wv-ga: 1; --wv-gb: 1;
@@ -65,7 +65,7 @@
 .wv--to-paper { --wv-b: var(--paper); --wv-gb: .3; }
 .wv--to-white { --wv-b: #fff; --wv-gb: .3; }
 .wv--to-lamp { --wv-b: var(--night-0); }                    /* (a .wv--top band never paints --wv-b) */
-/* the footer opens on --night (its sky fades from --night: chrome.css .ftr__sky::after) */
+/* (.wv--to-footer keeps --night: the footer opens on it, its sky fading from --night in chrome.css .ftr__sky::after) */
 .wv__fa { fill: var(--wv-a); }
 .wv__fb { fill: var(--wv-b); }
 .wv__halo { fill: none; stroke-width: 6px; opacity: .55; }

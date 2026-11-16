@@ -1,11 +1,11 @@
 {
-  "at": "2026-11-16T04:34:12.064Z",
+  "at": "2026-11-16T06:01:33.258Z",
   "url": "http://127.0.0.1:8787/",
   "pass": 10,
   "total": 12,
   "results": [
     {
-      "name": "every page answers 200 with its own title and noindex (74 pages, 7 redirect stubs skipped)",
+      "name": "every page answers 200 with its own title and noindex (71 pages, 7 redirect stubs skipped)",
       "ok": false,
       "detail": "about-us/ 200  ; blog/four-seasons-on-broadway/ 200  ; blog/how-our-price-match-works/ 200  ; blog/ 200  ; blog/rewards-aurora-to-northern-light/ 200 "
     },
@@ -47,12 +47,12 @@
     {
       "name": "sticky bar hidden over the hero, shown past it, inside the 390px screen",
       "ok": true,
-      "detail": "{\"on\":true,\"top\":726,\"bottom\":844,\"left\":0,\"right\":390}"
+      "detail": "{\"on\":true,\"top\":732,\"bottom\":844,\"left\":0,\"right\":390}"
     },
     {
       "name": "sticky bar: Shop now, Call, Directions and today's hours, all for Menands",
       "ok": true,
-      "detail": "{\"on\":true,\"top\":726,\"bottom\":844,\"left\":0,\"right\":390,\"vw\":390,\"vh\":844,\"store\":\"menands\",\"city\":\"Menands\",\"shop\":\"/menands/\",\"call\":\"tel:+15184720278\",\"maps\":\"https://www.google.com/maps/dir/?api=1&destination=Northern+Lights+Dispensary%2C+100+Broadway+%238%2C+Menands%2C+NY+12204\",\"hours\":\"Closed · opens 10am tomorrow\",\"labels\":[\"Shop now\",\"Call\",\"Directions\"]}"
+      "detail": "{\"on\":true,\"top\":732,\"bottom\":844,\"left\":0,\"right\":390,\"vw\":390,\"vh\":844,\"store\":\"menands\",\"city\":\"Menands\",\"shop\":\"/menands/\",\"call\":\"tel:+15184720278\",\"maps\":\"https://www.google.com/maps/dir/?api=1&destination=Northern+Lights+Dispensary%2C+100+Broadway+%238%2C+Menands%2C+NY+12204\",\"hours\":\"Closed · opens 10am\",\"labels\":[\"Shop now\",\"Call\",\"Directions\"]}"
     },
     {
       "name": "category tiles follow the store (Flower -> Menands; Orals, a Whitehall-only shelf, -> Whitehall)",

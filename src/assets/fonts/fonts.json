@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-11-16T01:06:06.818Z",
+  "fetched": "2026-11-16T05:20:10.380Z",
   "licence": "SIL Open Font License 1.1 (Google Fonts)",
   "fonts": [
     {
@@ -145,6 +145,35 @@
       "stretch": null,
       "bytes": 74572,
       "source": "https://fonts.gstatic.com/s/caveat/v23/Wnz6HAc5bAfYB2Q7ZjYYiAzcPA.woff2"
+    },
+    {
+      "family": "merriweather",
+      "file": "merriweather-italic.woff2",
+      "style": "italic",
+      "weight": "400 900",
+      "stretch": "87% (fixed in the file)",
+      "bytes": 98816,
+      "source": "https://fonts.gstatic.com/s/merriweather/v33/u-4r0qyriQwlOrhSvowK_l5-eTxCVx0ZbwLvKH2GE9phlrXCJbONwg.woff2",
+      "instanced": "wdth=87 wght=400:900 with fontTools.varLib.instancer (private/fonts-orig keeps the Google files)"
+    },
+    {
+      "family": "merriweather",
+      "file": "merriweather-normal.woff2",
+      "style": "normal",
+      "weight": "400 900",
+      "stretch": "87% (fixed in the file)",
+      "bytes": 99068,
+      "source": "https://fonts.gstatic.com/s/merriweather/v33/u-4t0qyriQwlOrhSvowK_l5UcA6zuSYEqOzpPW3FE55RlL_FB7E.woff2",
+      "instanced": "wdth=87 wght=400:900 with fontTools.varLib.instancer (private/fonts-orig keeps the Google files)"
+    },
+    {
+      "family": "roboto-slab",
+      "file": "roboto-slab-normal.woff2",
+      "style": "normal",
+      "weight": "500 800",
+      "stretch": null,
+      "bytes": 34160,
+      "source": "https://fonts.gstatic.com/s/robotoslab/v36/BngMUXZYTXPIvIBgJJSb6ufN5qWr4xCC.woff2"
     }
   ]
 }

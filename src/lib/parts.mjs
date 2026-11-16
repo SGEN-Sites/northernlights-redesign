@@ -3,6 +3,7 @@
 import { esc, attrs, href, asset, img, imgInfo, icon, inline, catLink, storeLink, brandImg } from './html.mjs';
 import { brand, stores, categories, storeCats, sharedCats, DEFAULT_STORE, catById, catPath, loyalty, reviews, storeById } from '../content/site.mjs';
 import { light, statusSpan } from './layout.mjs';
+import { livingMap } from './map.mjs';
 
 // ---------- type ----------
 // a display heading with one accent word: "Lights on *Broadway.*" -> the starred part is the accent
@@ -146,3 +147,33 @@ export const floatObj = (id, cls, depth = '0.1') => `<div class="float ${cls}" d
 export const storeStrip = () => `<div class="sstrip">${stores.map((s) => `<a class="sstrip__a${s.id === DEFAULT_STORE ? ' is-lead' : ''}" href="${href(s.page)}">${light(s)}<span><b>${esc(s.city)}, ${esc(s.region)}</b><small>${esc(s.street)} · ${esc(s.tagline)}</small></span>${statusSpan(s)}${icon('arrow')}</a>`).join('')}</div>`;
 
 export { light, statusSpan };
+
+// ---------- the store switcher (owner, round 5): the mini map picks the store and sets it as the visitor's store; the
+// chosen store's storefront fills a tall frame beside its details. Both panels are in the page (no-JS, crawlers);
+// html[data-store] (set before first paint, then by site.js) shows one. ----------
+const hr12 = (h) => (h % 12 || 12) + (h >= 12 ? 'pm' : 'am');
+const dailyHours = (s) => (s.hours.every((h) => h[0] === s.hours[0][0] && h[1] === s.hours[0][1]) ? `Open every day, ${hr12(s.hours[0][0])}–${hr12(s.hours[0][1])}` : '');
+export function storeSwitch({ id = 'sw', h = 'h3' } = {}) {
+  const tab = (s) => `<button class="sw__tab sw__tab--${s.id}" type="button" data-set-store="${s.id}" data-seg="${s.id}" aria-pressed="${s.id === DEFAULT_STORE}">${light(s)}<span><small>No. ${s.n}</small><b>${esc(s.city)}</b></span></button>`;
+  const panel = (s) => `<article class="sw__panel sw__panel--${s.id}" data-store-card="${s.id}" aria-label="Northern Lights ${esc(s.city)}">
+      <div class="sw__photo">${img(s.photo, { sizes: '(max-width: 640px) 92vw, (max-width: 1100px) 44vw, 470px', min: 1200 })}<span class="sp__badge">${light(s)}No. ${s.n}${s.id === DEFAULT_STORE ? ' · First stop' : ''}</span></div>
+      <div class="sw__body">
+        <p class="sw__k">${esc(s.tagline)}</p>
+        <${h} class="sw__name">${esc(s.city)}<span>, ${esc(s.region)}</span></${h}>
+        ${statusSpan(s)}
+        <p class="sw__addr">${esc(s.street)}, ${esc(s.city)}, ${esc(s.region)} ${esc(s.zip)}</p>
+        <ul class="sw__facts">${dailyHours(s) ? `<li>${icon('clock')}${dailyHours(s)}</li>` : ''}<li>${icon('truck')}Free same-day delivery, ${esc(s.delivery)}</li>${s.curbside ? `<li>${icon('bag')}Curbside pickup, ${esc(s.curbside)}</li>` : ''}<li>${icon('cash')}${esc(s.payment.join(' · '))}</li></ul>
+        <p class="sw__links"><a href="tel:${s.tel}">${icon('phone')}${esc(s.phone)}</a><a href="${esc(s.directions)}" target="_blank" rel="noopener">${icon('route')}Directions</a></p>
+        <div class="sw__cta"><a class="btn btn--teal" href="${href(s.menuPage)}">Shop ${esc(s.city)}${icon('bag')}</a><a class="btn btn--ghost" href="${href(s.page)}">Store details</a></div>
+        <p class="sw__mine">${icon('check')}${esc(s.city)} is your store</p>
+      </div>
+    </article>`;
+  return `<div class="sw" data-switcher>
+  <div class="sw__nav" data-reveal>
+    <div class="sw__tabs" role="group" aria-label="Choose your store">${stores.map(tab).join('')}</div>
+    <div class="sw__map">${livingMap({ id, compact: true, switcher: true })}</div>
+    <p class="sw__hint">${icon('pin')}Tap a light on the map to switch stores</p>
+  </div>
+  <div class="sw__stage" data-reveal="right">${stores.map(panel).join('')}</div>
+</div>`;
+}

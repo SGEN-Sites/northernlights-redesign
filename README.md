@@ -8,7 +8,7 @@ store's own live menu, already on that shelf, with its products and cart.
 
 ## What is in it
 
-- 82 HTML files: the live site's pages at their live URLs (home, /whitehall/, /menands/, /loyalty-program/,
+- 79 HTML files: the live site's pages at their live URLs (home, /whitehall/, /menands/, /loyalty-program/,
   /contact/, /policies/, /vendor-intake/; the six testimonial posts now redirect to /reviews/), plus the page types of a
   full regional dispensary site: a live-menu page for every category each store carries, specials and brands per store,
   Shop and Deals, a page per store, Locations, Same-day Delivery, Areas We Serve (16 town pages), Rewards, Events,

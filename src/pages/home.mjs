@@ -2,7 +2,7 @@
 // choose your store -> categories -> deals -> rewards -> reviews -> learn -> FAQ), with the store's own living room
 // and the four seasons as the signature bands. Every claim traces to facts/client-facts.json.
 import { esc, href, img, icon, asset, brandImg, storeLink, catLink, inline } from '../lib/html.mjs';
-import { dh, kicker, btn, catGrid, reviewDeck, tiers, seasons, floatObj, faqList, light, statusSpan } from '../lib/parts.mjs';
+import { dh, kicker, btn, catGrid, reviewDeck, tiers, seasons, floatObj, faqList, light, statusSpan, storeSwitch } from '../lib/parts.mjs';
 import { storeLd, orgLd } from '../lib/layout.mjs';
 import { livingMap } from '../lib/map.mjs';
 import { brand, stores, DEFAULT_STORE, storeCats, sharedCats, loyalty } from '../content/site.mjs';
@@ -38,18 +38,6 @@ function hero() {
 }
 
 function choose() {
-  const panel = (s) => `<article class="sp sp--${s.id}${s.id === DEFAULT_STORE ? ' sp--lead' : ''}" data-store-card="${s.id}" data-reveal${s.id === DEFAULT_STORE ? '' : ' style="--d:150"'}>
-    <div class="sp__photo">${img(s.photo, { sizes: '(max-width: 900px) 90vw, 420px', min: 900 })}<span class="sp__badge">${light(s)}No. ${s.n}</span></div>
-    <div class="sp__card glass">
-      <p class="sp__k">${esc(s.tagline)}</p>
-      <h3 class="sp__name">${esc(s.city)}<span>, ${esc(s.region)}</span></h3>
-      ${statusSpan(s)}
-      <p class="sp__addr">${esc(s.street)}, ${esc(s.city)}, ${esc(s.region)} ${esc(s.zip)}</p>
-      <p class="sp__links"><a href="tel:${s.tel}">${icon('phone')}${esc(s.phone)}</a><a href="${esc(s.directions)}" target="_blank" rel="noopener">${icon('route')}Directions</a></p>
-      <div class="sp__cta"><a class="btn btn--teal" href="${href(s.menuPage)}">Shop ${esc(s.city)}${icon('bag')}</a><a class="btn btn--ghost" href="${href(s.page)}">Store details</a></div>
-      <button class="sp__mine" type="button" data-set-store="${s.id}"><span class="pick__off">${icon('pin')}Make ${esc(s.city)} my store</span><span class="pick__on">${icon('check')}${esc(s.city)} is your store</span></button>
-    </div>
-  </article>`;
   return `<section class="band choose" id="choose">
   <div class="wrap">
     <div class="band__head band__head--center" data-reveal>
@@ -57,11 +45,7 @@ function choose() {
       ${dh('Where are you shopping *today?*', 'dh--lg')}
       <p>Pick a store and every Shop button on the site follows you there: its own live menu, its own cart, its own hours. Whitehall leads; Menands is a straight shot down the Hudson.</p>
     </div>
-    <div class="choose__grid">
-      ${panel(W)}
-      <div class="choose__map" data-reveal="zoom">${livingMap({ id: 'home' })}</div>
-      ${panel(M)}
-    </div>
+    ${storeSwitch({ id: 'home' })}
   </div>
 </section>`;
 }

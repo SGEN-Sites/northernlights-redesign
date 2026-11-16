@@ -58,6 +58,12 @@ def upscaled(name, alt, widths, src, crop=None):
                         'files': save(im, name, widths, q=84, label='compositeWithTrainedAlgorithmicMedia'),
                         'source': 'private/gen/out/' + src + '.result.json (Topaz High Fidelity V2 upscale of the client photo, no content change)'}
 
+def edited(name, alt, widths, src, note):
+    im = Image.open(os.path.join(GEN, src + '-0.png')).convert('RGB')
+    reg['img'][name] = {'alt': alt, 'ai': 'edited', 'w': im.width, 'h': im.height,
+                        'files': save(im, name, widths, q=82, label='compositeWithTrainedAlgorithmicMedia'),
+                        'source': 'private/gen/out/' + src + '.result.json (' + note + ')'}
+
 # ---- generated mood scenes (never the store, staff or customers; labelled as illustrations) ----
 gen('hero-aurora', 'Illustration: the northern lights over the calm south end of a lake at night, village lights on the far shore', (3136, 2200, 1440, 900), q=84)
 gen('lake-dawn', 'Illustration: the last of the northern lights fading over a lake before dawn, an old dock in the foreground', (3136, 1800, 1000), q=84)
@@ -81,9 +87,9 @@ for n, alt in [('flower', 'Cannabis flower'), ('prerolls', 'Pre-rolls'), ('vapes
                ('guitar', 'An acoustic guitar'), ('plant', 'A trailing pothos plant')]:
     gen('cut-' + n, 'Illustration: ' + alt.lower(), (900, 520, 300), src='cut-' + n, cut=True, q=88)
 
-# ---- the client's own photos, upscaled (Topaz HF V2, no content change) ----
-upscaled('store-whitehall', 'The red clapboard storefront at 132 Broadway, Whitehall, with a group holding a Whitehall Chamber of Commerce banner on the steps', (1400, 900, 520), 'up-whitehall')
-upscaled('store-menands', 'Aerial view of the Northern Lights Cannabis Dispensary storefront in Menands', (1400, 900, 520), 'up-menands')
+# ---- the client's own storefront photos, AI-edited at the owner's request (labelled; structure and sign text kept) ----
+edited('store-whitehall', 'The red clapboard storefront at 132 Broadway, Whitehall, at blue hour, its lanterns and doorway lit', (1568, 1200, 900, 600), 'sf-whitehall', 'AI edit of the client photo, owner request 2026-11-16: people and their banner removed, relit to blue hour; the building, its signs and their text kept as photographed')
+edited('store-menands', 'Aerial view of the Northern Lights Cannabis Dispensary storefront in Menands at dusk, its green sign lit under an aurora sky', (1568, 1200, 900, 600), 'sf-menands', 'AI edit of the client photo, owner request 2026-11-16: third-party signs and cars removed, relit to dusk with an aurora sky; the building, its signs and their text kept as photographed')
 
 # ---- the client's brand marks (resized only) ----
 def brand(src, out, w=None):

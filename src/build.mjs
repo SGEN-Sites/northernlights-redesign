@@ -6,7 +6,7 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { setBase, href, esc } from './lib/html.mjs';
 import { page, setPreview, setVersion, setOrigin } from './lib/layout.mjs';
-import { seams, stats as seamStats } from './lib/dividers.mjs';
+import { seams, stats as seamStats, summary as seamSummary } from './lib/dividers.mjs';
 import { ORIGIN } from './content/site.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -65,7 +65,7 @@ for (const p of pages) {
   // seams post-process (lane D, src/lib/dividers.mjs): a ridge / ripple divider wherever neighbouring bands change tone
   fs.writeFileSync(out, p.redirect ? redirect(p) : seams(page(p), p));
 }
-console.log(`seams: ${seamStats.ridge} ridges, ${seamStats.ripple} ripples, ${seamStats.ribbon} ribbon on ${seamStats.pages} pages`);
+console.log(seamSummary());
 for (const [pair, where] of seamStats.unruled) console.warn(`seams: no divider rule for ${pair} (hard edge left) on ${where.slice(0, 4).join(', ')}${where.length > 4 ? ' +' + (where.length - 4) : ''}`);
 for (const [cls, where] of seamStats.unknown) console.warn(`seams: unknown band tone .${cls} (treated as dark) on ${where.slice(0, 4).join(', ')}${where.length > 4 ? ' +' + (where.length - 4) : ''}`);
 

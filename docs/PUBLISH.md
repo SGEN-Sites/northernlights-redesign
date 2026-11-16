@@ -4,6 +4,12 @@
 - **Repo:** https://github.com/SGEN-Sites/northernlights-redesign (`main` = source, docs, evidence; `gh-pages` = the preview)
 - Round 1 published 2026-11-16 (main d116caa, gh-pages 7fa6153); round 1.1 the same morning with the final location,
   town and company copy.
+- Round 2 (2026-11-16): polaroids and tape removed, aurora curtain hero, reactive layer, seamless bands.
+- Round 3 (2026-11-16 12:12, main 5608bf4, gh-pages 2284fed): no framed photo containers, no coin, hero A kept, fixed
+  category tiles, glowing-wave dividers, solid mega menus, hero options B–D at `/hero-options/`. Scan CLEAN, smoke
+  12/12, menus 29/29 live.
+- Round 4 (2026-11-16 12:35, main 56cf330, gh-pages 4404137): no eyebrow dashes, balanced deals bento, centred shelves
+  line, flush store cards, full-width stacked CTAs on phones. Smoke 12/12 live.
 
 ## Checks on record
 
