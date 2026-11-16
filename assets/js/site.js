@@ -530,10 +530,22 @@
     const opts = [['A', 'Lights on Broadway', '?hx=a'], ['B', 'Aurora Stage', 'hero-options/b/'], ['C', 'Two Lights', 'hero-options/c/'], ['D', 'Orbit', 'hero-options/d/']];
     const nav = d.createElement('nav');
     nav.className = 'hxs'; nav.setAttribute('data-hxs', ''); nav.setAttribute('aria-label', 'Hero options');
-    nav.innerHTML = '<a class="hxs__all" href="' + base + 'hero-options/"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></svg><span>Hero options</span></a><ol class="hxs__list">'
+    nav.innerHTML = '<a class="hxs__all" href="' + base + 'hero-options/"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></svg><span>Hero options</span></a><ol class="hxs__list" id="hxs-list">'
       + opts.map(([k, name, to]) => '<li><a class="hxs__o' + (k === 'A' ? ' is-on' : '') + '" href="' + base + to + '" title="' + k + ': ' + name + '"' + (k === 'A' ? ' aria-current="page"' : '') + '><span aria-hidden="true">' + k + '</span><span class="sr-only">Option ' + k + ', ' + name + '</span></a></li>').join('')
-      + '</ol>';
+      + '</ol><button class="hxs__tog" type="button" aria-expanded="false" aria-controls="hxs-list"><span aria-hidden="true">A</span><span class="sr-only">Hero options, showing option A</span></button>';
     (d.querySelector('main') || d.body).appendChild(nav);
+  }
+  /* ---------------- phones: the switcher folds into one toggle (the current letter) that opens the list ---------------- */
+  const sw = d.querySelector('[data-hxs]');
+  if (sw) {
+    const tog = sw.querySelector('.hxs__tog'), narrow = W.matchMedia('(max-width: 560px)');
+    const open = (on) => { sw.classList.toggle('is-open', on); if (tog) tog.setAttribute('aria-expanded', on ? 'true' : 'false'); };
+    const fold = () => { sw.classList.toggle('is-compact', !!(tog && narrow.matches)); if (!narrow.matches) open(false); };
+    if (tog) tog.addEventListener('click', () => open(!sw.classList.contains('is-open')));
+    d.addEventListener('click', (e) => { if (sw.classList.contains('is-open') && !sw.contains(e.target)) open(false); });
+    d.addEventListener('keydown', (e) => { if (e.key === 'Escape' && sw.classList.contains('is-open')) { open(false); if (tog) tog.focus(); } });
+    fold();
+    if (narrow.addEventListener) narrow.addEventListener('change', fold);
   }
   if (!heroes.length || RM) return;
 
@@ -961,8 +973,14 @@
     if (!r.width || !r.height) return null;
     let k = Math.min(1.5, W.devicePixelRatio || 1);
     if (r.width * k > 2600) k = 2600 / r.width;
-    let n = w.el.nextElementSibling; while (n && !/^(SECTION|FOOTER)$/.test(n.tagName)) n = n.nextElementSibling;
-    const seam = n ? Math.max(0, Math.min(1, (n.getBoundingClientRect().top - r.top) / r.height)) : 0.5;
+    // a top / bot band sits inside its section (the seam is that section's top / bottom edge); a mid band sits in
+    // front of the lower section (the seam is where that section starts)
+    const cl = w.el.classList, host = w.el.parentElement;
+    let y = null;
+    if (cl.contains('wv--top') && host) y = host.getBoundingClientRect().top;
+    else if (cl.contains('wv--bot') && host) y = host.getBoundingClientRect().bottom;
+    else { let n = w.el.nextElementSibling; while (n && !/^(SECTION|FOOTER)$/.test(n.tagName)) n = n.nextElementSibling; if (n) y = n.getBoundingClientRect().top; }
+    const seam = y === null ? 0.5 : Math.max(0, Math.min(1, (y - r.top) / r.height));
     return { cw: Math.max(2, Math.round(r.width * k)), ch: Math.max(2, Math.round(r.height * k)), hc: r.height, seam };
   }
   function apply(w, m) {
@@ -1037,9 +1055,12 @@
     d.addEventListener('pointerout', (e) => { if (!e.relatedTarget) { mx = -1e5; my = -1e5; } });
     W.addEventListener('blur', () => { mx = -1e5; my = -1e5; });
   }
+  // after every batch of observer news (all flags first, so a wave that just left frees its slot): bring the waves on
+  // screen to life, then the ones about to arrive
+  const fill = () => { for (const w of waves) if (w.vis && !w.gl) acquire(w); for (const w of waves) if (w.near && !w.gl) acquire(w); };
   if ('IntersectionObserver' in W) {
-    const io = new IntersectionObserver((en) => { for (const e of en) { const w = byEl.get(e.target); if (!w) continue; w.vis = e.isIntersecting; if (w.vis) acquire(w); } wake(); }, { rootMargin: '40px 0px' });
-    const pre = new IntersectionObserver((en) => { for (const e of en) { const w = byEl.get(e.target); if (!w) continue; w.near = e.isIntersecting; if (w.near) acquire(w); } }, { rootMargin: '100% 0px' });
+    const io = new IntersectionObserver((en) => { for (const e of en) { const w = byEl.get(e.target); if (w) w.vis = e.isIntersecting; } fill(); wake(); }, { rootMargin: '40px 0px' });
+    const pre = new IntersectionObserver((en) => { for (const e of en) { const w = byEl.get(e.target); if (w) w.near = e.isIntersecting; } fill(); }, { rootMargin: '100% 0px' });
     waves.forEach((w) => { io.observe(w.el); pre.observe(w.el); });
   } else {
     waves.slice(0, MAX).forEach((w) => { w.vis = w.near = true; acquire(w); });
