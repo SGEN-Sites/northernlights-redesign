@@ -45,11 +45,13 @@ second point of light on the same map.
 - Category tiles: AI product cut-outs on one shared baseline (fixed image stage, `object-fit: contain`), each opening the live menu on that shelf.
 - Seamless night bands; glowing-wave dividers at every tone change and chapter break (`src/lib/dividers.mjs`, `src/scripts/waves.js`: an original WebGL crest in teal, blue and violet that lifts toward the pointer, at most 5 live per page, a static SVG copy otherwise), colour-matched across each seam; and an aurora ribbon carrying the stores' own lines into the living room.
 - The living room: the interior as a plain, lamp-lit picture, with the guitar and a pothos floating out of it.
-- Splash options (`/splash-options/`, noindex; owner to pick): 1 Aurora Ignition (the badge's spikes rise, the
-  wordmark resolves, the night lifts away), 2 Two Lights (Whitehall lights, a point runs the route to Menands, an
-  aurora wash), 3 Badge Reveal (the badge draws itself, an iris opens). Try-out only (`?splash=1|2|3`, the switcher,
-  `?splash=off`); never under reduced motion; skippable; hands off to the 21+ gate. To ship one: set `LIVE` in
-  `src/scripts/splash.js` (once per session) and add `||!sessionStorage.getItem('nl.splashed')` to the head line.
+- Intro splash (owner's pick, 2026-11-16): **2 "Two Lights"**. Whitehall lights in teal, a point of light runs the route
+  down to Menands in orchid, both bloom into an aurora wash with the wordmark and "Whitehall · Menands", then it
+  dissolves into the page (3.1 s). Once per session (`sessionStorage nl.splashed`), every visitor, never under reduced
+  motion or without sessionStorage, skippable (tap/click, any key, wheel, Skip); first-time visitors land on the 21+ gate
+  with focus on "Yes". `?splash=off` skips it; `?splash=1|2|3` still previews any of the three. The head script covers
+  the first paint (`html.splash-pending`, fails open after 4 s). The check tools set `nl.splashed` so screenshots are
+  never covered; the phone smoke checks the hand-off. The options page is archived in `private/labs-archive/`.
 - Rewards: the four real tiers as rising aurora rays.
 - Four seasons: staggered cards with the shop's own humor.
 

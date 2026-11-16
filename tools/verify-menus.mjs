@@ -30,7 +30,7 @@ const browser = await chromium.launch({ headless: true });
 const results = [];
 for (const j of jobs) {
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
-  await ctx.addInitScript(() => { try { localStorage.setItem('nl.age', '1'); } catch (e) {} });
+  await ctx.addInitScript(() => { try { sessionStorage.setItem('nl.splashed', '1'); localStorage.setItem('nl.age', '1'); } catch (e) {} });
   const pg = await ctx.newPage();
   let src = null, err = null;
   try {

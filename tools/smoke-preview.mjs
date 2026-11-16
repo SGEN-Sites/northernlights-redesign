@@ -54,7 +54,13 @@ await ctx.route((u) => !String(u).startsWith(host), (r) => r.abort());
 const p = await ctx.newPage();
 const errs = [];
 p.on('pageerror', (e) => errs.push(String(e)));
-await p.goto(URL0, { waitUntil: 'load' }); await sleep(1200);
+await p.goto(URL0, { waitUntil: 'load' }); await sleep(600);
+// the intro splash (option 2, once per session) plays first, then hands off to the gate with focus on "Yes"
+const splashOn = await p.isVisible('.spl');
+await p.waitForSelector('.spl', { state: 'detached', timeout: 20000 }).catch(() => {});
+await sleep(700);
+const handoff = await p.evaluate(() => ({ gone: !document.querySelector('.spl'), focus: document.activeElement && document.activeElement.hasAttribute('data-gate-yes') }));
+check('intro splash plays on first visit, then hands off to the 21+ gate (focus on Yes)', splashOn && handoff.gone && handoff.focus, JSON.stringify({ splashOn, ...handoff }));
 check('21+ gate shows on first visit', await p.isVisible('#gate'));
 const first = await p.evaluate(() => { const b = document.querySelector('#gate [data-gate-step="2"] [data-set-store]'); return b && b.getAttribute('data-set-store'); });
 await p.click('[data-gate-yes]'); await sleep(400);

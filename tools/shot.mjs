@@ -32,7 +32,7 @@ const browser = await chromium.launch();
 const report = [];
 for (const w of WIDTHS) {
   const ctx = await browser.newContext({ viewport: { width: w, height: w < 600 ? 844 : 900 }, deviceScaleFactor: 1, reducedMotion: (FULL && !MOTION) ? 'reduce' : 'no-preference', hasTouch: w < 600, isMobile: w < 600 });
-  await ctx.addInitScript(() => { try { localStorage.setItem('nl.age', '1'); localStorage.setItem('nl.store', localStorage.getItem('nl.store') || 'whitehall'); } catch (e) {} });
+  await ctx.addInitScript(() => { try { sessionStorage.setItem('nl.splashed', '1'); localStorage.setItem('nl.age', '1'); localStorage.setItem('nl.store', localStorage.getItem('nl.store') || 'whitehall'); } catch (e) {} });
   for (const p of paths) {
     const page = await ctx.newPage();
     const errors = [];
