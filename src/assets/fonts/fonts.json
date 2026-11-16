@@ -1,0 +1,150 @@
+{
+  "fetched": "2026-11-16T01:06:06.818Z",
+  "licence": "SIL Open Font License 1.1 (Google Fonts)",
+  "fonts": [
+    {
+      "family": "fraunces",
+      "file": "fraunces-italic.woff2",
+      "style": "italic",
+      "weight": "100 900",
+      "stretch": null,
+      "bytes": 40160,
+      "source": "https://fonts.gstatic.com/s/fraunces/v38/6NUT8FyLNQOQZAnv9ZwNpOQkzP9Ddt2Wew.woff2"
+    },
+    {
+      "family": "fraunces",
+      "file": "fraunces-italic.woff2",
+      "style": "italic",
+      "weight": "100 900",
+      "stretch": null,
+      "bytes": 130100,
+      "source": "https://fonts.gstatic.com/s/fraunces/v38/6NUT8FyLNQOQZAnv9ZwNpOUkzP9Ddt2Wew.woff2"
+    },
+    {
+      "family": "fraunces",
+      "file": "fraunces-italic.woff2",
+      "style": "italic",
+      "weight": "100 900",
+      "stretch": null,
+      "bytes": 149512,
+      "source": "https://fonts.gstatic.com/s/fraunces/v38/6NUT8FyLNQOQZAnv9ZwNpOskzP9Ddt0.woff2"
+    },
+    {
+      "family": "fraunces",
+      "file": "fraunces-normal.woff2",
+      "style": "normal",
+      "weight": "100 900",
+      "stretch": null,
+      "bytes": 34308,
+      "source": "https://fonts.gstatic.com/s/fraunces/v38/6NUV8FyLNQOQZAnv9ZwHlOkuy91BRtw.woff2"
+    },
+    {
+      "family": "fraunces",
+      "file": "fraunces-normal.woff2",
+      "style": "normal",
+      "weight": "100 900",
+      "stretch": null,
+      "bytes": 105476,
+      "source": "https://fonts.gstatic.com/s/fraunces/v38/6NUV8FyLNQOQZAnv9ZwGlOkuy91BRtw.woff2"
+    },
+    {
+      "family": "fraunces",
+      "file": "fraunces-normal.woff2",
+      "style": "normal",
+      "weight": "100 900",
+      "stretch": null,
+      "bytes": 120800,
+      "source": "https://fonts.gstatic.com/s/fraunces/v38/6NUV8FyLNQOQZAnv9ZwIlOkuy91B.woff2"
+    },
+    {
+      "family": "jost",
+      "file": "jost-italic.woff2",
+      "style": "italic",
+      "weight": "100 900",
+      "stretch": null,
+      "bytes": 11776,
+      "source": "https://fonts.gstatic.com/s/jost/v20/92zUtBhPNqw73oHt5D4hXRAy7lRq.woff2"
+    },
+    {
+      "family": "jost",
+      "file": "jost-italic.woff2",
+      "style": "italic",
+      "weight": "100 900",
+      "stretch": null,
+      "bytes": 19500,
+      "source": "https://fonts.gstatic.com/s/jost/v20/92zUtBhPNqw73oHt7j4hXRAy7lRq.woff2"
+    },
+    {
+      "family": "jost",
+      "file": "jost-italic.woff2",
+      "style": "italic",
+      "weight": "100 900",
+      "stretch": null,
+      "bytes": 30712,
+      "source": "https://fonts.gstatic.com/s/jost/v20/92zUtBhPNqw73oHt4D4hXRAy7g.woff2"
+    },
+    {
+      "family": "jost",
+      "file": "jost-normal.woff2",
+      "style": "normal",
+      "weight": "100 900",
+      "stretch": null,
+      "bytes": 10140,
+      "source": "https://fonts.gstatic.com/s/jost/v20/92zatBhPNqw73oDd4jQmfxIC7w.woff2"
+    },
+    {
+      "family": "jost",
+      "file": "jost-normal.woff2",
+      "style": "normal",
+      "weight": "100 900",
+      "stretch": null,
+      "bytes": 17204,
+      "source": "https://fonts.gstatic.com/s/jost/v20/92zatBhPNqw73ord4jQmfxIC7w.woff2"
+    },
+    {
+      "family": "jost",
+      "file": "jost-normal.woff2",
+      "style": "normal",
+      "weight": "100 900",
+      "stretch": null,
+      "bytes": 26588,
+      "source": "https://fonts.gstatic.com/s/jost/v20/92zatBhPNqw73oTd4jQmfxI.woff2"
+    },
+    {
+      "family": "caveat",
+      "file": "caveat-normal.woff2",
+      "style": "normal",
+      "weight": "400 700",
+      "stretch": null,
+      "bytes": 42888,
+      "source": "https://fonts.gstatic.com/s/caveat/v23/Wnz6HAc5bAfYB2Q7azYYiAzcPDKo.woff2"
+    },
+    {
+      "family": "caveat",
+      "file": "caveat-normal.woff2",
+      "style": "normal",
+      "weight": "400 700",
+      "stretch": null,
+      "bytes": 77224,
+      "source": "https://fonts.gstatic.com/s/caveat/v23/Wnz6HAc5bAfYB2Q7YjYYiAzcPDKo.woff2"
+    },
+    {
+      "family": "caveat",
+      "file": "caveat-normal.woff2",
+      "style": "normal",
+      "weight": "400 700",
+      "stretch": null,
+      "bytes": 29528,
+      "source": "https://fonts.gstatic.com/s/caveat/v23/Wnz6HAc5bAfYB2Q7aDYYiAzcPDKo.woff2"
+    },
+    {
+      "family": "caveat",
+      "file": "caveat-normal.woff2",
+      "style": "normal",
+      "weight": "400 700",
+      "stretch": null,
+      "bytes": 74572,
+      "source": "https://fonts.gstatic.com/s/caveat/v23/Wnz6HAc5bAfYB2Q7ZjYYiAzcPA.woff2"
+    }
+  ]
+}

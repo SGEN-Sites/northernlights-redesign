@@ -1,0 +1,740 @@
+{
+ "img": {
+  "hero-aurora": {
+   "alt": "Illustration: the northern lights over the calm south end of a lake at night, village lights on the far shore",
+   "ai": "generated",
+   "w": 3136,
+   "h": 1344,
+   "files": [
+    {
+     "file": "img/hero-aurora-900.webp",
+     "w": 900,
+     "h": 386,
+     "bytes": 15232
+    },
+    {
+     "file": "img/hero-aurora-1440.webp",
+     "w": 1440,
+     "h": 617,
+     "bytes": 28288
+    },
+    {
+     "file": "img/hero-aurora-2200.webp",
+     "w": 2200,
+     "h": 943,
+     "bytes": 48008
+    },
+    {
+     "file": "img/hero-aurora-3136.webp",
+     "w": 3136,
+     "h": 1344,
+     "bytes": 74706
+    }
+   ],
+   "source": "private/gen/out/hero-aurora.result.json"
+  },
+  "lake-dawn": {
+   "alt": "Illustration: the last of the northern lights fading over a lake before dawn, an old dock in the foreground",
+   "ai": "generated",
+   "w": 3136,
+   "h": 1344,
+   "files": [
+    {
+     "file": "img/lake-dawn-1000.webp",
+     "w": 1000,
+     "h": 429,
+     "bytes": 14504
+    },
+    {
+     "file": "img/lake-dawn-1800.webp",
+     "w": 1800,
+     "h": 771,
+     "bytes": 30034
+    },
+    {
+     "file": "img/lake-dawn-3136.webp",
+     "w": 3136,
+     "h": 1344,
+     "bytes": 60630
+    }
+   ],
+   "source": "private/gen/out/lake-dawn.result.json"
+  },
+  "canal-golden": {
+   "alt": "Illustration: golden hour on an old stone canal lock in a small Upstate New York village",
+   "ai": "generated",
+   "w": 2752,
+   "h": 1536,
+   "files": [
+    {
+     "file": "img/canal-golden-900.webp",
+     "w": 900,
+     "h": 502,
+     "bytes": 124582
+    },
+    {
+     "file": "img/canal-golden-1600.webp",
+     "w": 1600,
+     "h": 893,
+     "bytes": 326656
+    },
+    {
+     "file": "img/canal-golden-2752.webp",
+     "w": 2752,
+     "h": 1536,
+     "bytes": 672002
+    }
+   ],
+   "source": "private/gen/out/canal-golden.result.json"
+  },
+  "season-spring": {
+   "alt": "Illustration: spring mist over a river valley with apple blossoms along a stone wall",
+   "ai": "generated",
+   "w": 1856,
+   "h": 2304,
+   "files": [
+    {
+     "file": "img/season-spring-700.webp",
+     "w": 700,
+     "h": 869,
+     "bytes": 172100
+    },
+    {
+     "file": "img/season-spring-1200.webp",
+     "w": 1200,
+     "h": 1490,
+     "bytes": 442800
+    }
+   ],
+   "source": "private/gen/out/season-spring.result.json"
+  },
+  "season-summer": {
+   "alt": "Illustration: a summer evening on a lake dock with Adirondack chairs and a red canoe",
+   "ai": "generated",
+   "w": 1856,
+   "h": 2304,
+   "files": [
+    {
+     "file": "img/season-summer-700.webp",
+     "w": 700,
+     "h": 869,
+     "bytes": 40894
+    },
+    {
+     "file": "img/season-summer-1200.webp",
+     "w": 1200,
+     "h": 1490,
+     "bytes": 83398
+    }
+   ],
+   "source": "private/gen/out/season-summer.result.json"
+  },
+  "season-autumn": {
+   "alt": "Illustration: a country road through blazing autumn maples in Upstate New York",
+   "ai": "generated",
+   "w": 1856,
+   "h": 2304,
+   "files": [
+    {
+     "file": "img/season-autumn-700.webp",
+     "w": 700,
+     "h": 869,
+     "bytes": 238108
+    },
+    {
+     "file": "img/season-autumn-1200.webp",
+     "w": 1200,
+     "h": 1490,
+     "bytes": 668688
+    }
+   ],
+   "source": "private/gen/out/season-autumn.result.json"
+  },
+  "season-winter": {
+   "alt": "Illustration: a snowy small-town main street at blue hour under a faint aurora",
+   "ai": "generated",
+   "w": 1760,
+   "h": 2368,
+   "files": [
+    {
+     "file": "img/season-winter-800.webp",
+     "w": 800,
+     "h": 1076,
+     "bytes": 136496
+    },
+    {
+     "file": "img/season-winter-1400.webp",
+     "w": 1400,
+     "h": 1884,
+     "bytes": 328532
+    }
+   ],
+   "source": "private/gen/out/up-winter.result.json"
+  },
+  "living-room": {
+   "alt": "Illustration: a cozy jam-band living room corner with a guitar on its stand, a leather armchair, a Persian rug and houseplants",
+   "ai": "generated",
+   "w": 2784,
+   "h": 1504,
+   "files": [
+    {
+     "file": "img/living-room-900.webp",
+     "w": 900,
+     "h": 486,
+     "bytes": 67670
+    },
+    {
+     "file": "img/living-room-1600.webp",
+     "w": 1600,
+     "h": 864,
+     "bytes": 166078
+    },
+    {
+     "file": "img/living-room-2784.webp",
+     "w": 2784,
+     "h": 1504,
+     "bytes": 363504
+    }
+   ],
+   "source": "private/gen/out/up-living.result.json"
+  },
+  "delivery-road": {
+   "alt": "Illustration: headlight trails on a country road at dusk under the northern lights",
+   "ai": "generated",
+   "w": 2752,
+   "h": 1536,
+   "files": [
+    {
+     "file": "img/delivery-road-900.webp",
+     "w": 900,
+     "h": 502,
+     "bytes": 17892
+    },
+    {
+     "file": "img/delivery-road-1600.webp",
+     "w": 1600,
+     "h": 893,
+     "bytes": 38862
+    },
+    {
+     "file": "img/delivery-road-2752.webp",
+     "w": 2752,
+     "h": 1536,
+     "bytes": 77464
+    }
+   ],
+   "source": "private/gen/out/delivery-road.result.json"
+  },
+  "events-stage": {
+   "alt": "Illustration: a small music corner set up with an amp, a microphone and string lights",
+   "ai": "generated",
+   "w": 2752,
+   "h": 1536,
+   "files": [
+    {
+     "file": "img/events-stage-900.webp",
+     "w": 900,
+     "h": 502,
+     "bytes": 42234
+    },
+    {
+     "file": "img/events-stage-1600.webp",
+     "w": 1600,
+     "h": 893,
+     "bytes": 94612
+    },
+    {
+     "file": "img/events-stage-2752.webp",
+     "w": 2752,
+     "h": 1536,
+     "bytes": 182876
+    }
+   ],
+   "source": "private/gen/out/events-stage.result.json"
+  },
+  "learn-bud": {
+   "alt": "Illustration: a frosty cannabis flower rim-lit in teal and violet",
+   "ai": "generated",
+   "w": 1856,
+   "h": 2304,
+   "files": [
+    {
+     "file": "img/learn-bud-800.webp",
+     "w": 800,
+     "h": 993,
+     "bytes": 59190
+    },
+    {
+     "file": "img/learn-bud-1400.webp",
+     "w": 1400,
+     "h": 1738,
+     "bytes": 122518
+    }
+   ],
+   "source": "private/gen/out/learn-bud.result.json"
+  },
+  "city-river": {
+   "alt": "Illustration: a river at blue hour with a lit steel bridge and old brick mills on the far bank",
+   "ai": "generated",
+   "w": 2752,
+   "h": 1536,
+   "files": [
+    {
+     "file": "img/city-river-900.webp",
+     "w": 900,
+     "h": 502,
+     "bytes": 28906
+    },
+    {
+     "file": "img/city-river-1600.webp",
+     "w": 1600,
+     "h": 893,
+     "bytes": 59778
+    },
+    {
+     "file": "img/city-river-2752.webp",
+     "w": 2752,
+     "h": 1536,
+     "bytes": 113974
+    }
+   ],
+   "source": "private/gen/out/city-river.result.json"
+  },
+  "cut-flower": {
+   "alt": "Illustration: cannabis flower",
+   "ai": "generated",
+   "w": 927,
+   "h": 1218,
+   "files": [
+    {
+     "file": "img/cut-flower-300.webp",
+     "w": 300,
+     "h": 394,
+     "bytes": 61598
+    },
+    {
+     "file": "img/cut-flower-520.webp",
+     "w": 520,
+     "h": 683,
+     "bytes": 154726
+    },
+    {
+     "file": "img/cut-flower-900.webp",
+     "w": 900,
+     "h": 1183,
+     "bytes": 353022
+    }
+   ],
+   "source": "private/gen/out/cut-flower.result.json"
+  },
+  "cut-prerolls": {
+   "alt": "Illustration: pre-rolls",
+   "ai": "generated",
+   "w": 1091,
+   "h": 1318,
+   "files": [
+    {
+     "file": "img/cut-prerolls-300.webp",
+     "w": 300,
+     "h": 362,
+     "bytes": 22020
+    },
+    {
+     "file": "img/cut-prerolls-520.webp",
+     "w": 520,
+     "h": 628,
+     "bytes": 41534
+    },
+    {
+     "file": "img/cut-prerolls-900.webp",
+     "w": 900,
+     "h": 1087,
+     "bytes": 78790
+    }
+   ],
+   "source": "private/gen/out/cut-prerolls.result.json"
+  },
+  "cut-vapes": {
+   "alt": "Illustration: a vape cartridge and battery",
+   "ai": "generated",
+   "w": 445,
+   "h": 1348,
+   "files": [
+    {
+     "file": "img/cut-vapes-300.webp",
+     "w": 300,
+     "h": 909,
+     "bytes": 25206
+    },
+    {
+     "file": "img/cut-vapes-445.webp",
+     "w": 445,
+     "h": 1348,
+     "bytes": 36190
+    }
+   ],
+   "source": "private/gen/out/cut-vapes.result.json"
+  },
+  "cut-concentrates": {
+   "alt": "Illustration: a jar of concentrate with a dab tool",
+   "ai": "generated",
+   "w": 1311,
+   "h": 1001,
+   "files": [
+    {
+     "file": "img/cut-concentrates-300.webp",
+     "w": 300,
+     "h": 229,
+     "bytes": 21370
+    },
+    {
+     "file": "img/cut-concentrates-520.webp",
+     "w": 520,
+     "h": 397,
+     "bytes": 47162
+    },
+    {
+     "file": "img/cut-concentrates-900.webp",
+     "w": 900,
+     "h": 687,
+     "bytes": 96042
+    }
+   ],
+   "source": "private/gen/out/cut-concentrates.result.json"
+  },
+  "cut-edibles": {
+   "alt": "Illustration: gummies",
+   "ai": "generated",
+   "w": 1144,
+   "h": 992,
+   "files": [
+    {
+     "file": "img/cut-edibles-300.webp",
+     "w": 300,
+     "h": 260,
+     "bytes": 31678
+    },
+    {
+     "file": "img/cut-edibles-520.webp",
+     "w": 520,
+     "h": 451,
+     "bytes": 84200
+    },
+    {
+     "file": "img/cut-edibles-900.webp",
+     "w": 900,
+     "h": 780,
+     "bytes": 198380
+    }
+   ],
+   "source": "private/gen/out/cut-edibles.result.json"
+  },
+  "cut-orals": {
+   "alt": "Illustration: a tin of mints and a dropper bottle",
+   "ai": "generated",
+   "w": 588,
+   "h": 574,
+   "files": [
+    {
+     "file": "img/cut-orals-300.webp",
+     "w": 300,
+     "h": 293,
+     "bytes": 14896
+    },
+    {
+     "file": "img/cut-orals-520.webp",
+     "w": 520,
+     "h": 508,
+     "bytes": 29470
+    },
+    {
+     "file": "img/cut-orals-588.webp",
+     "w": 588,
+     "h": 574,
+     "bytes": 29812
+    }
+   ],
+   "source": "private/gen/out/cut-orals.result.json"
+  },
+  "cut-tinctures": {
+   "alt": "Illustration: a tincture bottle and dropper",
+   "ai": "generated",
+   "w": 1324,
+   "h": 1446,
+   "files": [
+    {
+     "file": "img/cut-tinctures-300.webp",
+     "w": 300,
+     "h": 328,
+     "bytes": 16266
+    },
+    {
+     "file": "img/cut-tinctures-520.webp",
+     "w": 520,
+     "h": 568,
+     "bytes": 32670
+    },
+    {
+     "file": "img/cut-tinctures-900.webp",
+     "w": 900,
+     "h": 983,
+     "bytes": 61766
+    }
+   ],
+   "source": "private/gen/out/cut-tinctures.result.json"
+  },
+  "cut-topicals": {
+   "alt": "Illustration: a jar of balm",
+   "ai": "generated",
+   "w": 1375,
+   "h": 1026,
+   "files": [
+    {
+     "file": "img/cut-topicals-300.webp",
+     "w": 300,
+     "h": 224,
+     "bytes": 16400
+    },
+    {
+     "file": "img/cut-topicals-520.webp",
+     "w": 520,
+     "h": 388,
+     "bytes": 30966
+    },
+    {
+     "file": "img/cut-topicals-900.webp",
+     "w": 900,
+     "h": 672,
+     "bytes": 60622
+    }
+   ],
+   "source": "private/gen/out/cut-topicals.result.json"
+  },
+  "cut-cbd": {
+   "alt": "Illustration: a dropper bottle and a hemp leaf",
+   "ai": "generated",
+   "w": 1186,
+   "h": 1469,
+   "files": [
+    {
+     "file": "img/cut-cbd-300.webp",
+     "w": 300,
+     "h": 372,
+     "bytes": 20536
+    },
+    {
+     "file": "img/cut-cbd-520.webp",
+     "w": 520,
+     "h": 644,
+     "bytes": 41094
+    },
+    {
+     "file": "img/cut-cbd-900.webp",
+     "w": 900,
+     "h": 1115,
+     "bytes": 82286
+    }
+   ],
+   "source": "private/gen/out/cut-cbd.result.json"
+  },
+  "cut-accessories": {
+   "alt": "Illustration: a grinder and rolling papers",
+   "ai": "generated",
+   "w": 1755,
+   "h": 631,
+   "files": [
+    {
+     "file": "img/cut-accessories-300.webp",
+     "w": 300,
+     "h": 108,
+     "bytes": 9776
+    },
+    {
+     "file": "img/cut-accessories-520.webp",
+     "w": 520,
+     "h": 187,
+     "bytes": 18516
+    },
+    {
+     "file": "img/cut-accessories-900.webp",
+     "w": 900,
+     "h": 324,
+     "bytes": 34480
+    }
+   ],
+   "source": "private/gen/out/cut-accessories.result.json"
+  },
+  "cut-apparel": {
+   "alt": "Illustration: a folded tee and a beanie",
+   "ai": "generated",
+   "w": 1081,
+   "h": 1312,
+   "files": [
+    {
+     "file": "img/cut-apparel-300.webp",
+     "w": 300,
+     "h": 364,
+     "bytes": 33606
+    },
+    {
+     "file": "img/cut-apparel-520.webp",
+     "w": 520,
+     "h": 631,
+     "bytes": 92734
+    },
+    {
+     "file": "img/cut-apparel-900.webp",
+     "w": 900,
+     "h": 1092,
+     "bytes": 215856
+    }
+   ],
+   "source": "private/gen/out/cut-apparel.result.json"
+  },
+  "cut-guitar": {
+   "alt": "Illustration: an acoustic guitar",
+   "ai": "generated",
+   "w": 803,
+   "h": 2072,
+   "files": [
+    {
+     "file": "img/cut-guitar-300.webp",
+     "w": 300,
+     "h": 774,
+     "bytes": 34400
+    },
+    {
+     "file": "img/cut-guitar-520.webp",
+     "w": 520,
+     "h": 1342,
+     "bytes": 69214
+    },
+    {
+     "file": "img/cut-guitar-803.webp",
+     "w": 803,
+     "h": 2072,
+     "bytes": 110160
+    }
+   ],
+   "source": "private/gen/out/cut-guitar.result.json"
+  },
+  "cut-plant": {
+   "alt": "Illustration: a trailing pothos plant",
+   "ai": "generated",
+   "w": 907,
+   "h": 1754,
+   "files": [
+    {
+     "file": "img/cut-plant-300.webp",
+     "w": 300,
+     "h": 580,
+     "bytes": 78736
+    },
+    {
+     "file": "img/cut-plant-520.webp",
+     "w": 520,
+     "h": 1006,
+     "bytes": 168450
+    },
+    {
+     "file": "img/cut-plant-900.webp",
+     "w": 900,
+     "h": 1740,
+     "bytes": 349780
+    }
+   ],
+   "source": "private/gen/out/cut-plant.result.json"
+  },
+  "store-whitehall": {
+   "alt": "The red clapboard storefront at 132 Broadway, Whitehall, with a group holding a Whitehall Chamber of Commerce banner on the steps",
+   "ai": "edited",
+   "w": 1400,
+   "h": 2400,
+   "files": [
+    {
+     "file": "img/store-whitehall-520.webp",
+     "w": 520,
+     "h": 891,
+     "bytes": 83784
+    },
+    {
+     "file": "img/store-whitehall-900.webp",
+     "w": 900,
+     "h": 1543,
+     "bytes": 182188
+    },
+    {
+     "file": "img/store-whitehall-1400.webp",
+     "w": 1400,
+     "h": 2400,
+     "bytes": 327452
+    }
+   ],
+   "source": "private/gen/out/up-whitehall.result.json (Topaz High Fidelity V2 upscale of the client photo, no content change)"
+  },
+  "store-menands": {
+   "alt": "Aerial view of the Northern Lights Cannabis Dispensary storefront in Menands",
+   "ai": "edited",
+   "w": 1400,
+   "h": 2400,
+   "files": [
+    {
+     "file": "img/store-menands-520.webp",
+     "w": 520,
+     "h": 891,
+     "bytes": 51504
+    },
+    {
+     "file": "img/store-menands-900.webp",
+     "w": 900,
+     "h": 1543,
+     "bytes": 115110
+    },
+    {
+     "file": "img/store-menands-1400.webp",
+     "w": 1400,
+     "h": 2400,
+     "bytes": 224154
+    }
+   ],
+   "source": "private/gen/out/up-menands.result.json (Topaz High Fidelity V2 upscale of the client photo, no content change)"
+  }
+ },
+ "brand": {
+  "badge": {
+   "file": "brand/badge.webp",
+   "w": 900,
+   "h": 757
+  },
+  "badge-sm": {
+   "file": "brand/badge-sm.webp",
+   "w": 320,
+   "h": 269
+  },
+  "wordmark": {
+   "file": "brand/wordmark.webp",
+   "w": 976,
+   "h": 178
+  },
+  "monogram": {
+   "file": "brand/monogram.webp",
+   "w": 148,
+   "h": 148
+  },
+  "spikes": {
+   "file": "brand/spikes.webp",
+   "w": 450,
+   "h": 292
+  },
+  "favicon": {
+   "file": "brand/favicon.webp",
+   "w": 264,
+   "h": 264
+  },
+  "loyalty-tiers": {
+   "file": "brand/loyalty-tiers.webp",
+   "w": 1536,
+   "h": 1024
+  }
+ }
+}

@@ -1,0 +1,108 @@
+/* tokens.css: "Lights on Broadway". Brand hexes measured from the live site's computed style (night #071528,
+   teal #52EBC8, orchid #D369FF) and the client's aurora badge (violet -> blue -> sky -> teal). Warm lamplight,
+   clapboard red and wood are the store's own materials (the red clapboard building on Broadway, the live-edge wood).
+   Contrast notes are against --night unless stated. Change values here, never at a call site. */
+@font-face { font-family: 'Fraunces'; src: url('__BASE__assets/fonts/fraunces-normal.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Fraunces'; src: url('__BASE__assets/fonts/fraunces-italic.woff2') format('woff2'); font-weight: 100 900; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Jost'; src: url('__BASE__assets/fonts/jost-normal.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Jost'; src: url('__BASE__assets/fonts/jost-italic.woff2') format('woff2'); font-weight: 100 900; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Caveat'; src: url('__BASE__assets/fonts/caveat-normal.woff2') format('woff2'); font-weight: 400 700; font-style: normal; font-display: swap; }
+/* size-matched fallbacks so a late web font does not re-wrap headings */
+@font-face { font-family: 'Fraunces Fallback'; src: local('Georgia'); size-adjust: 104%; ascent-override: 92%; descent-override: 24%; }
+@font-face { font-family: 'Jost Fallback'; src: local('Arial'); size-adjust: 96%; ascent-override: 102%; descent-override: 30%; }
+
+:root {
+  /* night plane */
+  --night-0: #030a14;
+  --night: #071528;          /* the live site's navy */
+  --night-2: #0a1d37;
+  --night-3: #0f2747;
+  --night-4: #17345c;
+  --line: rgba(170, 196, 255, .14);
+  --line-2: rgba(170, 196, 255, .26);
+  --star: #f2f6ff;           /* text on night, ~17.6:1 */
+  --mist: #bccae2;           /* secondary text, ~10.8:1 */
+  --fog: #8ea0bf;            /* small meta text, ~6.4:1 */
+  /* aurora */
+  --teal: #52ebc8;           /* buttons, accents; ~12:1 on night; dark text on it */
+  --teal-2: #2fd3b0;
+  --teal-ink: #04261f;
+  --orchid: #d369ff;         /* accents, large type; ~6.1:1 on night */
+  --orchid-2: #b84cf0;
+  --violet: #8a6bff;
+  --blue: #4089ff;           /* rules, icons, large type only (~5.3:1) */
+  --sky: #2ec4ff;
+  --aurora: linear-gradient(90deg, #c25cff 0%, #8a6bff 26%, #4089ff 50%, #2ec4ff 72%, #55ffd6 100%);
+  --aurora-v: linear-gradient(180deg, #55ffd6 0%, #2ec4ff 30%, #4089ff 58%, #8a6bff 80%, #c25cff 100%);
+  /* lamplight plane (inside the store, golden hour on the canal) */
+  --amber: #ffb45e;
+  --lamp: #ffd9a3;
+  --ember: #f07a3c;
+  --clapboard: #b23c32;
+  --clapboard-2: #8e2a23;
+  --wood: #6b4428;
+  --paper: #f6efe3;          /* light band */
+  --paper-2: #ece2d0;
+  --paper-ink: #17202e;      /* text on paper, ~14.5:1 */
+  --paper-soft: #4b5466;     /* secondary text on paper, ~7.2:1 */
+  /* glass */
+  --glass: rgba(10, 26, 50, .58);
+  --glass-2: rgba(16, 38, 70, .72);
+  --glass-brd: rgba(176, 204, 255, .18);
+  --glass-hi: rgba(255, 255, 255, .07);
+  --blur: 16px;
+  /* type */
+  --f-display: 'Fraunces', 'Fraunces Fallback', Georgia, serif;
+  --f-sans: 'Jost', 'Jost Fallback', 'Avenir Next', system-ui, sans-serif;
+  --f-hand: 'Caveat', 'Bradley Hand', cursive;
+  --t-mega: clamp(3.3rem, 8.6vw, 8.4rem);
+  --t-xl: clamp(2.6rem, 6vw, 5.6rem);
+  --t-lg: clamp(2.15rem, 4.4vw, 4rem);
+  --t-md: clamp(1.7rem, 3vw, 2.6rem);
+  --t-sm: clamp(1.3rem, 2vw, 1.65rem);
+  --t-body: 1.0625rem;
+  --t-small: .9375rem;
+  --t-meta: .8125rem;
+  --lh-display: 1;
+  --lh-body: 1.66;
+  /* shape */
+  --r-xs: 8px;
+  --r-sm: 12px;              /* buttons */
+  --r-md: 18px;              /* cards */
+  --r-lg: 28px;              /* frames */
+  --r-xl: 44px;              /* big panels */
+  --shadow-1: 0 10px 30px -12px rgba(0, 0, 0, .55);
+  --shadow-2: 0 30px 80px -30px rgba(0, 0, 0, .75), 0 0 0 1px var(--line);
+  --shadow-glow: 0 0 0 1px rgba(82, 235, 200, .35), 0 18px 60px -18px rgba(82, 235, 200, .45);
+  /* layout */
+  --wrap: 1240px;
+  --wrap-wide: 1440px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --band-y: clamp(64px, 9vw, 120px);
+  --band-y-tight: clamp(48px, 6vw, 80px);
+  --hdr-h: 76px;
+  --topbar-h: 36px;
+  --bottom-stack: 0px;
+  /* motion */
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --ease-io: cubic-bezier(.65, 0, .35, 1);
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+  --dur-1: .18s;
+  --dur-2: .42s;
+  --dur-3: .9s;
+  /* layers */
+  --z-float: 4;
+  --z-hdr: 50;
+  --z-mega: 60;
+  --z-drawer: 70;
+  --z-bar: 80;
+  --z-modal: 90;
+  --z-gate: 100;
+  color-scheme: dark;
+}
+@media (max-width: 760px) {
+  :root { --hdr-h: 64px; --topbar-h: 32px; --t-body: 1.03rem; --r-lg: 22px; --r-xl: 30px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-1: .01s; --dur-2: .01s; --dur-3: .01s; }
+}

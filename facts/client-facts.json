@@ -1,0 +1,157 @@
+{
+  "_about": "Every claim on the rebuild traces to the live site capture (audit/raw), the stores' own Dutchie menus (read in a real browser 2026-11-16), or the operator brief of 2026-11-16. Nothing here is typed from memory. Items marked confirm:true are flagged in docs/PITCH-NOTES.md.",
+  "captured": "2026-11-16",
+  "sources": {
+    "live": "https://northernlightsdispo.com/ (WordPress + Divi), crawled 2026-11-16 into audit/raw/",
+    "dutchie-whitehall": "https://dutchie.com/embedded-menu/nl-whitehall/ (store menu, info and brands pages, read 2026-11-16 in Chrome)",
+    "dutchie-menands": "https://dutchie.com/embedded-menu/northern-lights1/ (store menu, info and brands pages, read 2026-11-16 in Chrome)",
+    "brief": "Operator brief, 2026-11-16 (the owner's description of the Whitehall store and the brand)"
+  },
+  "brand": {
+    "name": "Northern Lights Dispensary",
+    "short": "Northern Lights",
+    "name_src": "live: site title 'Northern Lights', age gate 'Welcome to Northern Lights Dispensary.'",
+    "entity": "Thinc Intellectual Property Holdings, LLC",
+    "entity_src": "live footer: 'All Rights Reserved Copyright © 2026 Thinc Intellectual Property Holdings, LLC'",
+    "licences": "OCM-CAURD-24-000059 / OCM-CAURD-25-000314",
+    "licences_src": "live footer 'New York State Cannabis Licenses:'",
+    "licence_store_mapping": { "value": null, "confirm": true, "note": "which licence belongs to which store is not stated on the live site" },
+    "email": "info@northernlightsdispo.com",
+    "email_src": "live home store cards and footer",
+    "about": [
+      "Northern Lights is a family-owned and operated adult-use cannabis retailer serving communities across New York. We’re committed to creating a welcoming, professional environment where adults 21 and over can explore carefully selected cannabis products with confidence.",
+      "Our approach is simple: offer fair pricing, reliable service, and a thoughtful customer experience. We proudly match any local price to ensure our customers receive consistent value, and we provide convenient delivery options to meet you wherever you are.",
+      "At Northern Lights, we focus on quality, transparency, and community—helping you make informed choices in a space built on trust and respect."
+    ],
+    "about_src": "live home, About block (verbatim)",
+    "topbar": ["Open Every Day: 10am-8pm", "SAME DAY DELIVERY NOW AVAILABLE!"],
+    "topbar_src": "live topbar on every page",
+    "gate": ["Welcome to Northern Lights Dispensary.", "Explore the menu & enhance your journey!", "Are you 21 or over?", "Yes, I Am 21 Or Over", "No, I Am Not 21 Yet"],
+    "gate_src": "live age gate (Popup Maker)",
+    "home_h1": "Where are you shopping today?",
+    "home_h1_src": "live home H1",
+    "price_match": "We price match guarantee with ANY recreational dispensary in the Capitol Region!",
+    "price_match_src": "dutchie-whitehall and dutchie-menands menu banners (verbatim); live About: 'We proudly match any local price'",
+    "social": [
+      { "name": "Instagram", "href": "https://www.instagram.com/northernlightsny", "src": "live header/footer" },
+      { "name": "Facebook", "href": "https://www.facebook.com/profile.php?id=61553986115913", "src": "live header/footer" }
+    ],
+    "education_link": { "label": "Education", "href": "https://cannabis.ny.gov/adult-use-information", "src": "live main nav 'Education' (external link to the NY Office of Cannabis Management)" },
+    "warning": "For use only by adults 21 years of age and older. Keep out of reach of children and pets. In case of accidental ingestion or overconsumption, contact the National Poison Control Center hotline 1-800-222-1222 or call 9-1-1. Please consume responsibly. Cannabis is not recommended for use by persons who are pregnant or nursing.",
+    "hopeline": "Concerned about your cannabis use? Text HOPENY, call 1-877-8-HOPENY, or visit oasas.ny.gov/HOPELine",
+    "warning_src": "live footer (verbatim)",
+    "app": { "name": "Northern Lights NY", "src": "live /policies/ EULA: 'Application means the software program ... named Northern Lights NY' (Apple App Store / Google Play)", "store_links": null, "confirm": true, "note": "no App Store or Google Play link found on the live site; no app page is built until the client provides the links" },
+    "brand_colors_measured": { "night": "#071528", "night_2": "#071A31", "teal": "#52EBC8", "orchid": "#D369FF", "src": "computed style, audit/capture/index.1440.json + index.motion-study.json" },
+    "brand_fonts_live": { "display": "Vallejo Black", "body": "Futura Book", "src": "computed style; both commercial faces, replaced by open-licence equivalents (docs/DESIGN.md)" }
+  },
+  "brief": {
+    "_src": "brief",
+    "whitehall": [
+      "Northern Lights Whitehall is a family-owned dispensary on Broadway in Whitehall, NY",
+      "in a bright red clapboard building",
+      "the only licensed dispensary in town",
+      "feels like a jam-band living room in a village general store, lit by the northern lights",
+      "inside, a Jerry Garcia portrait looks over a guitar on its stand, a Persian rug, a leather armchair, live-edge wood and houseplants",
+      "the friendly, quick-witted staff remember regulars by name and help newcomers find their way",
+      "the store sits at the south tip of Lake Champlain, a short drive from Vermont",
+      "its night-sky aurora badge, music and pop-up nights, seasonal humor, price match, same-day delivery and the pizza place downstairs make it a neighborhood hangout",
+      "a no-attitude, LGBTQ+-friendly place where locals, lake-goers and Vermont neighbors stop in, take a seat and leave with exactly what they came for",
+      "Whitehall leads"
+    ],
+    "menands": "its sister store in Menands, just off I-787 near Albany, carries the same family-run spirit into the city",
+    "confirm": ["'the only licensed dispensary in town' (operator brief; re-check against the OCM dispensary map before launch)"]
+  },
+  "stores": [
+    {
+      "id": "whitehall",
+      "default": true,
+      "name": "Northern Lights Whitehall",
+      "city": "Whitehall",
+      "region": "NY",
+      "street": "132 Broadway",
+      "zip": "12887",
+      "phone": "(518) 499-5235",
+      "tel": "+15184995235",
+      "address_src": "live home store card; dutchie-whitehall info 'Location 132 Broadway Whitehall, NY'",
+      "hours": { "inStore": "10am-8pm daily", "delivery": "11am-7pm", "src": "live topbar 'Open Every Day: 10am-8pm'; dutchie-whitehall info: In-Store 10am - 8pm, Delivery 11am - 7pm, Curbside closed" },
+      "delivery": { "fee": "Free delivery", "sameDay": true, "src": "dutchie-whitehall Store Info 'DELIVERY Free delivery'; live topbar 'SAME DAY DELIVERY NOW AVAILABLE!'" },
+      "payment": ["Pay by Phone", "Debit Card", "Pay by Bank", "Cash"],
+      "payment_src": "dutchie-whitehall Store Info 'PAYMENT'",
+      "menu_banner": "YOU ARE SHOPPING AT THE WHITEHALL LOCATION. The BEST place in the capital region. Here at Northern Lights WHITEHALL, you'll find a quick witted staff that's knowledgeable in the cannabis industry, great vibes, occasional music and Brand Pop-Up events!",
+      "menu_banner_src": "dutchie-whitehall menu home (verbatim)",
+      "dutchie": { "cName": "nl-whitehall", "embedId": "6875670784d8c6f938461526", "script": "https://dutchie.com/api/v2/embedded-menu/6875670784d8c6f938461526.js", "src": "live /whitehall/ page source" },
+      "categories": { "flower": 26, "pre-rolls": 50, "vaporizers": 38, "concentrates": 14, "edibles": 47, "orals": 9, "tinctures": 3, "topicals": 2, "accessories": 8 },
+      "categories_src": "dutchie-whitehall /products/<category> product counts, 2026-11-16 (a snapshot; the live menu is the source of truth)",
+      "photo": { "file": "assets/source/19f8efa4-whitehall-homepage.png", "what": "the red clapboard storefront at 132 Broadway with a group holding a Whitehall Chamber of Commerce banner on the steps", "src": "live home store card image" }
+    },
+    {
+      "id": "menands",
+      "default": false,
+      "name": "Northern Lights Menands",
+      "city": "Menands",
+      "region": "NY",
+      "street": "100 Broadway #8",
+      "zip": "12204",
+      "phone": "(518) 472-0278",
+      "tel": "+15184720278",
+      "address_src": "live home store card; dutchie-menands info 'Location 100 Broadway 8 Menands, NY'",
+      "hours": { "inStore": "10am-8pm daily", "curbside": "10am-8pm", "delivery": "11am-7pm", "src": "live topbar; dutchie-menands info: In-Store 10am - 8pm, Curbside 10am - 8pm, Delivery 11am - 7pm, Drive-Thru closed; ordering hours Sunday-Saturday 10am - 8pm" },
+      "delivery": { "fee": "Free delivery", "sameDay": true, "src": "dutchie-menands Store Info; live topbar" },
+      "payment": ["Debit Card", "Pay by Bank", "Cash"],
+      "payment_src": "dutchie-menands Store Info 'PAYMENT'",
+      "menu_banner": "YOU ARE SHOPPING AT THE MENANDS LOCATION. Here at Northern Lights MENANDS, you'll find a quick witted staff that's knowledgeable in the cannabis industry, great vibes, a small family obtained art gallery, occasional music and Brand Pop-Up events! (Contact us today if you'd like to get some of your personal artwork in there!)",
+      "menu_banner_src": "dutchie-menands menu home (verbatim, including the typo 'family obtained')",
+      "dutchie": { "cName": "northern-lights1", "embedId": "64baebe17c24f80009d63c9f", "script": "https://dutchie.com/api/v2/embedded-menu/64baebe17c24f80009d63c9f.js", "src": "live /menands/ page source" },
+      "categories": { "flower": 66, "pre-rolls": 59, "vaporizers": 42, "concentrates": 3, "edibles": 87, "tinctures": 3, "topicals": 3, "cbd": 1, "accessories": 5, "apparel": 3 },
+      "categories_src": "dutchie-menands /products/<category> product counts, 2026-11-16 (a snapshot)",
+      "photo": { "file": "assets/source/231fc92c-menands-homepage.png", "what": "aerial view of the white and teal Menands storefront with green NORTHERN LIGHTS CANNABIS DISPENSARY letters", "src": "live home store card image" }
+    }
+  ],
+  "loyalty": {
+    "signup_bonus": 50,
+    "signup_iframe": "https://lab.alpineiq.com/join/c/4106/105518",
+    "signup_src": "live home 'Receive 50 Loyalty Points When You Sign Up!' + the Alpine IQ join iframe on the home page",
+    "retroactive": "All eligible purchases made on or after January 1, 2026 will be credited to a participant’s account once enrollment is completed and purchases are associated with the participant’s verified customer profile.",
+    "tiers": [
+      { "name": "Aurora", "spend": "$0–999", "earn": "1 point per $1 spent", "bonus": null },
+      { "name": "Borealis", "spend": "$1,000–2,499", "earn": "1.25 points per $1 spent", "bonus": "250-point tier achievement bonus" },
+      { "name": "Zenith", "spend": "$2,500–4,999", "earn": "1.5 points per $1 spent", "bonus": "500-point tier achievement bonus" },
+      { "name": "Northern Light", "spend": "$5,000+", "earn": "1.75 points per $1 spent", "bonus": "1,000-point tier achievement bonus" }
+    ],
+    "redeem": ["100 points may be redeemed for $5 in loyalty value toward a purchase of $6.00 or more (before tax).", "250 points may be redeemed for $15 in loyalty value toward a purchase of $16.00 or more (before tax)."],
+    "rules": ["Only one loyalty redemption may be used per calendar day.", "Loyalty redemptions may not be combined or stacked.", "Points may not be redeemed for cash.", "Points are non-transferable."],
+    "tagline": "Begin in Aurora. Advance through Borealis and Zenith. Become a Northern Light. The more you spend, the more you earn.",
+    "tagline_src": "live LoyaltyGraphic.png (text in the client's own tier graphic)",
+    "src": "live /loyalty-program/ terms (verbatim)"
+  },
+  "reviews": {
+    "_src": "live testimonial posts /testimonial/<name>-google-reviews/ (Google reviews republished by the client, dated Mar 27, 2026)",
+    "items": [
+      { "name": "Breanna", "slug": "breanna-google-reviews", "text": "I come here often and usually do a pick up order that’s ready right away. Dejon usually assists me and he is very personable and knows his stuff! It’s clean and overall a nice atmosphere if you’re stopping in or hanging around when there is entertainment! Thankyou so much." },
+      { "name": "Christopher", "slug": "christopher-google-reviews", "text": "The customer service you receive at Northern lights dispensary is way above and beyond. Now eligible friendly employees. The prices are amazing. They have deals and specials and bargains you would not even believe. Just an amazing experience overall. I couldn’t be more satisfied Just very very good." },
+      { "name": "Eric", "slug": "eric-google-reviews", "text": "I’ve been here a few times now, and I love the wide variety of selection offered at this store. Everything is very reasonably priced and the staff is helpful and accessible. All products that I have bought from here have been spectacular. Highly recommend visiting if you’re in the Albany-suburbs area. Thanks, NL!" },
+      { "name": "Fern", "slug": "fern-google-reviews", "text": "Solid spot with a chill vibe. Clean layout, friendly staff, and an easy shopping experience. Definitely somewhere I’d return to. In addition, they’re a minority and veteran owned brand, would be a great move." },
+      { "name": "Kody", "slug": "kody-google-reviews", "text": "Leading dispensary on their turf by far. The bud tenders are super knowledgeable, and they always have the right thing for what I’m feeling. The best part- it’s a comfortable, welcoming shopping environment. Highly recommend their Grassroots Diamond Flower and Select 2g vape!" },
+      { "name": "Tanya", "slug": "tanya-google-reviews", "text": "This is by far the best dispensary in this area. Not only do they have knowledge of what is best for each customer, they truly help. Anyone can open a business — not everyone can provide the type of customer service this company has acquired. I come from an upper management retail and medical (pharmacy) background and typically do not leave Google reviews, but this company has pulled out all the stops… This will be my sole dispensary going forward. If you want great service with reasonable prices, this is the dispensary for you. They’ve helped me, my sister, and at least 10 other friends. They are fantastic." }
+    ],
+    "store_attribution": { "value": null, "note": "the posts do not say which store each review is for; Eric's mentions the Albany suburbs (likely Menands); not asserted" },
+    "confirm": ["Fern's review says 'minority and veteran owned' — quoted as the customer's words only, never stated as a fact by the site"]
+  },
+  "brands": {
+    "_src": "dutchie-whitehall /brands and dutchie-menands /brands, 2026-11-16 (a snapshot; the live menu is the source of truth)",
+    "whitehall": ["1906", "Alchemy Pure", "Animal House", "Ayrloom", "Blotter", "Bodega Boys", "Breakfast Connections", "Cannabals", "CHAOS", "Cheeba Chews", "Chew & Chill", "Dank By Definition", "Eureka", "Fernway", "Florist Farms", "Grön", "Harney Brothers", "Healium", "High Falls Canna", "Honey King", "Hudson Cannabis", "Hurley Grown", "Jaunty", "Jeeter", "Jetpacks", "Kingsroad", "LEAL", "Lost Farm", "Luci", "Mark Turks Farms", "MB Farms", "Mfused", "Mildly Moronic", "Off Hours", "OMO Labs", "PICC", "Pot & Head", "Super Fog", "TerpX", "Untitled"],
+    "menands": ["1937", "Akron Bloom", "Animal House", "Ayrloom", "Bodega Boys", "Boukét", "Breakfast Connections", "Camino", "Cannabals", "Cheeba Chews", "Chew & Chill", "Eaton Botanicals", "Especially Green", "Florette", "Florist Farms", "Golden Garden", "Goodlyfe", "Green Gruff", "Grön", "Hashies", "Head & Heal", "Heady Tree", "Heavy Hitters", "High Falls Canna", "High Peaks", "Honest", "Honey King", "Jaunty", "Jeeter", "Jetpacks", "Knack", "KSHN", "LEAL", "Lost Farms", "Luci", "Magnitude", "Mark Turks Farms", "Mfused", "Nanticoke", "Natural Xotics", "Off Hours", "Phill's Nice", "PICC", "Presidential", "PUFF Pre-Rolls", "Revert", "Rove", "SunDrift", "Super Fog", "TerpX", "The Gram", "To The Moon", "Untitled", "Zonk"],
+    "house": { "value": "Northern Lights", "note": "both menus list a brand named 'Northern Lights'; what it covers is not stated", "confirm": true }
+  },
+  "specials": {
+    "exists": true,
+    "src": "dutchie-whitehall /specials and dutchie-menands /specials both list items on special on 2026-11-16 (e.g. brand percentage-off and BOGO offers)",
+    "note": "specific offers change; the site links to each store's live specials instead of printing them"
+  },
+  "forms": {
+    "contact": { "fields": ["Name (First, Last)", "Email", "Phone", "How would you like to contact us? (Contact the Menands Dispensary / Contact the Whitehall Dispensary / General Contact)", "Message"], "src": "live /contact/ (Gravity Forms)" },
+    "vendor": { "fields": ["Company Name", "Name (First, Last)", "Email", "Phone", "License Number if applicable", "Company Website and/or Social Media Links"], "src": "live /vendor-intake/ (Gravity Forms)" },
+    "note": "preview forms do not post; the live site's form handler must be reconnected at launch"
+  },
+  "policies": { "sections": ["EULA", "Privacy", "Terms & Conditions"], "src": "live /policies/ (kept verbatim)" }
+}

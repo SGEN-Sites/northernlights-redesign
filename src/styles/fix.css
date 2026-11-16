@@ -1,0 +1,70 @@
+/* fix.css: loaded last. One commented rule per integration fix. */
+/* no sideways scroll anywhere: the tapes and floating objects deliberately bleed past the edges */
+html { overflow-x: clip; }
+.tapes { overflow-x: clip; overflow-y: visible; }
+/* lists without a class get no bullets in the chrome */
+.ftr__col ul, .mega__col ul, .drawer__grp ul, .drawer__flat { list-style: none; padding: 0; margin: 0; }
+/* category cut-outs stop above the label */
+.cat__obj { top: -54px; height: 58%; }
+@media (max-width: 760px) { .cat__obj { top: -40px; height: 56%; } }
+/* deals bento: no holes (match | specials | points / match | delivery x2) */
+.bento { grid-template-columns: 1.15fr 1fr 1fr; grid-template-areas: "match spec pts" "match dlv dlv"; }
+.bento__match { grid-area: match; grid-row: auto; }
+.bento__specials { grid-area: spec; }
+.bento__pts { grid-area: pts; }
+.bento__delivery { grid-area: dlv; grid-column: auto; }
+@media (max-width: 1000px) { .bento { grid-template-columns: 1fr 1fr; grid-template-areas: "match match" "spec pts" "dlv dlv"; } }
+@media (max-width: 640px) { .bento { grid-template-columns: 1fr; grid-template-areas: "match" "spec" "pts" "dlv"; } }
+/* reviews: the controls sit above the deck so a short review never leaves a gap before them */
+.rdeck { display: flex; flex-direction: column-reverse; gap: 18px; }
+/* the footer wordmark always fits its row */
+.ftr__word { font-size: clamp(3rem, 11.4vw, 11.2rem); overflow: hidden; padding-inline: 4px; }
+/* phones: the header actions fit at 360px */
+@media (max-width: 480px) {
+  .hdr__in { gap: 8px; }
+  .hdr__logo { width: 118px; }
+  .chip { height: 44px; gap: 6px; padding: 0 9px 0 6px; }
+  .chip .ico { display: none; }
+  .chip__txt b { font-size: .9rem; }
+  .hdr__shop { width: 44px; min-height: 44px; padding: 0; }
+  .burger { width: 44px; height: 44px; }
+  .burger span { left: 12px; right: 12px; }
+  .burger span:nth-child(1) { top: 15px; } .burger span:nth-child(2) { top: 21px; } .burger span:nth-child(3) { top: 27px; right: 18px; }
+}
+/* phones: the aurora topbar is one line (hours + socials); delivery and price match live in the hero */
+@media (max-width: 980px) { .topbar .topbar__mid { display: none; } }
+@media (max-width: 380px) { .topbar__hours span { font-size: .8rem; } }
+/* buttons inside prose, FAQ answers and the reading aside keep their own colours (prose/toc link rules are more specific) */
+.prose a.btn, .faq__a a.btn, .phero__lede a.btn, .read__toc a.btn, .callout a.btn { color: var(--fg); text-decoration: none; }
+.read__toc .read__shop a.btn { display: inline-flex; padding: 9px 16px; margin: 0; border-left: 0; font-size: .95rem; line-height: 1.2; }
+.read__toc .read__shop a.btn:hover { border-left: 0; }
+.band--paper .prose a:not(.btn), .band--paper .faq__a a { color: var(--clapboard); }
+/* phones: the sticky bar is two rows (store + today's hours + close, then Shop now / Call / Directions) */
+@media (max-width: 860px) {
+  .sbar__store { flex: 0 0 auto; }
+  .sbar__store > .ico { display: none; }
+  .sbar__hours { flex: 1 1 0; min-width: 0; }
+  .sbar__htxt { min-width: 0; }
+  .sbar__htxt .status { white-space: normal; font-size: .84rem; line-height: 1.25; }
+  .sbar__htxt .status__dot { align-self: center; }
+}
+/* grids holding a sideways chip row must not grow past the screen (grid items default to min-width: auto) */
+.mhead__in, .phero__in, .phero__copy, .band__head, .read__body, .faqpage__groups, .faqpage, .read__grid { grid-template-columns: minmax(0, 1fr); }
+.mhead__in > *, .faqpage > *, .read__grid > *, .twocol > *, .contact > *, .areas > *, .sinfo__grid > * { min-width: 0; }
+@media (min-width: 901px) { .read__grid { grid-template-columns: 240px minmax(0, 1fr); } .faqpage { grid-template-columns: 220px minmax(0, 1fr); } }
+.mhead__id > div { min-width: 0; }
+.mhead .kicker { flex-wrap: wrap; }
+/* phones: the menu starts sooner (intro and street link step aside; the address is in the sticky bar's Directions) */
+@media (max-width: 760px) {
+  .mhead { padding-top: calc(var(--hdr-h) + 18px); padding-bottom: 14px; }
+  .mhead__intro, .mhead__meta a[target="_blank"] { display: none; }
+  .mhead__in { gap: 12px; }
+  .mhead__top { gap: 10px; }
+  .savers { gap: 8px; }
+  .saver { padding: 12px 14px; }
+}
+/* the store light keeps its own size inside store buttons (their span rules would stretch it) */
+.gate__store > .light, .drawer__store > .light, .sbar__store > .light { flex: none; display: inline-grid; width: 18px; height: 18px; gap: 0; }
+/* the coin's back face sits behind the edge disc so the monogram shows when the coin turns around */
+.coin__face--front { transform: translateZ(1px); }
+.coin__face--back { transform: rotateY(180deg) translateZ(7px); }

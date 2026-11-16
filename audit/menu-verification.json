@@ -1,0 +1,327 @@
+{
+  "at": "2026-11-16T01:38:17.316Z",
+  "base": "http://127.0.0.1:8787/",
+  "method": "headless page load: the menu frame the store’s embed script injects is read and compared to the expected store + shelf; product counts per shelf from the stores’ own menus in a real browser (facts/client-facts.json)",
+  "results": [
+    {
+      "page": "/shop/?store=whitehall",
+      "store": "whitehall",
+      "shelf": "all",
+      "menuFrame": "/embedded-menu/nl-whitehall",
+      "expected": "/embedded-menu/nl-whitehall",
+      "productsOnShelf20261116": null,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/shop/?store=menands",
+      "store": "menands",
+      "shelf": "all",
+      "menuFrame": "/embedded-menu/northern-lights1",
+      "expected": "/embedded-menu/northern-lights1",
+      "productsOnShelf20261116": null,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/deals/?store=whitehall",
+      "store": "whitehall",
+      "shelf": "specials",
+      "menuFrame": "/embedded-menu/nl-whitehall/specials",
+      "expected": "/embedded-menu/nl-whitehall/specials",
+      "productsOnShelf20261116": null,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/deals/?store=menands",
+      "store": "menands",
+      "shelf": "specials",
+      "menuFrame": "/embedded-menu/northern-lights1/specials",
+      "expected": "/embedded-menu/northern-lights1/specials",
+      "productsOnShelf20261116": null,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/whitehall/",
+      "store": "whitehall",
+      "shelf": "all",
+      "menuFrame": "/embedded-menu/nl-whitehall",
+      "expected": "/embedded-menu/nl-whitehall",
+      "productsOnShelf20261116": null,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/whitehall/flower/",
+      "store": "whitehall",
+      "shelf": "flower",
+      "menuFrame": "/embedded-menu/nl-whitehall/products/flower",
+      "expected": "/embedded-menu/nl-whitehall/products/flower",
+      "productsOnShelf20261116": 26,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/whitehall/pre-rolls/",
+      "store": "whitehall",
+      "shelf": "pre-rolls",
+      "menuFrame": "/embedded-menu/nl-whitehall/products/pre-rolls",
+      "expected": "/embedded-menu/nl-whitehall/products/pre-rolls",
+      "productsOnShelf20261116": 50,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/whitehall/vaporizers/",
+      "store": "whitehall",
+      "shelf": "vaporizers",
+      "menuFrame": "/embedded-menu/nl-whitehall/products/vaporizers",
+      "expected": "/embedded-menu/nl-whitehall/products/vaporizers",
+      "productsOnShelf20261116": 38,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/whitehall/concentrates/",
+      "store": "whitehall",
+      "shelf": "concentrates",
+      "menuFrame": "/embedded-menu/nl-whitehall/products/concentrates",
+      "expected": "/embedded-menu/nl-whitehall/products/concentrates",
+      "productsOnShelf20261116": 14,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/whitehall/edibles/",
+      "store": "whitehall",
+      "shelf": "edibles",
+      "menuFrame": "/embedded-menu/nl-whitehall/products/edibles",
+      "expected": "/embedded-menu/nl-whitehall/products/edibles",
+      "productsOnShelf20261116": 47,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/whitehall/orals/",
+      "store": "whitehall",
+      "shelf": "orals",
+      "menuFrame": "/embedded-menu/nl-whitehall/products/orals",
+      "expected": "/embedded-menu/nl-whitehall/products/orals",
+      "productsOnShelf20261116": 9,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/whitehall/tinctures/",
+      "store": "whitehall",
+      "shelf": "tinctures",
+      "menuFrame": "/embedded-menu/nl-whitehall/products/tinctures",
+      "expected": "/embedded-menu/nl-whitehall/products/tinctures",
+      "productsOnShelf20261116": 3,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/whitehall/topicals/",
+      "store": "whitehall",
+      "shelf": "topicals",
+      "menuFrame": "/embedded-menu/nl-whitehall/products/topicals",
+      "expected": "/embedded-menu/nl-whitehall/products/topicals",
+      "productsOnShelf20261116": 2,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/whitehall/accessories/",
+      "store": "whitehall",
+      "shelf": "accessories",
+      "menuFrame": "/embedded-menu/nl-whitehall/products/accessories",
+      "expected": "/embedded-menu/nl-whitehall/products/accessories",
+      "productsOnShelf20261116": 8,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/whitehall/specials/",
+      "store": "whitehall",
+      "shelf": "specials",
+      "menuFrame": "/embedded-menu/nl-whitehall/specials",
+      "expected": "/embedded-menu/nl-whitehall/specials",
+      "productsOnShelf20261116": null,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/whitehall/brands/",
+      "store": "whitehall",
+      "shelf": "brands",
+      "menuFrame": "/embedded-menu/nl-whitehall/brands",
+      "expected": "/embedded-menu/nl-whitehall/brands",
+      "productsOnShelf20261116": null,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/menands/",
+      "store": "menands",
+      "shelf": "all",
+      "menuFrame": "/embedded-menu/northern-lights1",
+      "expected": "/embedded-menu/northern-lights1",
+      "productsOnShelf20261116": null,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/menands/flower/",
+      "store": "menands",
+      "shelf": "flower",
+      "menuFrame": "/embedded-menu/northern-lights1/products/flower",
+      "expected": "/embedded-menu/northern-lights1/products/flower",
+      "productsOnShelf20261116": 66,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/menands/pre-rolls/",
+      "store": "menands",
+      "shelf": "pre-rolls",
+      "menuFrame": "/embedded-menu/northern-lights1/products/pre-rolls",
+      "expected": "/embedded-menu/northern-lights1/products/pre-rolls",
+      "productsOnShelf20261116": 59,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/menands/vaporizers/",
+      "store": "menands",
+      "shelf": "vaporizers",
+      "menuFrame": "/embedded-menu/northern-lights1/products/vaporizers",
+      "expected": "/embedded-menu/northern-lights1/products/vaporizers",
+      "productsOnShelf20261116": 42,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/menands/concentrates/",
+      "store": "menands",
+      "shelf": "concentrates",
+      "menuFrame": "/embedded-menu/northern-lights1/products/concentrates",
+      "expected": "/embedded-menu/northern-lights1/products/concentrates",
+      "productsOnShelf20261116": 3,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/menands/edibles/",
+      "store": "menands",
+      "shelf": "edibles",
+      "menuFrame": "/embedded-menu/northern-lights1/products/edibles",
+      "expected": "/embedded-menu/northern-lights1/products/edibles",
+      "productsOnShelf20261116": 87,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/menands/tinctures/",
+      "store": "menands",
+      "shelf": "tinctures",
+      "menuFrame": "/embedded-menu/northern-lights1/products/tinctures",
+      "expected": "/embedded-menu/northern-lights1/products/tinctures",
+      "productsOnShelf20261116": 3,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/menands/topicals/",
+      "store": "menands",
+      "shelf": "topicals",
+      "menuFrame": "/embedded-menu/northern-lights1/products/topicals",
+      "expected": "/embedded-menu/northern-lights1/products/topicals",
+      "productsOnShelf20261116": 3,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/menands/cbd/",
+      "store": "menands",
+      "shelf": "cbd",
+      "menuFrame": "/embedded-menu/northern-lights1/products/cbd",
+      "expected": "/embedded-menu/northern-lights1/products/cbd",
+      "productsOnShelf20261116": 1,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/menands/accessories/",
+      "store": "menands",
+      "shelf": "accessories",
+      "menuFrame": "/embedded-menu/northern-lights1/products/accessories",
+      "expected": "/embedded-menu/northern-lights1/products/accessories",
+      "productsOnShelf20261116": 5,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/menands/apparel/",
+      "store": "menands",
+      "shelf": "apparel",
+      "menuFrame": "/embedded-menu/northern-lights1/products/apparel",
+      "expected": "/embedded-menu/northern-lights1/products/apparel",
+      "productsOnShelf20261116": 3,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/menands/specials/",
+      "store": "menands",
+      "shelf": "specials",
+      "menuFrame": "/embedded-menu/northern-lights1/specials",
+      "expected": "/embedded-menu/northern-lights1/specials",
+      "productsOnShelf20261116": null,
+      "ok": true,
+      "error": null
+    },
+    {
+      "page": "/menands/brands/",
+      "store": "menands",
+      "shelf": "brands",
+      "menuFrame": "/embedded-menu/northern-lights1/brands",
+      "expected": "/embedded-menu/northern-lights1/brands",
+      "productsOnShelf20261116": null,
+      "ok": true,
+      "error": null
+    }
+  ],
+  "realBrowser": [
+    {
+      "at": "2026-11-16T09:20+08:00",
+      "browser": "Chrome (the operator’s own, via Claude in Chrome)",
+      "page": "/whitehall/vaporizers/",
+      "saw": "menu opened on All Vaporizers with products and prices; Add on the first product -> store-closed pre-order notice -> Continue -> cart drawer: Shopping at Northern Lights - Whitehall, 1 item, subtotal $113.00, Proceed to checkout",
+      "ok": true
+    },
+    {
+      "at": "2026-11-16T09:42+08:00",
+      "browser": "Chrome (the operator’s own, via Claude in Chrome)",
+      "page": "/menands/edibles/",
+      "saw": "menu opened on All Edibles with products and prices; Add on the first product -> pre-order notice -> Continue -> cart drawer: Shopping at Northern Lights - Menands, 1 item, subtotal $24.86, Proceed to checkout; site header hidden while the cart is open",
+      "ok": true
+    },
+    {
+      "at": "2026-11-16T09:24+08:00",
+      "browser": "Chrome (the operator’s own)",
+      "page": "/deals/?store=menands",
+      "saw": "Menands specials menu loaded (store chosen before the menu script)",
+      "ok": true
+    },
+    {
+      "at": "2026-11-16T09:24+08:00",
+      "browser": "Chrome (the operator’s own)",
+      "page": "/whitehall/brands/",
+      "saw": "Whitehall brand list loaded; the cart item from the vapes page persisted (1)",
+      "ok": true
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "at": "2026-11-16T01:41:08.221Z",
+  "url": "http://127.0.0.1:8787/",
+  "pass": 10,
+  "total": 12,
+  "results": [
+    {
+      "name": "every page answers 200 with its own title and noindex (40 pages, 0 redirect stubs skipped)",
+      "ok": false,
+      "detail": "blog/four-seasons-on-broadway/ 200  ; blog/how-our-price-match-works/ 200  ; blog/ 200  ; blog/rewards-aurora-to-northern-light/ 200  ; blog/same-day-delivery-whitehall-menands/ 200 "
+    },
+    {
+      "name": "assets/css/site.css answers 200",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "assets/js/site.js answers 200",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "assets/fonts/jost-normal.woff2 answers 200",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "robots.txt answers 200",
+      "ok": false,
+      "detail": "200 User-agent: * Allow: / Sitemap: https://northernlightsdispo.com/sitemap.xml "
+    },
+    {
+      "name": "21+ gate shows on first visit",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "\"Yes\" leads to the store step, Whitehall listed first",
+      "ok": true,
+      "detail": "whitehall"
+    },
+    {
+      "name": "picking a store closes the gate",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "sticky bar hidden over the hero, shown past it, inside the 390px screen",
+      "ok": true,
+      "detail": "{\"on\":true,\"top\":686,\"bottom\":844,\"left\":0,\"right\":390}"
+    },
+    {
+      "name": "sticky bar: Shop now, Call, Directions and today's hours, all for Menands",
+      "ok": true,
+      "detail": "{\"on\":true,\"top\":686,\"bottom\":844,\"left\":0,\"right\":390,\"vw\":390,\"vh\":844,\"store\":\"menands\",\"city\":\"Menands\",\"shop\":\"/menands/\",\"call\":\"tel:+15184720278\",\"maps\":\"https://www.google.com/maps/dir/?api=1&destination=Northern+Lights+Dispensary%2C+100+Broadway+%238%2C+Menands%2C+NY+12204\",\"hours\":\"Closed · opens tomorrow 10am\",\"labels\":[\"Shop now\",\"Call\",\"Directions\"]}"
+    },
+    {
+      "name": "category tiles follow the store (Flower -> Menands; Orals, a Whitehall-only shelf, -> Whitehall)",
+      "ok": true,
+      "detail": "{\"flower\":\"/menands/flower/\",\"orals\":\"/whitehall/orals/\"}"
+    },
+    {
+      "name": "no script errors on the live preview (phone)",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}

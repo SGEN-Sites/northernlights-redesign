@@ -1,0 +1,28 @@
+{
+  "schema": "site-reforge/source-cms@1",
+  "generated": "2026-11-16T00:48:31.181Z",
+  "detected": [
+    {
+      "id": "wordpress",
+      "label": "WordPress",
+      "matchedPatterns": 4,
+      "evidence": [
+        "/\\/wp-content\\//i",
+        "/\\/wp-includes\\//i",
+        "/\\/wp-json\\//i"
+      ],
+      "pages": 14
+    },
+    {
+      "id": "divi",
+      "label": "Divi",
+      "matchedPatterns": 2,
+      "evidence": [
+        "/et_pb_(?:section|row|module)/i",
+        "/\\/themes\\/Divi\\//i"
+      ],
+      "pages": 14
+    }
+  ],
+  "note": "Every id listed here MUST be absent from dist/ before packaging. sr-decontaminate.mjs enforces it."
+}
