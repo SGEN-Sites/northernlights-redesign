@@ -16,6 +16,12 @@
   splash options at /splash-options/ (try-out only: ?splash=1|2|3); decided labs (hero B-D, fonts) archived.
   Checks: publish scan CLEAN, sr-decontaminate CLEAN, sweep 172/172 ok (43 pages x 4 widths), smoke 12/12 live,
   menus 29/29 live, store switcher driven in Chromium (map light / pin / tab), fonts measured (812 px at wdth 87).
+  A docs-only republish followed (main bc3cdd4, gh-pages 41bc443).
+- Round 6 (2026-11-16, main e1900b5, gh-pages c82b8c1): the owner's intro splash, option 2 "Two Lights", for every visitor
+  once per session (never under reduced motion; `?splash=off` skips it); the options page archived. Checks: publish scan
+  CLEAN, smoke 13/13 live (new: the splash plays first and hands off to the 21+ gate with focus on Yes), menus 29/29
+  live, splash behaviour on the live URL for first visit (phone, desktop), returning visitor, menu-page landing,
+  ?splash=off and reduced motion (private/splash-live.mjs).
 
 ## Checks on record
 
