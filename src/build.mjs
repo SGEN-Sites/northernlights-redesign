@@ -6,6 +6,7 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { setBase, href, esc } from './lib/html.mjs';
 import { page, setPreview, setVersion, setOrigin } from './lib/layout.mjs';
+import { seams, stats as seamStats } from './lib/dividers.mjs';
 import { ORIGIN } from './content/site.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -43,7 +44,9 @@ fs.writeFileSync(path.join(OUT, 'assets/js/site.js'), JS.map((f) => `/* ${f} */\
 const pages = [];
 const add = (p) => { if (Array.isArray(p)) p.forEach(add); else if (p) pages.push(p); };
 const ONLY = val('--only', '').split(',').filter(Boolean);
-for (const name of ['home', 'shop', 'stores', 'content', 'company', 'misc']) {
+// page modules: the site's own, then any design-lab module (src/pages/lab-*.mjs: noindex option pages for the owner)
+const LABS = fs.readdirSync(path.join(ROOT, 'src/pages')).filter((f) => /^lab-[\w-]+\.mjs$/.test(f)).map((f) => f.replace(/\.mjs$/, '')).sort();
+for (const name of ['home', 'shop', 'stores', 'content', 'company', 'misc', ...LABS]) {
   if (ONLY.length && !ONLY.includes(name)) continue;
   const f = path.join(ROOT, 'src/pages', name + '.mjs');
   if (!fs.existsSync(f)) { console.warn('skip: src/pages/' + name + '.mjs not written yet'); continue; }
@@ -59,8 +62,12 @@ for (const p of pages) {
   seen.add(file);
   const out = path.join(OUT, file);
   fs.mkdirSync(path.dirname(out), { recursive: true });
-  fs.writeFileSync(out, p.redirect ? redirect(p) : page(p));
+  // seams post-process (lane D, src/lib/dividers.mjs): a ridge / ripple divider wherever neighbouring bands change tone
+  fs.writeFileSync(out, p.redirect ? redirect(p) : seams(page(p), p));
 }
+console.log(`seams: ${seamStats.ridge} ridges, ${seamStats.ripple} ripples, ${seamStats.ribbon} ribbon on ${seamStats.pages} pages`);
+for (const [pair, where] of seamStats.unruled) console.warn(`seams: no divider rule for ${pair} (hard edge left) on ${where.slice(0, 4).join(', ')}${where.length > 4 ? ' +' + (where.length - 4) : ''}`);
+for (const [cls, where] of seamStats.unknown) console.warn(`seams: unknown band tone .${cls} (treated as dark) on ${where.slice(0, 4).join(', ')}${where.length > 4 ? ' +' + (where.length - 4) : ''}`);
 
 const listed = pages.filter((p) => !p.redirect && !p.file && p.path && !p.noindex);
 if (PREVIEW) fs.writeFileSync(path.join(OUT, 'robots.txt'), 'User-agent: *\nDisallow: /\n');

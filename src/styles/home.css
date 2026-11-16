@@ -1,6 +1,6 @@
 /* home.css: the home page bands. */
 
-/* ---- hero: the aurora over the lake, the badge coin, the real storefront postcard hanging into the next band ---- */
+/* ---- hero: the aurora over the lake, the badge coin, the real storefront in the aurora frame ---- */
 .hero { position: relative; isolation: isolate; min-height: calc(100svh - var(--topbar-h)); margin-top: calc(var(--hdr-h) * -1); padding-top: var(--hdr-h); display: grid; align-items: center; overflow: visible; z-index: 2; }
 .hero__sky { position: absolute; inset: 0; z-index: -1; overflow: hidden; background: var(--night-0); }
 .hero__media { position: absolute; inset: -6% 0 -10%; }
@@ -8,7 +8,7 @@
 .hero__video { opacity: 0; transition: opacity 1.4s; }
 .hero__video.is-playing { opacity: 1; }
 .hero__aurora { opacity: .55; }
-.hero__scrim { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(3, 10, 20, .86) 0%, rgba(3, 10, 20, .55) 34%, rgba(3, 10, 20, .05) 64%), linear-gradient(180deg, rgba(3, 10, 20, .6) 0%, transparent 22%, transparent 62%, var(--night) 100%); }
+.hero__scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(3, 10, 20, .6) 0%, transparent 22%, transparent 62%, var(--night) 100%), linear-gradient(90deg, rgba(3, 10, 20, .86) 0%, rgba(3, 10, 20, .55) 34%, rgba(3, 10, 20, .05) 64%); }
 .hero__stars { position: absolute; inset: 0; background-image: radial-gradient(1.2px 1.2px at 12% 18%, #fff, transparent), radial-gradient(1px 1px at 28% 8%, #fff, transparent), radial-gradient(1.4px 1.4px at 46% 22%, rgba(255, 255, 255, .9), transparent), radial-gradient(1px 1px at 8% 40%, #fff, transparent), radial-gradient(1.2px 1.2px at 34% 34%, rgba(255, 255, 255, .8), transparent), radial-gradient(1px 1px at 20% 52%, rgba(255, 255, 255, .7), transparent); opacity: .7; animation: twinkle 6s ease-in-out infinite alternate; }
 @keyframes twinkle { to { opacity: .35; } }
 .hero__in { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr); align-items: center; gap: 32px; padding-block: 64px 120px; }
@@ -25,17 +25,14 @@
 .hero__facts .ico { width: 18px; height: 18px; color: var(--teal); }
 .hero__art { position: relative; align-self: stretch; min-height: 520px; }
 .hero__coin { --coin: clamp(190px, 18vw, 270px); position: absolute; right: 6%; top: 4%; animation: drift 8s ease-in-out infinite; }
-.hero__card { --pc-w: clamp(220px, 19vw, 290px); --rot: 5deg; position: absolute; left: 4%; bottom: -150px; z-index: 5; }
 .hero__cue { position: absolute; left: 50%; bottom: 26px; width: 26px; height: 42px; border-radius: 14px; border: 1.5px solid rgba(255, 255, 255, .45); transform: translateX(-50%); }
 .hero__cue span { position: absolute; left: 50%; top: 8px; width: 3px; height: 8px; border-radius: 2px; background: #fff; transform: translateX(-50%); animation: cue 1.8s var(--ease-io) infinite; }
 @keyframes cue { 0% { transform: translate(-50%, 0); opacity: 1; } 70% { transform: translate(-50%, 14px); opacity: 0; } 100% { opacity: 0; } }
-@media (max-width: 1100px) { .hero__card { left: 0; } }
 @media (max-width: 900px) {
   .hero { min-height: auto; }
   .hero__in { grid-template-columns: 1fr; padding-block: 40px 40px; gap: 8px; }
   .hero__art { min-height: 300px; order: -1; margin-bottom: -20px; }
   .hero__coin { --coin: 150px; right: auto; left: 0; top: 10px; }
-  .hero__card { --pc-w: 170px; left: auto; right: 0; bottom: -10px; top: 20px; --rot: 6deg; }
   .hero__cue { display: none; }
   .hero__scrim { background: linear-gradient(180deg, rgba(3, 10, 20, .35) 0%, rgba(3, 10, 20, .5) 40%, rgba(3, 10, 20, .88) 70%, var(--night) 100%); }
   .hero__media img, .hero__video { object-position: 70% 50%; }
@@ -43,7 +40,6 @@
 @media (max-width: 560px) {
   .hero__art { min-height: 250px; }
   .hero__coin { --coin: 128px; }
-  .hero__card { --pc-w: 150px; }
   .hero__cta .btn { width: 100%; }
   .hero__facts { font-size: .9rem; gap: 6px 16px; }
 }
@@ -102,8 +98,6 @@
 .shelves__more a { color: var(--star); text-decoration-color: var(--teal); }
 .shelves__more small { color: var(--fog); }
 
-/* tapes sit across the seam between shelves and the living room */
-.tapes { margin-block: -64px -70px; }
 
 /* ---- the living room ---- */
 .living { padding-top: calc(var(--band-y) + 30px); overflow: clip; }
@@ -111,10 +105,8 @@
 .living__art { position: relative; }
 .living__frame { position: relative; border-radius: var(--r-xl); overflow: hidden; aspect-ratio: 4 / 3.2; box-shadow: 0 50px 100px -40px rgba(0, 0, 0, .9), 0 0 0 1px rgba(255, 217, 163, .18); }
 .living__frame img { width: 100%; height: 110%; object-fit: cover; object-position: 40% 50%; }
-.living__tag { position: absolute; right: 14px; bottom: 14px; font-size: .74rem; letter-spacing: .08em; padding: 5px 10px; border-radius: 999px; background: rgba(3, 10, 20, .6); color: var(--mist); }
 .living__guitar { left: -7%; top: -16%; width: clamp(110px, 12vw, 170px); transform: rotate(-12deg); }
 .living__plant { right: -6%; bottom: -12%; width: clamp(130px, 14vw, 210px); }
-.living__card { --pc-w: clamp(150px, 13vw, 200px); --rot: -6deg; position: absolute; left: 6%; bottom: -60px; z-index: 6; }
 .living__copy { display: grid; gap: 20px; }
 .living__copy .kicker { color: var(--lamp); }
 .living__copy .dh em { background: linear-gradient(90deg, #ffd9a3, #ffb45e 40%, #d369ff); -webkit-background-clip: text; background-clip: text; }
@@ -126,7 +118,6 @@
   .living__grid { grid-template-columns: 1fr; }
   .living__guitar { left: -4%; top: -12%; width: 96px; }
   .living__plant { right: -3%; bottom: -8%; width: 120px; }
-  .living__card { --pc-w: 140px; bottom: -40px; left: 4%; }
   .living__copy { padding-top: 40px; }
 }
 

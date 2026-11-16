@@ -34,7 +34,7 @@ export const faqList = (items = [], open = 0) => `<div class="faq">${items.map((
 // ---------- the page hero for inner pages: a cinematic still, scrims, the aurora over it, a crumb trail ----------
 export function pageHero({ kicker: k, h1, lede, image = 'hero-aurora', crumbs = [], cta = '', aside = '', variant = '', aurora = true }) {
   return `<section class="phero ${variant}" data-phero>
-  <div class="phero__bg" aria-hidden="true">${img(image, { decorative: true, sizes: '100vw', eager: true, min: 1400, depth: '0.08' })}${aurora ? '<canvas class="aurora-canvas" data-aurora="soft"></canvas>' : ''}<div class="phero__scrim"></div></div>
+  <div class="phero__bg" aria-hidden="true">${img(image, { decorative: true, sizes: '100vw', eager: true, min: 1400, depth: '0.08' })}${aurora ? '<canvas class="phero__gl" data-aurora-gl data-stops="#55FFD6,#4089FF,#C25CFF" data-height=".34" data-opacity=".85" aria-hidden="true"></canvas><canvas class="aurora-canvas" data-aurora="soft"></canvas>' : ''}<div class="phero__scrim"></div></div>
   <div class="wrap phero__in">
     ${crumbs.length > 1 ? `<nav class="crumbs" aria-label="Breadcrumb"><ol>${crumbs.map((c, i) => `<li>${i < crumbs.length - 1 ? `<a href="${href(c.href)}">${esc(c.label)}</a>` : `<span aria-current="page">${esc(c.label)}</span>`}</li>`).join('')}</ol></nav>` : ''}
     <div class="phero__copy">
@@ -86,7 +86,7 @@ export function menuHead({ store, current = null, title, intro = '' }) {
   const otherHref = current && storeCats[other.id].includes(current) ? `/${other.id}/${current}/` : current === 'specials' ? `/${other.id}/specials/` : other.menuPage;
   const chips = [['', 'All'], ...storeCats[store].map((c) => [c, catById(c).label]), ['specials', 'Specials']];
   return `<section class="mhead" data-page-store="${s.id}">
-  <div class="mhead__sky" aria-hidden="true"><canvas class="aurora-canvas" data-aurora="soft"></canvas></div>
+  <div class="mhead__sky" aria-hidden="true"><canvas class="mhead__gl" data-aurora-gl data-stops="#55FFD6,#4089FF,#C25CFF" data-height=".3" data-opacity=".55" aria-hidden="true"></canvas><canvas class="aurora-canvas" data-aurora="soft"></canvas></div>
   <div class="wrap-wide mhead__in">
     <div class="mhead__top">
       <div class="mhead__id">${light(s)}<div><p class="kicker">Shopping at Northern Lights ${esc(s.city)}</p><h1 class="dh dh--md mhead__h1">${esc(title)}</h1></div></div>
@@ -105,12 +105,6 @@ export function menuHead({ store, current = null, title, intro = '' }) {
     }).join('')}</ul></nav>
   </div>
 </section>`;
-}
-
-// ---------- marquee tape of the stores' own lines ----------
-export function tape(items, { tilt = -2.2, cls = '' } = {}) {
-  const run = items.map((t) => `<span class="tape__item">${esc(t)}</span><span class="tape__star" aria-hidden="true">✦</span>`).join('');
-  return `<div class="tape ${cls}" style="--tilt:${tilt}deg" data-tape aria-label="${esc(items.join('. '))}"><div class="tape__track" aria-hidden="true"><div class="tape__run">${run}</div><div class="tape__run">${run}</div></div></div>`;
 }
 
 // ---------- reviews: the six Google reviews the client republished, as captured ----------
@@ -144,9 +138,6 @@ export function seasons(items) {
     <div class="season__txt"><p class="season__k">${icon(s.icon)}${esc(s.name)}</p><p class="season__line">${esc(s.line)}</p></div>
   </li>`).join('')}</ul></div>`;
 }
-
-// a framed photo "postcard" with a handwritten caption (real store photos)
-export const postcard = (id, caption, cls = '', depth = null) => `<figure class="postcard ${cls}"${depth ? ` data-depth="${depth}"` : ''}><div class="postcard__img">${img(id, { sizes: '(max-width: 760px) 70vw, 340px', min: 520 })}</div><figcaption>${esc(caption)}</figcaption></figure>`;
 
 // float an object cut-out across a seam or a frame edge
 export const floatObj = (id, cls, depth = '0.1') => `<div class="float ${cls}" data-depth="${depth}" aria-hidden="true">${img(id, { decorative: true, sizes: '320px', min: 520 })}</div>`;

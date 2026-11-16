@@ -2,7 +2,7 @@
 // choose your store -> categories -> deals -> rewards -> reviews -> learn -> FAQ), with the store's own living room
 // and the four seasons as the signature bands. Every claim traces to facts/client-facts.json.
 import { esc, href, img, icon, asset, brandImg, storeLink, catLink, inline } from '../lib/html.mjs';
-import { dh, kicker, btn, coin, catGrid, tape, reviewDeck, tiers, seasons, postcard, floatObj, faqList, light, statusSpan } from '../lib/parts.mjs';
+import { dh, kicker, btn, catGrid, reviewDeck, tiers, seasons, floatObj, faqList, light, statusSpan } from '../lib/parts.mjs';
 import { storeLd, orgLd } from '../lib/layout.mjs';
 import { livingMap } from '../lib/map.mjs';
 import { brand, stores, DEFAULT_STORE, storeCats, sharedCats, loyalty } from '../content/site.mjs';
@@ -13,6 +13,7 @@ function hero() {
   return `<section class="hero" data-hero>
   <div class="hero__sky" aria-hidden="true">
     <div class="hero__media" data-depth="0.12">${img('hero-aurora', { decorative: true, sizes: '100vw', eager: true, min: 2200 })}<video class="hero__video" muted loop playsinline preload="none" poster="${asset('img/hero-aurora-1440.webp')}" data-src="${asset('video/hero-aurora.mp4')}" data-src-sm="${asset('video/hero-aurora-sm.mp4')}" aria-hidden="true"></video></div>
+    <canvas class="hero__gl" data-aurora-gl data-stops="#55FFD6,#4089FF,#C25CFF" data-height=".40" aria-hidden="true"></canvas>
     <canvas class="aurora-canvas hero__aurora" data-aurora="hero"></canvas>
     <div class="hero__scrim"></div>
     <div class="hero__stars" data-depth="-0.06"></div>
@@ -30,10 +31,6 @@ function hero() {
         <li>${icon('truck')}Same-day delivery</li>
         <li>${icon('tag')}Price match guarantee</li>
       </ul>
-    </div>
-    <div class="hero__art" aria-hidden="false">
-      ${coin('hero__coin')}
-      ${postcard('store-whitehall', '132 Broadway, Whitehall, NY', 'hero__card', '-0.08')}
     </div>
   </div>
   <a class="hero__cue" href="#choose" aria-label="Scroll to choose your store"><span></span></a>
@@ -87,21 +84,13 @@ function shelves() {
 </section>`;
 }
 
-function tapes() {
-  return `<div class="tapes" aria-hidden="false">
-  ${tape(['Price match guarantee', 'Same-day delivery', 'Open every day 10am–8pm', 'Family-owned', '21+ with valid ID', 'LGBTQ+ friendly', 'No attitude'], { tilt: -2.4 })}
-  ${tape(['Whitehall', 'Menands', 'South tip of Lake Champlain', 'Broadway', 'Music & pop-up nights', 'Rewards from day one'], { tilt: 1.8, cls: 'tape--dark tape--rev' })}
-</div>`;
-}
-
 function livingRoom() {
   return `<section class="band band--lamp living" id="inside">
   <div class="wrap living__grid">
     <div class="living__art">
-      <div class="living__frame" data-reveal="zoom">${img('living-room', { sizes: '(max-width: 900px) 92vw, 640px', min: 1400, depth: '0.05' })}<span class="living__tag">Illustration of the feel inside</span></div>
+      <div class="living__frame" data-reveal="zoom">${img('living-room', { sizes: '(max-width: 900px) 92vw, 640px', min: 1400 })}<span class="living__tag">Inside Whitehall · an illustration of the feel</span></div>
       ${floatObj('cut-guitar', 'living__guitar', '-0.14')}
       ${floatObj('cut-plant', 'living__plant', '0.12')}
-      ${postcard('store-whitehall', 'Whitehall, on Broadway', 'living__card', '-0.1')}
     </div>
     <div class="living__copy" data-reveal="right">
       ${kicker('Inside Northern Lights Whitehall')}
@@ -252,6 +241,10 @@ export function pages() {
     title: 'Northern Lights Dispensary | Whitehall & Menands, NY',
     description: 'Family-owned cannabis dispensary on Broadway in Whitehall, NY, with a sister store in Menands near Albany. Open daily 10am–8pm, same-day delivery, price match.',
     jsonld: [orgLd(), ...stores.map(storeLd)],
-    main: hero() + choose() + shelves() + tapes() + livingRoom() + deals() + rewards() + fourSeasons() + neighbors() + nights() + aboutFaq(),
+    main: hero() + choose() + shelves() + livingRoom() + deals() + rewards() + fourSeasons() + neighbors() + nights() + aboutFaq(),
   }];
 }
+
+// the home bands, for the design-lab pages (src/pages/lab-*.mjs) that try other heroes above the same page
+export const sections = { hero, choose, shelves, livingRoom, deals, rewards, fourSeasons, neighbors, nights, aboutFaq };
+export const homeJsonld = () => [orgLd(), ...stores.map(storeLd)];

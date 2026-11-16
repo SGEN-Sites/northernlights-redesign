@@ -66,7 +66,7 @@ function shopAll() {
     description: 'Shop the live Northern Lights menu at your store, Whitehall or Menands, NY: prices, stock and a cart. Order ahead for pickup or same-day delivery.',
     crumbs: [{ label: 'Home', href: '/' }, { label: 'Shop', href: '/shop/' }],
     main: `<section class="mhead mhead--auto">
-  <div class="mhead__sky" aria-hidden="true"><canvas class="aurora-canvas" data-aurora="soft"></canvas></div>
+  <div class="mhead__sky" aria-hidden="true"><canvas class="mhead__gl" data-aurora-gl data-stops="#55FFD6,#4089FF,#C25CFF" data-height=".3" data-opacity=".55" aria-hidden="true"></canvas><canvas class="aurora-canvas" data-aurora="soft"></canvas></div>
   <div class="wrap-wide mhead__in">
     <div class="mhead__top">
       <div class="mhead__id"><div><p class="kicker">Shop Northern Lights</p><h1 class="dh dh--md mhead__h1">Shopping at <span data-store-city>Whitehall</span></h1></div></div>
@@ -85,7 +85,7 @@ function deals() {
     description: 'Live specials at Northern Lights Whitehall and Menands, our price match guarantee with any Capital Region dispensary, Rewards points and free same-day delivery.',
     crumbs: [{ label: 'Home', href: '/' }, { label: 'Deals', href: '/deals/' }],
     main: `<section class="mhead mhead--deals">
-  <div class="mhead__sky" aria-hidden="true"><canvas class="aurora-canvas" data-aurora="soft"></canvas></div>
+  <div class="mhead__sky" aria-hidden="true"><canvas class="mhead__gl" data-aurora-gl data-stops="#55FFD6,#4089FF,#C25CFF" data-height=".3" data-opacity=".55" aria-hidden="true"></canvas><canvas class="aurora-canvas" data-aurora="soft"></canvas></div>
   <div class="wrap-wide mhead__in">
     <div class="mhead__top">
       <div class="mhead__id"><div><p class="kicker">Deals · live specials</p><h1 class="dh dh--md mhead__h1">Today’s specials at <span data-store-city>Whitehall</span></h1></div></div>

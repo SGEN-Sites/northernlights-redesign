@@ -1,0 +1,116 @@
+/* reactive.css: the reactive layer (round 2), driven by src/scripts/reactive.js. Everything here stays inert until
+   reactive.js adds .rx-fine to <html> (a fine pointer, motion allowed) or injects its own decorative layers (.rx-prog,
+   .rx-glow): without JS, on touch and under reduced motion the page renders exactly as before. Brand tokens only:
+   teal #52ebc8, orchid #d369ff, violet #8a6bff, sky #2ec4ff, amber #ffb45e, the --aurora gradient. */
+
+/* ---- spotlight cards: light follows the pointer across the card, in two parts ----
+   1. ::before, under the content: a soft orchid halo with a faint teal heart. isolation makes each card its own stacking
+      context, so z-index:-1 lands above the card's background and below its content. Its strength is capped by
+      contrast, measured on the rendered pages: with the light parked on them, the dimmest text in these cards (--fog
+      small meta, the orchid kicker) keeps at least 4.5:1.
+   2. ::after, a 1px rim: the card's edge catches the light (aurora teal -> orchid), masked to the border ring, so it
+      never sits behind text. This carries most of the visible "it reacts" cue.
+   Both pseudo-elements are free on every listed card (checked on every built page), except .bento__match (::before, its
+   own pointer light, home.css + site.js [data-spot]: left out entirely) and .bento__delivery (::after, its photo scrim:
+   no rim). Cards that are position:static today become relative; none has an absolutely placed child anchored outside
+   itself. */
+.rx-fine :is(.cat__a, .bento__a:not(.bento__match), .gcard, .pcard a, .scard, .sp__card, .way, .value, .tier, .rcard, .guides a, .saver, .sstrip__a, .shero__card, .dl__store, .areas__ul a, .faq__item) { isolation: isolate; }
+.rx-fine :is(.pcard a, .way, .value, .rcard, .guides a, .saver, .sstrip__a, .shero__card, .dl__store, .areas__ul a, .faq__item) { position: relative; }
+.rx-fine :is(.cat__a, .bento__a:not(.bento__match), .gcard, .pcard a, .scard, .sp__card, .way, .value, .tier, .rcard, .guides a, .saver, .sstrip__a, .shero__card, .dl__store, .areas__ul a, .faq__item)::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(170px circle at var(--sx, 50%) var(--sy, 50%), rgba(82, 235, 200, .02), rgba(82, 235, 200, 0) 70%),
+    radial-gradient(380px circle at var(--sx, 50%) var(--sy, 50%), rgba(211, 105, 255, .065), rgba(211, 105, 255, 0) 72%);
+  opacity: 0;
+  transition: opacity .5s var(--ease-out);
+}
+/* where dim text already has no contrast to spare, the fill stays off it:
+   review cards: the "Google review" kicker (--fog, top row, 29-76px down at every width) on the light end of the gradient;
+   rewards tiers: the dashed "Where everyone begins" pill (--fog over the translucent card and the aurora behind it) */
+.rx-fine .rcard::before { -webkit-mask-image: linear-gradient(180deg, transparent 80px, #000 130px); mask-image: linear-gradient(180deg, transparent 80px, #000 130px); }
+.rx-fine .tier::before { -webkit-mask-image: linear-gradient(0deg, transparent 64px, #000 120px); mask-image: linear-gradient(0deg, transparent 64px, #000 120px); }
+.rx-fine :is(.cat__a, .bento__a:not(.bento__match), .gcard, .pcard a, .scard, .sp__card, .way, .value, .tier, .rcard, .guides a, .saver, .sstrip__a, .shero__card, .dl__store, .areas__ul a, .faq__item).is-spot::before { opacity: 1; }
+/* the rim: a 1px ring just inside the card's edge (padding box, so overflow:hidden cards keep it too) */
+.rx-fine :is(.cat__a, .bento__a:not(.bento__match):not(.bento__delivery), .gcard, .pcard a, .scard, .sp__card, .way, .value, .tier, .rcard, .guides a, .saver, .sstrip__a, .shero__card, .dl__store, .areas__ul a, .faq__item)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(260px circle at var(--sx, 50%) var(--sy, 50%), rgba(85, 255, 214, .8), rgba(211, 105, 255, .45) 45%, rgba(211, 105, 255, 0) 75%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0;
+  transition: opacity .5s var(--ease-out);
+}
+.rx-fine :is(.cat__a, .bento__a:not(.bento__match):not(.bento__delivery), .gcard, .pcard a, .scard, .sp__card, .way, .value, .tier, .rcard, .guides a, .saver, .sstrip__a, .shero__card, .dl__store, .areas__ul a, .faq__item).is-spot::after { opacity: 1; }
+.rx-fine .band--paper :is(.cat__a, .bento__a:not(.bento__match):not(.bento__delivery), .gcard, .pcard a, .scard, .sp__card, .way, .value, .tier, .rcard, .guides a, .saver, .sstrip__a, .shero__card, .dl__store, .areas__ul a, .faq__item)::after {
+  background: radial-gradient(260px circle at var(--sx, 50%) var(--sy, 50%), rgba(255, 180, 94, .95), rgba(240, 122, 60, .4) 45%, rgba(240, 122, 60, 0) 75%);
+}
+/* on the light paper bands the same light turns lamplight-warm and fainter */
+.rx-fine .band--paper :is(.cat__a, .bento__a:not(.bento__match), .gcard, .pcard a, .scard, .sp__card, .way, .value, .tier, .rcard, .guides a, .saver, .sstrip__a, .shero__card, .dl__store, .areas__ul a, .faq__item)::before {
+  background:
+    radial-gradient(180px circle at var(--sx, 50%) var(--sy, 50%), rgba(255, 180, 94, .16), rgba(255, 180, 94, 0) 70%),
+    radial-gradient(380px circle at var(--sx, 50%) var(--sy, 50%), rgba(211, 105, 255, .05), rgba(211, 105, 255, 0) 72%);
+}
+/* the delivery tile is a full-bleed photo (img and scrim at z-index -1): its light goes over them, under the words */
+.rx-fine a.bento__a.bento__delivery::before { z-index: 0; }
+.rx-fine .bento__delivery .bento__over { position: relative; z-index: 1; }
+
+/* ---- hero pointer parallax: the photo sky drifts a few px, so it is drawn a touch larger to keep its edges covered ---- */
+.rx-fine .hero__media { scale: 1.015; }
+
+/* ---- scroll progress: 2px of aurora along the sticky header's bottom edge (reactive.js writes scaleX) ---- */
+.rx-prog {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  height: 2px;
+  pointer-events: none;
+  background: var(--aurora);
+  box-shadow: 0 0 10px rgba(46, 196, 255, .45);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  opacity: 0;
+  transition: opacity .4s;
+  will-change: transform;
+}
+.rx-prog.is-on { opacity: 1; }
+.menu-locked .rx-prog { display: none; }
+
+/* ---- cursor glow: a fixed, very soft light that follows a fine pointer over the dark sections (screen blend) ----
+   It sits just under the header, so the header, menus, bar, dialogs and gate are never tinted. */
+.rx-glow {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: calc(var(--z-hdr) - 1);
+  width: 760px;
+  height: 760px;
+  margin: -380px 0 0 -380px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(closest-side, rgba(82, 235, 200, .085), rgba(138, 107, 255, .05) 42%, rgba(138, 107, 255, 0) 100%);
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity .6s var(--ease-out);
+  will-change: transform, opacity;
+}
+.rx-glow.is-on { opacity: 1; }
+.gate-open .rx-glow, .menu-locked .rx-glow { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rx-prog, .rx-glow { display: none; }
+}
+@media (hover: none), (pointer: coarse) {
+  .rx-glow { display: none; }
+}

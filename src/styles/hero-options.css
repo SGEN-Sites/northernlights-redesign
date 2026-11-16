@@ -1,0 +1,297 @@
+/* hero-options.css (round 3, lane H): the hero options lab, src/pages/lab-hero.mjs. Three alternative home heroes
+   above the full home page (/hero-options/b|c|d/: B "Aurora Stage", C "Two Lights", D "Orbit"), the index
+   (/hero-options/) and the floating option switcher. This file is bundled site-wide, so every selector starts with .hx
+   and nothing here reaches another page. Brand tokens only. Each hero is a finished static composition: without JS
+   and under prefers-reduced-motion nothing moves (src/scripts/hero-options.js only feeds --p, --mx/--my, --s and the
+   orbit transforms). Text over imagery sits on scrims. */
+
+/* ================= shared ================= */
+.hx { position: relative; isolation: isolate; min-height: calc(100svh - var(--topbar-h)); margin-top: calc(var(--hdr-h) * -1); padding-top: var(--hdr-h); overflow: hidden; background: var(--night-0); }
+.hx__h1 { display: grid; gap: 14px; margin: 0; font-weight: inherit; }
+.hx__k { font-family: var(--f-sans); font-size: var(--t-meta); font-weight: 600; line-height: 1.5; letter-spacing: .2em; text-transform: uppercase; color: var(--teal); text-wrap: balance; text-shadow: 0 1px 12px rgba(3, 10, 20, .9); }
+.hx__t { display: block; text-shadow: 0 10px 60px rgba(0, 0, 0, .5); }
+.hx__t em { background-size: 200% 100%; animation: hxSlide 9s ease-in-out infinite alternate; }
+.hx__facts { display: flex; flex-wrap: wrap; gap: 8px 22px; color: var(--mist); font-size: .95rem; text-shadow: 0 1px 12px rgba(3, 10, 20, .9); }
+.hx__facts li { display: inline-flex; align-items: center; gap: 8px; }
+.hx__facts .ico { width: 18px; height: 18px; color: var(--teal); flex: none; }
+.hx__cue { position: absolute; left: 50%; bottom: 24px; z-index: 3; width: 26px; height: 42px; margin-left: -13px; border-radius: 14px; border: 1.5px solid rgba(255, 255, 255, .45); }
+.hx__cue span { position: absolute; left: 10px; top: 8px; width: 3px; height: 8px; border-radius: 2px; background: #fff; animation: hxCue 1.8s var(--ease-io) infinite; }
+/* the badge's stars, scattered (B and D) */
+.hxb__stars, .hxd__stars { position: absolute; inset: -24px; background-image: radial-gradient(1.2px 1.2px at 12% 18%, #fff, transparent), radial-gradient(1px 1px at 28% 8%, #fff, transparent), radial-gradient(1.4px 1.4px at 46% 22%, rgba(255, 255, 255, .9), transparent), radial-gradient(1px 1px at 8% 40%, #fff, transparent), radial-gradient(1.2px 1.2px at 34% 34%, rgba(255, 255, 255, .8), transparent), radial-gradient(1px 1px at 64% 12%, #fff, transparent), radial-gradient(1.3px 1.3px at 78% 30%, rgba(255, 255, 255, .85), transparent), radial-gradient(1px 1px at 90% 9%, #fff, transparent), radial-gradient(1.1px 1.1px at 56% 44%, rgba(255, 255, 255, .7), transparent), radial-gradient(1px 1px at 20% 62%, rgba(255, 255, 255, .6), transparent); opacity: .75; animation: hxTwinkle 6s ease-in-out infinite alternate; }
+@keyframes hxSlide { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+@keyframes hxTwinkle { to { opacity: .35; } }
+@keyframes hxCue { 0% { transform: translateY(0); opacity: 1; } 70% { transform: translateY(14px); opacity: 0; } 100% { opacity: 0; } }
+@keyframes hxPing { 0% { transform: scale(.6); opacity: .9; } 80%, 100% { transform: scale(1.9); opacity: 0; } }
+@keyframes hxFloat { 50% { transform: translate3d(0, -9px, 0); } }
+@keyframes hxTravel { from { transform: translateX(-100%); } to { transform: translateX(260%); } }
+@keyframes hxBeam { from { background-position: 0 0; } to { background-position: 0 100%; } }
+@keyframes hxBeamX { from { background-position: 0 0; } to { background-position: 100% 0; } }
+/* the home bands below: the choose band's tall top padding holds option A's art and the hero -> #choose chapter wave
+   (dividers.mjs); while no wave is drawn under these heroes, the band starts at its normal padding */
+.hx + .choose:not(.wv-b--top) { padding-top: var(--band-y); }
+@media (max-width: 860px) { .hx__cue { display: none; } }
+
+/* ================= B: Aurora Stage (centred, cinematic) =================
+   --p: 0..1 as the first screen scrolls away; --mx/--my: -1..1, the eased fine pointer. Both stay 0 without JS. */
+.hxb { --p: 0; --mx: 0; --my: 0; display: grid; align-content: center; text-align: center; }
+.hxb__sky { position: absolute; inset: 0; z-index: -1; overflow: hidden; background: var(--night-0); }
+.hxb__media { position: absolute; inset: -7% -2% -11%; transform: translate3d(calc(var(--mx) * -12px), calc(var(--my) * -8px), 0) scale(calc(1.02 + var(--p) * .1)); transform-origin: 50% 42%; }
+.hxb__media img, .hxb__video { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 50% 50%; }
+.hxb__video { opacity: 0; transition: opacity 1.4s; }
+.hxb__video.is-playing { opacity: 1; }
+/* the aurora curtain at full strength across the top; it deepens and lengthens as the first screen scrolls away */
+.hxb__curtain { position: absolute; inset: 0 0 auto; height: 82%; mix-blend-mode: screen; opacity: calc(.84 + var(--p) * .16); transform: scaleY(calc(1 + var(--p) * .24)); transform-origin: 50% 0; -webkit-mask-image: linear-gradient(180deg, #000 62%, transparent); mask-image: linear-gradient(180deg, #000 62%, transparent); }
+.hxb__gl { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1.6s ease; }
+.hxb__gl.is-gl { opacity: 1; }
+.hxb__stars { transform: translate3d(calc(var(--mx) * -22px), calc(var(--my) * -14px), 0); }
+/* a dark pool behind the centred words; the top stays open for the aurora; the foot meets --night (the next band) */
+.hxb__scrim { position: absolute; inset: 0; background: radial-gradient(64% 42% at 50% 60%, rgba(3, 10, 20, .84) 0%, rgba(3, 10, 20, .7) 52%, rgba(3, 10, 20, 0) 100%), linear-gradient(180deg, rgba(3, 10, 20, .55) 0%, rgba(3, 10, 20, 0) 16%, rgba(3, 10, 20, 0) 60%, rgba(7, 21, 40, .86) 88%, var(--night) 100%); }
+.hxb__stage { position: relative; display: grid; justify-items: center; gap: clamp(18px, 3svh, 30px); padding-block: clamp(16px, 3svh, 40px) clamp(84px, 11svh, 116px); }
+.hxb__lift { position: relative; display: grid; justify-items: center; gap: clamp(12px, 2svh, 20px); transform: translate3d(0, calc(var(--p) * -80px), 0) scale(calc(1 - var(--p) * .16)); transform-origin: 50% 20%; opacity: calc(1 - var(--p) * .75); }
+/* a soft shadow under the words themselves (it travels with them) */
+.hxb__lift::before { content: ''; position: absolute; inset: 34% -10% -6%; z-index: -1; border-radius: 50%; background: radial-gradient(closest-side, rgba(3, 10, 20, .7), rgba(3, 10, 20, .52) 66%, rgba(3, 10, 20, 0)); pointer-events: none; }
+.hxb__badge { position: relative; width: clamp(96px, min(11vw, 17svh), 168px); transform: perspective(700px) translate3d(calc(var(--mx) * 8px), calc(var(--my) * 6px), 0) rotateY(calc(var(--mx) * 14deg)) rotateX(calc(var(--my) * -10deg)); }
+.hxb__badge img { position: relative; width: 100%; filter: drop-shadow(0 16px 36px rgba(0, 0, 0, .6)); animation: hxFloat 7s ease-in-out infinite; }
+.hxb__halo { position: absolute; inset: -42%; border-radius: 50%; background: radial-gradient(closest-side, rgba(85, 255, 214, .26), rgba(138, 107, 255, .16) 52%, rgba(138, 107, 255, 0) 74%); filter: blur(10px); }
+.hxb__h1 { justify-items: center; }
+.hxb__h1 .hx__t { font-size: clamp(3.3rem, min(10.4vw, 16svh), 10rem); line-height: .9; letter-spacing: -.035em; }
+.hxb__lede { max-width: 54ch; color: #dfe7f6; font-size: clamp(1.04rem, 1.3vw, 1.2rem); text-shadow: 0 2px 18px rgba(3, 10, 20, .9); }
+/* the two stores as points of light, Whitehall first, each opening its own live menu */
+.hxb__lights { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px 0; }
+.hxb__pt { --c: var(--teal); --g: rgba(82, 235, 200, .5); --g2: rgba(82, 235, 200, .16); position: relative; display: inline-flex; align-items: center; gap: 14px; min-height: 68px; padding: 10px 18px 10px 14px; border-radius: var(--r-md); text-align: left; text-decoration: none; color: var(--star); background: rgba(6, 18, 36, .7); box-shadow: inset 0 1px 0 var(--glass-hi), 0 0 0 1px var(--g), 0 18px 48px -20px var(--g); -webkit-backdrop-filter: blur(14px) saturate(140%); backdrop-filter: blur(14px) saturate(140%); transition: transform var(--dur-2) var(--ease-out), box-shadow var(--dur-2) var(--ease-out), background-color var(--dur-2); }
+.hxb__pt--menands { --c: var(--orchid); --g: rgba(211, 105, 255, .5); --g2: rgba(211, 105, 255, .16); }
+.hxb__pt:hover { transform: translateY(-3px); background: rgba(10, 26, 50, .82); box-shadow: inset 0 1px 0 var(--glass-hi), 0 0 0 1px var(--c), 0 22px 60px -18px var(--g); }
+.hxb__pt:focus-visible { outline: 2px solid var(--c); outline-offset: 4px; border-radius: var(--r-md); }
+.hxb__orb { position: relative; display: grid; place-items: center; width: 24px; height: 24px; flex: none; }
+.hxb__orb i { width: 12px; height: 12px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 4px var(--g2), 0 0 22px 5px var(--g); }
+.hxb__orb::after { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 1px solid var(--g); animation: hxPing 2.8s var(--ease-out) infinite; }
+.hxb__pt--menands .hxb__orb::after { animation-delay: .9s; }
+.hxb__pt-t { display: grid; gap: 3px; line-height: 1.15; }
+.hxb__pt-t > b { font-family: var(--f-display); font-weight: 700; font-size: 1.3rem; letter-spacing: -.01em; }
+.hxb__pt .status { font-size: .86rem; }
+.hxb__pt > .ico { width: 20px; height: 20px; margin-left: 4px; color: var(--c); flex: none; transition: transform var(--dur-2) var(--ease-out); }
+.hxb__pt:hover > .ico { transform: translateX(4px); }
+/* the light travelling from Whitehall down to Menands */
+.hxb__thread { position: relative; width: clamp(36px, 5vw, 84px); height: 2px; border-radius: 2px; overflow: hidden; background: linear-gradient(90deg, var(--teal), var(--orchid)); opacity: .6; }
+.hxb__thread i { position: absolute; inset: 0; width: 40%; background: linear-gradient(90deg, transparent, #fff, transparent); animation: hxTravel 2.8s var(--ease-io) infinite; }
+.hxb__facts { justify-content: center; }
+@media (max-width: 640px) {
+  /* phones: the words span the screen, so the dark falls in a band under them; the curtain and the badge stay open */
+  .hxb__curtain { height: 62%; }
+  .hxb__scrim { background: linear-gradient(180deg, rgba(3, 10, 20, .5) 0%, rgba(3, 10, 20, .12) 13%, rgba(3, 10, 20, .32) 20%, rgba(3, 10, 20, .8) 27%, rgba(3, 10, 20, .84) 74%, rgba(7, 21, 40, .92) 90%, var(--night) 100%); }
+  .hxb__lift::before { display: none; }
+  .hxb__h1 .hx__t { font-size: min(14.6vw, 3.9rem); }
+  .hxb__stage { padding-block: 10px 44px; gap: 18px; }
+  .hxb__lift { gap: 12px; }
+  .hxb__lights { flex-direction: column; align-items: stretch; width: min(100%, 400px); gap: 10px; }
+  .hxb__thread { display: none; }
+  .hxb__pt { width: 100%; min-height: 64px; }
+  .hxb__facts { gap: 6px 16px; font-size: .9rem; }
+}
+
+/* ================= C: Two Lights (interactive split) =================
+   --s: 0..1, where the seam stands (58% = Whitehall wider). Each scene sits in a window whose edge meets the seam;
+   the window moves, the scene inside counter-moves, so only the edge travels (transforms only, no repaints).
+   Phones stack the stores (Whitehall above, Menands below) with the seam lying flat between them. */
+.hxc { --s: .58; --p: 0; display: grid; grid-template-columns: minmax(var(--gutter), 1fr) minmax(0, calc(var(--wrap-wide) / 2)) minmax(0, calc(var(--wrap-wide) / 2)) minmax(var(--gutter), 1fr); grid-template-rows: auto minmax(32px, 1fr) auto; padding-bottom: clamp(36px, 6svh, 64px); }
+@media (prefers-reduced-motion: no-preference) { .js .hxc { --s: .5; } } /* hero-options.js opens it to .58 */
+.hxc__win { position: absolute; inset: 0; z-index: -1; overflow: hidden; transform: translate3d(calc((var(--s) - 1) * 100%), 0, 0); }
+.hxc__win--menands { transform: translate3d(calc(var(--s) * 100%), 0, 0); }
+.hxc__inner { position: absolute; inset: 0; transform: translate3d(calc((1 - var(--s)) * 100%), 0, 0); }
+.hxc__win--menands .hxc__inner { transform: translate3d(calc(var(--s) * -100%), 0, 0); }
+.hxc__inner img { position: absolute; top: 0; width: 74%; height: 100%; max-width: none; object-fit: cover; }
+.hxc__win--whitehall img { left: 0; object-position: 58% 50%; }
+.hxc__win--menands img { right: 0; object-position: 46% 50%; }
+.hxc__shade { position: absolute; inset: 0; }
+.hxc__win--whitehall .hxc__shade { background: linear-gradient(0deg, rgba(3, 10, 20, .92) 0%, rgba(3, 10, 20, .66) 26%, rgba(3, 10, 20, .14) 52%, rgba(3, 10, 20, .3) 100%), linear-gradient(90deg, rgba(3, 10, 20, .58) 0%, rgba(3, 10, 20, 0) 42%); }
+.hxc__win--menands .hxc__shade { background: linear-gradient(0deg, rgba(3, 10, 20, .92) 0%, rgba(3, 10, 20, .76) 30%, rgba(3, 10, 20, .18) 56%, rgba(3, 10, 20, .3) 100%), linear-gradient(270deg, rgba(3, 10, 20, .58) 0%, rgba(3, 10, 20, 0) 42%); }
+/* one sky over both: the aurora curtain runs teal over Whitehall to orchid over Menands (no z-index: it screens the scenes) */
+.hxc__sky { position: absolute; inset: 0; pointer-events: none; }
+.hxc__gl { position: absolute; inset: 0 0 auto; width: 100%; height: 58%; mix-blend-mode: screen; opacity: 0; transition: opacity 1.6s ease; -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent); mask-image: linear-gradient(180deg, #000 55%, transparent); }
+.hxc__gl.is-gl { opacity: 1; }
+.hxc__veil { position: absolute; inset: 0; background: radial-gradient(48% 32% at 50% 25%, rgba(3, 10, 20, .84) 0%, rgba(3, 10, 20, .64) 55%, rgba(3, 10, 20, 0) 100%), linear-gradient(180deg, rgba(3, 10, 20, .5) 0%, rgba(3, 10, 20, 0) 14%); }
+/* the seam: a beam of light, teal on Whitehall's side, orchid on Menands'; it dims where it passes under the headline */
+.hxc__seam { position: absolute; inset: 0; pointer-events: none; transform: translate3d(calc(var(--s) * 100%), 0, 0); }
+.hxc__beam { position: absolute; top: 0; bottom: 0; left: -1px; width: 2px; background: linear-gradient(180deg, rgba(242, 246, 255, 0) 0%, var(--teal) 16%, var(--star) 50%, var(--orchid) 84%, rgba(242, 246, 255, 0) 100%); background-size: 100% 160%; box-shadow: 0 0 14px 1px rgba(242, 246, 255, .5); animation: hxBeam 7s ease-in-out infinite alternate; -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .22) 12%, rgba(0, 0, 0, .22) 40%, #000 52%); mask-image: linear-gradient(180deg, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .22) 12%, rgba(0, 0, 0, .22) 40%, #000 52%); }
+.hxc__beam::before, .hxc__beam::after { content: ''; position: absolute; top: 44%; bottom: 4%; width: 56px; filter: blur(12px); }
+.hxc__beam::before { right: 1px; background: linear-gradient(90deg, rgba(82, 235, 200, 0), rgba(82, 235, 200, .5)); }
+.hxc__beam::after { left: 1px; background: linear-gradient(270deg, rgba(211, 105, 255, 0), rgba(211, 105, 255, .5)); }
+.hxc__grip { position: absolute; left: 0; top: 54%; display: flex; align-items: center; gap: 2px; height: 34px; padding: 0 7px; border-radius: 17px; translate: -50% -50%; color: var(--star); background: rgba(6, 18, 36, .76); box-shadow: 0 0 0 1px var(--line-2), 0 10px 30px -8px rgba(0, 0, 0, .8), 0 0 26px -4px rgba(242, 246, 255, .4); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.hxc__grip .ico { width: 14px; height: 14px; }
+.hxc.is-drag .hxc__grip { height: 44px; padding: 0 11px; border-radius: 22px; pointer-events: auto; cursor: grab; touch-action: none; }
+.hxc.is-drag .hxc__grip:active { cursor: grabbing; }
+/* the shared headline, centred over the seam */
+.hxc__head { position: relative; z-index: 1; grid-column: 2 / 4; grid-row: 1; justify-self: center; display: grid; justify-items: center; gap: 14px; max-width: 1000px; padding-top: clamp(14px, 3svh, 36px); text-align: center; }
+.hxc__h1 { justify-items: center; }
+.hxc__h1 .hx__t { font-size: clamp(3rem, min(7.2vw, 11.5svh), 6.8rem); line-height: .94; }
+.hxc__lede { color: #e6edf9; font-size: clamp(1.02rem, 1.3vw, 1.18rem); text-shadow: 0 2px 18px rgba(3, 10, 20, .95); }
+.hxc__facts { justify-content: center; }
+/* each store at its own outer edge: Whitehall left, Menands right (mirrored) */
+.hxc__store { position: relative; z-index: 1; grid-row: 3; display: grid; gap: 8px; justify-items: start; align-content: end; max-width: 430px; }
+.hxc__store--whitehall { grid-column: 2; justify-self: start; }
+.hxc__store--menands { grid-column: 3; justify-self: end; justify-items: end; text-align: right; }
+.hxc__n { display: inline-flex; align-items: center; gap: 10px; color: var(--teal); font-size: var(--t-meta); font-weight: 600; letter-spacing: .18em; text-transform: uppercase; text-shadow: 0 1px 12px rgba(3, 10, 20, .9); }
+.hxc__store--menands .hxc__n { color: var(--orchid); flex-direction: row-reverse; }
+.hxc__dot { width: 10px; height: 10px; border-radius: 50%; background: currentColor; box-shadow: 0 0 0 3px rgba(82, 235, 200, .18), 0 0 16px 3px rgba(82, 235, 200, .7); flex: none; }
+.hxc__store--menands .hxc__dot { box-shadow: 0 0 0 3px rgba(211, 105, 255, .18), 0 0 16px 3px rgba(211, 105, 255, .7); }
+.hxc__name { font-family: var(--f-display); font-weight: 800; font-size: clamp(2.5rem, 4.4vw, 4.2rem); line-height: .95; letter-spacing: -.025em; font-variation-settings: 'opsz' 144, 'SOFT' 60; text-shadow: 0 6px 40px rgba(3, 10, 20, .7); }
+.hxc__name span { font-family: var(--f-sans); font-size: .42em; font-weight: 500; letter-spacing: 0; color: var(--mist); }
+.hxc__tag { color: #e6edf9; font-size: 1rem; text-shadow: 0 1px 14px rgba(3, 10, 20, .95); }
+.hxc__store .status { text-shadow: 0 1px 12px rgba(3, 10, 20, .9); }
+.hxc__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-top: 8px; }
+.hxc__store--menands .hxc__cta { flex-direction: row-reverse; }
+.hxc__more { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--star); font-weight: 600; text-decoration: none; text-shadow: 0 1px 12px rgba(3, 10, 20, .9); }
+.hxc__more .ico { width: 16px; height: 16px; transition: transform var(--dur-2) var(--ease-out); }
+.hxc__more:hover { color: var(--teal); }
+.hxc__store--menands .hxc__more:hover { color: var(--orchid); }
+.hxc__more:hover .ico { transform: translateX(3px); }
+/* in the lab, the store blocks clear the floating switcher (bottom-left) */
+.hx-lab .hxc { padding-bottom: max(clamp(36px, 6svh, 64px), 92px); }
+@media (max-width: 860px) {
+  .hxc, .hx-lab .hxc { min-height: 0; grid-template-columns: var(--gutter) minmax(0, 1fr) var(--gutter); grid-template-rows: auto auto auto; padding-bottom: 0; }
+  .hxc__win { position: relative; inset: auto; grid-column: 1 / -1; transform: none; }
+  .hxc__win--whitehall { grid-row: 1 / 3; margin-top: calc(var(--hdr-h) * -1); }
+  .hxc__win--menands { grid-row: 3; }
+  .hxc__win .hxc__inner { transform: none; }
+  .hxc__inner img { width: 100%; transform: translate3d(0, calc(var(--p) * 32px), 0) scale(1.08); }
+  .hxc__win--menands img { transform: translate3d(0, calc(var(--p) * -20px), 0) scale(1.08); }
+  .hxc__win--whitehall img { object-position: 50% 32%; }
+  .hxc__win--menands img { object-position: 42% 50%; }
+  .hxc__win--whitehall .hxc__shade { background: linear-gradient(180deg, rgba(3, 10, 20, .5) 0%, rgba(3, 10, 20, .5) 50%, rgba(3, 10, 20, .62) 70%, rgba(3, 10, 20, .9) 100%); }
+  .hxc__win--menands .hxc__shade { background: linear-gradient(180deg, rgba(3, 10, 20, .45) 0%, rgba(3, 10, 20, .72) 50%, var(--night) 100%); }
+  .hxc__gl { height: 28%; }
+  /* the veil darkens the headline over the lake's own aurora and the curtain (it lies above both) */
+  .hxc__veil { background: linear-gradient(180deg, rgba(3, 10, 20, .45) 0%, rgba(3, 10, 20, .55) 8%, rgba(3, 10, 20, .72) 13%, rgba(3, 10, 20, .72) 38%, rgba(3, 10, 20, 0) 50%); }
+  .hxc__h1 .hx__t { font-size: min(14.6vw, 3.9rem); }
+  .hxc__lede { display: none; }
+  .hxc__seam { position: relative; inset: auto; z-index: 2; grid-column: 1 / -1; grid-row: 3; align-self: start; height: 0; transform: none; }
+  .hxc__beam { top: -1px; bottom: auto; left: 0; right: 0; width: auto; height: 2px; background: linear-gradient(90deg, rgba(242, 246, 255, 0) 0%, var(--teal) 16%, var(--star) 50%, var(--orchid) 84%, rgba(242, 246, 255, 0) 100%); background-size: 160% 100%; opacity: calc(.75 + var(--p) * .25); animation-name: hxBeamX; -webkit-mask-image: none; mask-image: none; }
+  .hxc__beam::before, .hxc__beam::after { top: auto; bottom: auto; left: 6%; right: 6%; width: auto; height: 40px; }
+  .hxc__beam::before { bottom: 1px; background: linear-gradient(0deg, rgba(82, 235, 200, .45), rgba(82, 235, 200, 0)); }
+  .hxc__beam::after { top: 1px; background: linear-gradient(180deg, rgba(211, 105, 255, .45), rgba(211, 105, 255, 0)); }
+  .hxc__grip { display: none; }
+  .hxc__head { grid-column: 2; grid-row: 1; gap: 12px; padding-top: 26px; }
+  .hxc__store { grid-column: 2; max-width: none; justify-self: stretch; gap: 6px; }
+  .hxc__store--whitehall { grid-row: 2; padding-block: 26px 28px; }
+  .hxc__store--menands { grid-row: 3; padding-block: 30px 40px; justify-items: start; text-align: left; }
+  .hxc__store--menands .hxc__n, .hxc__store--menands .hxc__cta { flex-direction: row; }
+  .hxc__name { font-size: clamp(2.3rem, 10vw, 3rem); }
+  .hxc__tag { font-size: .95rem; }
+  .hxc__cta { margin-top: 4px; }
+}
+
+/* ================= D: Orbit (floating objects) =================
+   Each object: --x/--y (% of the hero below the header), --w (width in vw), --z (depth: 0 far .. 1 near; far is
+   smaller, softer, darker); --mx/--my/--mw place it on the phone arc. hero-options.js writes `transform` (the drift and
+   the parallax); CSS keeps `translate` (centring) and `scale` (hover), so they never fight. */
+.hxd { display: grid; align-content: center; }
+.hxd__sky { position: absolute; inset: 0; z-index: -1; overflow: hidden; background: radial-gradient(70% 60% at 74% 30%, rgba(23, 52, 92, .55) 0%, rgba(23, 52, 92, 0) 70%), radial-gradient(60% 50% at 10% 100%, rgba(138, 107, 255, .1), rgba(138, 107, 255, 0) 70%), linear-gradient(180deg, var(--night-0) 0%, color-mix(in srgb, var(--night-0) 55%, var(--night)) 55%, var(--night) 100%); }
+/* the curtain runs full strength over the objects and fades back behind the words */
+.hxd__gl { position: absolute; inset: 0 0 auto; width: 100%; height: 76%; mix-blend-mode: screen; opacity: 0; transition: opacity 1.6s ease; -webkit-mask-image: radial-gradient(52% 78% at 22% 70%, rgba(0, 0, 0, .26) 0%, rgba(0, 0, 0, .36) 55%, #000 100%); mask-image: radial-gradient(52% 78% at 22% 70%, rgba(0, 0, 0, .26) 0%, rgba(0, 0, 0, .36) 55%, #000 100%); }
+.hxd__gl.is-gl { opacity: 1; }
+.hxd__veil { position: absolute; inset: 0; background: radial-gradient(54% 64% at 26% 52%, rgba(3, 10, 20, .8) 0%, rgba(3, 10, 20, .54) 55%, rgba(3, 10, 20, 0) 94%), linear-gradient(180deg, rgba(3, 10, 20, .45) 0%, rgba(3, 10, 20, 0) 14%, rgba(3, 10, 20, 0) 80%, var(--night) 100%); }
+.hxd__in { position: relative; z-index: 1; width: min(100% - 2 * var(--gutter), var(--wrap-wide)); margin-inline: auto; padding-block: clamp(24px, 4svh, 48px) clamp(56px, 9svh, 96px); }
+/* the words keep to the left half: the column narrows before it could reach the objects */
+.hxd__copy { display: grid; justify-items: start; gap: clamp(18px, 2.6svh, 26px); max-width: min(620px, 50vw); margin-left: clamp(0px, calc((100vw - 1100px) * .6), 150px); }
+.hxd__h1 .hx__t { font-size: clamp(3.3rem, min(8vw, 14svh), 8rem); line-height: .92; }
+.hxd__lede { max-width: 50ch; color: #dfe7f6; font-size: clamp(1.05rem, 1.35vw, 1.24rem); text-shadow: 0 2px 18px rgba(3, 10, 20, .9); }
+.hxd__cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.hxd__orbit { position: absolute; inset: var(--hdr-h) 0 0; z-index: 2; pointer-events: none; }
+.hxd__o { position: absolute; left: var(--x); top: var(--y); width: clamp(40px, calc(var(--w) * 1vw), calc(var(--w) * 14.4px)); translate: -50% -50%; pointer-events: auto; will-change: transform; }
+.hxd__a { position: relative; display: block; color: var(--star); text-decoration: none; }
+.hxd__a:focus-visible { outline: none; }
+.hxd__img { display: block; filter: blur(calc((1 - var(--z)) * 2.4px)) brightness(calc(.58 + var(--z) * .42)) drop-shadow(0 18px 26px rgba(0, 0, 0, .55)); scale: calc(.9 + var(--z) * .1); transition: filter .5s var(--ease-out), scale .6s var(--ease-out); }
+.hxd__img img { width: 100%; }
+.hxd__a:hover .hxd__img, .hxd__a:focus-visible .hxd__img { filter: blur(0) brightness(1.06) drop-shadow(0 0 24px rgba(82, 235, 200, .5)); scale: 1.08; }
+.hxd__lbl { position: absolute; left: 50%; top: 100%; z-index: 1; display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px 6px 12px; border-radius: 999px; white-space: nowrap; font-size: .9rem; font-weight: 600; line-height: 1.2; color: var(--star); background: rgba(6, 18, 36, .88); box-shadow: 0 0 0 1px rgba(82, 235, 200, .45), 0 10px 26px -10px rgba(0, 0, 0, .8); opacity: 0; translate: -50% 4px; transition: opacity var(--dur-2), translate var(--dur-2) var(--ease-out); pointer-events: none; }
+.hxd__lbl .ico { width: 14px; height: 14px; color: var(--teal); }
+.hxd__a:hover .hxd__lbl, .hxd__a:focus-visible .hxd__lbl { opacity: 1; translate: -50% 10px; }
+.hxd__a:focus-visible .hxd__lbl { box-shadow: 0 0 0 2px var(--teal), 0 10px 26px -10px rgba(0, 0, 0, .8); }
+@media (hover: none) { .hxd__lbl { opacity: 1; translate: -50% 2px; padding: 3px 9px; font-size: .78rem; } .hxd__lbl .ico { display: none; } }
+@media (max-width: 860px) {
+  .hxd { display: flex; flex-direction: column; justify-content: center; }
+  .hxd__orbit { position: relative; inset: auto; order: -1; height: clamp(180px, 50vw, 270px); margin-top: 6px; }
+  .hxd__o { left: var(--mx); top: var(--my); width: min(calc(var(--mw) * 1vw), calc(var(--mw) * 5.4px)); }
+  .hxd__o[data-m="0"] { display: none; }
+  .hxd__in { padding-block: 0 52px; }
+  .hxd__copy { max-width: 620px; margin-inline: auto; justify-items: center; text-align: center; }
+  .hxd__h1 { justify-items: center; }
+  .hxd__cta, .hxd__facts { justify-content: center; }
+  .hxd__gl { height: 50%; -webkit-mask-image: none; mask-image: none; }
+  /* phones: the products float in the open aurora; the words sit on a dark band below them */
+  .hxd__veil { background: linear-gradient(180deg, rgba(3, 10, 20, .35) 0%, rgba(3, 10, 20, 0) 12%, rgba(3, 10, 20, 0) 27%, rgba(3, 10, 20, .74) 36%, rgba(3, 10, 20, .74) 82%, var(--night) 100%); }
+}
+@media (max-width: 560px) {
+  .hxd__cta { width: 100%; }
+  .hxd__cta .btn { width: 100%; }
+  .hxd__facts { gap: 6px 16px; font-size: .9rem; }
+}
+
+/* ================= the switcher: A / B / C / D, fixed bottom-left, above the sticky store bar ================= */
+.hxs { position: fixed; left: calc(14px + env(safe-area-inset-left)); bottom: calc(14px + env(safe-area-inset-bottom)); z-index: calc(var(--z-drawer) - 1); display: flex; align-items: center; gap: 4px; padding: 5px; border-radius: 16px; background: rgba(6, 18, 36, .88); box-shadow: 0 0 0 1px var(--glass-brd), 0 18px 50px -16px rgba(0, 0, 0, .85); -webkit-backdrop-filter: blur(14px) saturate(140%); backdrop-filter: blur(14px) saturate(140%); translate: 0 calc(var(--bottom-stack) * -1 - min(var(--bottom-stack), 1px) * 10); transition: translate .55s var(--ease-out); }
+.hxs__all { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px 0 9px; border-radius: 11px; color: var(--mist); font-size: .74rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; white-space: nowrap; }
+.hxs__all .ico { width: 16px; height: 16px; color: var(--teal); flex: none; }
+.hxs__all:hover, .hxs__all[aria-current] { color: var(--star); background: rgba(255, 255, 255, .06); }
+.hxs__list { display: flex; gap: 4px; }
+.hxs__o { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 11px; font-family: var(--f-display); font-size: 1.05rem; font-weight: 800; line-height: 1; color: var(--star); text-decoration: none; box-shadow: inset 0 0 0 1px var(--line-2); transition: background-color var(--dur-1), box-shadow var(--dur-1), color var(--dur-1); }
+.hxs__o:hover { background: rgba(82, 235, 200, .1); box-shadow: inset 0 0 0 1px var(--teal); }
+.hxs__o.is-on { background: var(--teal); color: var(--teal-ink); box-shadow: 0 0 20px -4px rgba(82, 235, 200, .7); }
+.gate-open .hxs, .gate-pending .hxs { visibility: hidden; }
+@media (max-width: 560px) {
+  .hxs { left: calc(8px + env(safe-area-inset-left)); bottom: calc(8px + env(safe-area-inset-bottom)); gap: 2px; padding: 4px; }
+  .hxs__all { min-height: 42px; padding: 0 9px; }
+  .hxs__all span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .hxs__o { width: 42px; height: 42px; }
+}
+
+/* ================= the index (/hero-options/) ================= */
+.hxi { padding-top: clamp(28px, 4vw, 56px); }
+.hxi__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 28px); }
+.hxi__card { display: grid; }
+.hxi__a { display: grid; grid-template-rows: auto 1fr; border-radius: var(--r-md); overflow: hidden; color: var(--star); text-decoration: none; background: linear-gradient(160deg, var(--night-3), var(--night-2)); box-shadow: 0 0 0 1px var(--line); transition: transform .5s var(--ease-out), box-shadow var(--dur-2); }
+.hxi__a:hover { transform: translateY(-4px); box-shadow: 0 0 0 1px rgba(82, 235, 200, .5), 0 26px 60px -26px rgba(82, 235, 200, .45); }
+.hxi__a:focus-visible { outline-offset: 4px; border-radius: var(--r-md); }
+.hxi__prev { position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; isolation: isolate; background: var(--night-0); }
+.hxi__prev > img, .hxi__half img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; transition: transform 1.2s var(--ease-out); }
+.hxi__prev > img { top: -7%; height: 116%; } /* the aurora still carries a thin dark band top and bottom */
+.hxi__a:hover .hxi__prev > img, .hxi__a:hover .hxi__half img { transform: scale(1.04); }
+.hxi__prev::after { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(3, 10, 20, .2) 0%, rgba(3, 10, 20, .55) 100%); }
+.hxi__sk { position: absolute; z-index: 2; display: grid; gap: 6px; }
+.hxi__sk i { display: block; width: 120px; height: 14px; border-radius: 4px; background: rgba(242, 246, 255, .92); }
+.hxi__sk i:nth-child(1) { width: 64px; height: 5px; background: var(--teal); }
+.hxi__sk i:nth-child(3) { width: 150px; background: var(--aurora); }
+.hxi__sk--a, .hxi__sk--d { left: 7%; top: 40%; }
+.hxi__sk--b { left: 50%; top: 50%; translate: -50% 0; justify-items: center; }
+.hxi__sk--c { left: 50%; top: 13%; translate: -50% 0; justify-items: center; }
+.hxi__sk--c i:nth-child(2) { width: 190px; background: var(--aurora); }
+.hxi__badge { position: absolute; z-index: 2; left: 50%; top: 13%; width: 15%; translate: -50% 0; }
+.hxi__badge img { width: 100%; }
+.hxi__dots { position: absolute; z-index: 2; left: 50%; bottom: 12%; display: flex; gap: 12px; translate: -50% 0; }
+.hxi__dots i { width: 56px; height: 16px; border-radius: 6px; background: rgba(6, 18, 36, .72); box-shadow: inset 0 0 0 1px rgba(82, 235, 200, .65); }
+.hxi__dots i + i { box-shadow: inset 0 0 0 1px rgba(211, 105, 255, .65); }
+.hxi__half { position: absolute; inset: 0; }
+.hxi__half--w { clip-path: inset(0 42% 0 0); }
+.hxi__half--m { clip-path: inset(0 0 0 58%); }
+.hxi__seam { position: absolute; z-index: 2; top: 0; bottom: 0; left: 58%; width: 2px; margin-left: -1px; background: linear-gradient(180deg, rgba(242, 246, 255, 0), var(--teal) 18%, var(--star) 50%, var(--orchid) 82%, rgba(242, 246, 255, 0)); box-shadow: 0 0 12px 2px rgba(242, 246, 255, .4); }
+.hxi__card--d .hxi__prev { background: linear-gradient(180deg, var(--night-0), var(--night)); }
+.hxi__aur { position: absolute; inset: 0 0 40%; background: var(--aurora); opacity: .42; filter: blur(8px); -webkit-mask-image: linear-gradient(180deg, #000, transparent); mask-image: linear-gradient(180deg, #000, transparent); }
+.hxi__cut { position: absolute; z-index: 2; }
+.hxi__cut img { width: 100%; }
+.hxi__cut--0 { left: 62%; top: 14%; width: 15%; }
+.hxi__cut--1 { left: 84%; top: 10%; width: 10%; filter: blur(1px) brightness(.8); }
+.hxi__cut--2 { left: 57%; top: 50%; width: 5%; }
+.hxi__cut--3 { left: 75%; top: 50%; width: 15%; }
+.hxi__cut--4 { left: 3%; top: 66%; width: 7%; filter: blur(1px) brightness(.75); }
+.hxi__body { display: grid; align-content: start; gap: 10px; padding: clamp(18px, 2.4vw, 26px); }
+.hxi__k { display: inline-flex; align-items: center; gap: 12px; color: var(--fog); font-size: var(--t-meta); font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+.hxi__k b { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; font-family: var(--f-display); font-size: 1.2rem; font-weight: 800; letter-spacing: 0; color: var(--teal); background: rgba(82, 235, 200, .12); box-shadow: inset 0 0 0 1px rgba(82, 235, 200, .35); }
+.hxi__name { font-family: var(--f-display); font-size: clamp(1.5rem, 2.4vw, 2.05rem); font-weight: 700; line-height: 1.05; letter-spacing: -.015em; }
+.hxi__note { color: var(--mist); }
+.hxi__moves { display: flex; gap: 10px; color: var(--fog); font-size: .96rem; }
+.hxi__moves .ico { width: 18px; height: 18px; margin-top: 4px; color: var(--teal); flex: none; }
+.hxi__go { display: inline-flex; align-items: center; gap: 8px; margin-top: 6px; color: var(--teal); font-weight: 600; }
+.hxi__go .ico { width: 18px; height: 18px; transition: transform var(--dur-2) var(--ease-out); }
+.hxi__a:hover .hxi__go .ico { transform: translateX(4px); }
+.hxi__fine { display: flex; gap: 10px; max-width: 80ch; margin-top: clamp(24px, 3vw, 36px); color: var(--fog); font-size: .96rem; }
+.hxi__fine .ico { width: 18px; height: 18px; margin-top: 4px; color: var(--teal); flex: none; }
+@media (max-width: 760px) { .hxi__grid { grid-template-columns: 1fr; } }

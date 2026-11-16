@@ -200,21 +200,25 @@
     h.setAttribute('data-reveal-split', '');
   });
 
-  /* ---------------- scroll loop: header state, bar, parallax ---------------- */
+  /* ---------------- scroll loop: header state, bar, parallax ----------------
+     Parallax layers move with `translate`. A pointer offset added by reactive.js (the home hero's pointer parallax) sits
+     in el.__nlp = {x, y}: this loop folds it in, and keeps its own offset in el.__nls so reactive.js can do the same, so
+     the two never fight over the property. Rects are read in one pass, then everything is written. */
   const depth = (!RM && W.innerWidth > 760) ? $$('[data-depth]') : [];
   let ticking = false;
   function onScroll() {
-    const y = W.scrollY;
-    if (hdr) hdr.classList.toggle('is-scrolled', y > 24);
-    evalBar();
+    const y = W.scrollY, moves = [];
     if (depth.length) {
       const vh = W.innerHeight;
       for (const el of depth) {
         const r = el.getBoundingClientRect(); if (r.bottom < -300 || r.top > vh + 300) continue;
-        const k = parseFloat(el.getAttribute('data-depth')) || 0; const off = (r.top + r.height / 2 - vh / 2) * -k;
-        el.style.translate = '0 ' + off.toFixed(1) + 'px';
+        const p = el.__nlp, k = parseFloat(el.getAttribute('data-depth')) || 0;
+        moves.push([el, (r.top - (p ? p.y : 0) + r.height / 2 - vh / 2) * -k, p]);
       }
     }
+    if (hdr) hdr.classList.toggle('is-scrolled', y > 24);
+    evalBar();
+    for (const [el, off, p] of moves) { el.__nls = off; el.style.translate = p ? p.x.toFixed(1) + 'px ' + (off + p.y).toFixed(1) + 'px' : '0 ' + off.toFixed(1) + 'px'; }
     ticking = false;
   }
   W.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
@@ -239,10 +243,7 @@
       });
       el.addEventListener('pointerleave', () => { t.style.setProperty('--tx', '0deg'); t.style.setProperty('--ty', '0deg'); });
     });
-    $$('.btn--lg, .hdr__shop').forEach((el) => {
-      el.addEventListener('pointermove', (e) => { const r = el.getBoundingClientRect(); const x = (e.clientX - r.left - r.width / 2) * 0.2, y = (e.clientY - r.top - r.height / 2) * 0.3; el.style.translate = Math.max(-8, Math.min(8, x)).toFixed(1) + 'px ' + Math.max(-6, Math.min(6, y)).toFixed(1) + 'px'; });
-      el.addEventListener('pointerleave', () => { el.style.translate = ''; });
-    });
+    // magnetic buttons (every .btn, .hdr__shop, .sbar__btn--shop) now live in reactive.js, eased, in its one pointer loop
     $$('[data-spot]').forEach((el) => {
       let raf = 0;
       el.addEventListener('pointermove', (e) => { if (raf) return; raf = requestAnimationFrame(() => { raf = 0; const r = el.getBoundingClientRect(); el.style.setProperty('--lx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%'); el.style.setProperty('--ly', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%'); }); });
@@ -260,7 +261,10 @@
     c.style.touchAction = 'pan-y'; c.style.cursor = 'grab';
   });
 
-  /* ---------------- aurora: the badge's spike motif, drawn live (paused off screen, still under reduced motion) ---------------- */
+  /* ---------------- aurora: the badge's spike motif, drawn live (paused off screen, still under reduced motion) ----------------
+     It answers the visitor: on fine pointers the rays nearest the pointer grow taller and brighter and lean toward it
+     (eased in, decaying once it leaves); on every device the scroll speed adds a gentle sway and shimmer. Still one rAF
+     loop per canvas, capped at 30fps, paused off screen; under reduced motion it stays one static frame. */
   const COLS = [[194, 92, 255], [138, 107, 255], [64, 137, 255], [46, 196, 255], [85, 255, 214]];
   const colAt = (t) => { t = ((t % 1) + 1) % 1; const f = t * (COLS.length - 1), i = Math.floor(f), k = f - i, a = COLS[i], b = COLS[Math.min(i + 1, COLS.length - 1)]; return [0, 1, 2].map((j) => Math.round(a[j] + (b[j] - a[j]) * k)).join(','); };
   const CFG = {
@@ -269,29 +273,56 @@
     gate: { base: 0.55, amp: 0.09, h: 0.5, n: 100, a: 0.42, w: 0.5 },
     tiers: { base: 0.98, amp: 0.05, h: 0.75, n: 110, a: 0.22, w: 0.55 },
   };
+  const AP = { x: 0, y: 0, on: false }; // the pointer in client px, shared by every aurora canvas (fine pointers only)
+  if (FINE && !RM && $('canvas[data-aurora]')) {
+    d.addEventListener('pointermove', (e) => { if (e.pointerType === 'touch') return; AP.x = e.clientX; AP.y = e.clientY; AP.on = true; }, { passive: true });
+    d.addEventListener('pointerout', (e) => { if (!e.relatedTarget) AP.on = false; }, { passive: true });
+    W.addEventListener('blur', () => { AP.on = false; });
+  }
   $$('canvas[data-aurora]').forEach((cv) => {
     const cfg = CFG[cv.getAttribute('data-aurora')] || CFG.soft; const ctx = cv.getContext('2d'); if (!ctx) return;
-    let w = 0, h = 0, vis = false, last = 0; const seed = Math.random() * 100;
+    let w = 0, h = 0, vis = false, run = false, last = 0; const seed = Math.random() * 100;
+    // the eased pointer over this canvas (canvas px), its pull e (0..1), the scroll sway sw (-1..1), the last scroll sample
+    const st = { x: 0, y: 0, e: 0, sw: 0, sy: W.scrollY, t: 0 };
     function size() { const r = cv.getBoundingClientRect(); const dpr = Math.min(1.5, W.devicePixelRatio || 1); w = cv.width = Math.max(1, Math.round(r.width * dpr)); h = cv.height = Math.max(1, Math.round(r.height * dpr)); }
+    function sense(t) {
+      const r = cv.getBoundingClientRect();
+      const over = AP.on && r.width > 0 && AP.x >= r.left && AP.x <= r.right && AP.y >= r.top && AP.y <= r.bottom;
+      if (over) {
+        const tx = (AP.x - r.left) * (w / r.width), ty = (AP.y - r.top) * (h / r.height);
+        if (st.e < 0.02) { st.x = tx; st.y = ty; } else { st.x += (tx - st.x) * 0.22; st.y += (ty - st.y) * 0.22; }
+      }
+      st.e += ((over ? 1 : 0) - st.e) * (over ? 0.12 : 0.05); if (st.e < 0.003) st.e = 0;
+      const y = W.scrollY, v = st.t ? (y - st.sy) / Math.max(16, t - st.t) : 0; st.sy = y; st.t = t;
+      st.sw += (Math.max(-1, Math.min(1, v * 0.9)) - st.sw) * 0.16; if (Math.abs(st.sw) < 0.003) st.sw = 0;
+    }
     function draw(t) {
       ctx.clearRect(0, 0, w, h); ctx.globalCompositeOperation = 'lighter';
       const n = W.innerWidth < 760 ? Math.round(cfg.n * 0.55) : cfg.n; const step = w / n;
+      const e = st.e, sw = st.sw, sh = Math.abs(sw), sx = Math.max(70, w * 0.09), kx = 1 / (2 * sx * sx), ky = 2 / (h * h);
       for (let i = 0; i < n; i++) {
         const u = i / (n - 1);
         const wave = Math.sin(u * 5.5 + t * 0.00022 + seed) * 0.6 + Math.sin(u * 12.5 - t * 0.00035) * 0.4;
         const by = h * (cfg.base + cfg.amp * wave);
-        const pulse = Math.sin(u * 23 + t * 0.0008 + i * 1.7); const len = h * cfg.h * (0.35 + 0.65 * pulse * pulse);
+        const pulse = Math.sin(u * 23 + t * 0.0008 + i * 1.7); let len = h * cfg.h * (0.35 + 0.65 * pulse * pulse);
+        const x = i * step + step / 2;
+        // f: how much the pointer pulls this ray (gaussian in x, gentle in y); shim: the scroll shimmer
+        let f = 0; if (e) { const dx = x - st.x, dy = by - len * 0.5 - st.y; f = e * Math.exp(-dx * dx * kx - dy * dy * ky); }
+        const shim = sh ? sh * (0.5 + 0.5 * Math.sin(u * 41 + t * 0.011 + seed)) : 0;
+        len *= 1 + 0.55 * f + 0.1 * sh;
+        const a = Math.min(0.8, cfg.a * (1 + 0.85 * f + 0.55 * shim));
+        const lean = (st.x - x) * 0.16 * f + sw * len * 0.09 * Math.sin(u * 7 + t * 0.0016 + seed);
         const c = colAt(u * 0.9 + Math.sin(t * 0.00006 + seed) * 0.12);
-        const g = ctx.createLinearGradient(0, by, 0, by - len); g.addColorStop(0, 'rgba(' + c + ',' + cfg.a + ')'); g.addColorStop(0.6, 'rgba(' + c + ',' + (cfg.a * 0.35).toFixed(3) + ')'); g.addColorStop(1, 'rgba(' + c + ',0)');
-        ctx.fillStyle = g; const x = i * step + step / 2, hw = Math.max(1.2, step * cfg.w) / 2;
-        ctx.beginPath(); ctx.moveTo(x - hw, by); ctx.lineTo(x + hw, by); ctx.lineTo(x, by - len); ctx.closePath(); ctx.fill();
+        const g = ctx.createLinearGradient(0, by, 0, by - len); g.addColorStop(0, 'rgba(' + c + ',' + a.toFixed(3) + ')'); g.addColorStop(0.6, 'rgba(' + c + ',' + (a * 0.35).toFixed(3) + ')'); g.addColorStop(1, 'rgba(' + c + ',0)');
+        ctx.fillStyle = g; const hw = Math.max(1.2, step * cfg.w) / 2;
+        ctx.beginPath(); ctx.moveTo(x - hw, by); ctx.lineTo(x + hw, by); ctx.lineTo(x + lean, by - len); ctx.closePath(); ctx.fill();
       }
     }
-    function loop(t) { if (!vis) return; if (t - last > 33) { last = t; draw(t); } requestAnimationFrame(loop); }
+    function loop(t) { if (!vis) { run = false; return; } if (t - last > 33) { last = t; sense(t); draw(t); } requestAnimationFrame(loop); }
     size(); draw(8000);
     W.addEventListener('resize', () => { size(); draw(performance.now()); }, { passive: true });
     if (RM) return;
-    if ('IntersectionObserver' in W) new IntersectionObserver((en) => { vis = en[0].isIntersecting; if (vis) requestAnimationFrame(loop); }, { rootMargin: '100px' }).observe(cv);
+    if ('IntersectionObserver' in W) new IntersectionObserver((en) => { vis = en[0].isIntersecting; if (vis && !run) { run = true; requestAnimationFrame(loop); } }, { rootMargin: '100px' }).observe(cv);
   });
 
   /* ---------------- reviews deck ---------------- */

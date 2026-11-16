@@ -1,7 +1,7 @@
 // fetch-fonts.mjs: self-host the open fonts (SIL OFL) the redesign uses, latin subset only, as woff2.
 //   node tools/fetch-fonts.mjs  -> src/assets/fonts/*.woff2 + src/assets/fonts/fonts.json
 // Fraunces (variable: opsz, wght, SOFT, WONK) is the open stand-in for the live site's display face (Vallejo Black);
-// Jost (Futura-inspired) stands in for the live site's body face (Futura Book); Caveat is the postcard hand.
+// Jost (Futura-inspired) stands in for the live site's body face (Futura Book).
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -13,7 +13,6 @@ const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (
 const FAMILIES = [
   { css: 'family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1', file: 'fraunces' },
   { css: 'family=Jost:ital,wght@0,100..900;1,100..900', file: 'jost' },
-  { css: 'family=Caveat:wght@400..700', file: 'caveat' },
 ];
 const record = [];
 for (const f of FAMILIES) {

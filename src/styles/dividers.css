@@ -1,0 +1,89 @@
+/* dividers.css (lanes D + W): seamless section seams.
+   1. Every dark band starts and ends at exactly --night, so two dark neighbours meet invisibly; each band keeps its
+      own character (a darker or lighter middle, its glows) between the edges.
+   2. The glowing wave build.mjs drops where the tone changes, and at two chapter breaks on the home page
+      (src/lib/dividers.mjs): a band across the seam whose crest is a thin aurora line with a soft halo, drawn live by
+      src/scripts/waves.js (WebGL) over a static SVG twin (the same crest, an aurora gradient stroke). It paints a
+      section colour only where the crest has crossed the seam, so both sections' own backgrounds show through
+      everywhere else. Decorative, aria-hidden, never in front of content (it sits in the sections' padding).
+   3. The aurora ribbon riding over the wave into the living room (home).
+   Loads after base/chrome/components/home (so it overrides their band backgrounds), before pages/fix. */
+:root {
+  --dv-fade: min(200px, 30%);                /* how far a dark band runs before it reaches --night at each edge */
+  --wv-h: clamp(90px, 11vw, 170px);          /* the wave's band, centred on the seam (half in each padding) */
+  --wv-h-tight: clamp(90px, 10vw, 160px);    /* next to a .band--tight band: fits its thinner padding */
+  --wv-h-lamp: clamp(68px, 8.6vw, 136px);    /* into the living room: inside its top padding, under the ribbon, the
+                                                crest clear of the guitar that floats out of the photo on phones */
+  --wv-h-menu: clamp(60px, 6vw, 96px);       /* menu pages: store bar -> live menu, kept compact */
+  --rb-h: clamp(84px, 8vw, 120px);           /* the aurora ribbon's box; its text stays at 15px+ on phones */
+}
+
+/* ---- 1. seamless dark bands ---- */
+.band--night-2 { background: linear-gradient(180deg, var(--night) 0%, var(--night-2) var(--dv-fade), var(--night-2) calc(100% - var(--dv-fade)), var(--night) 100%); }
+.band--night-0 { background: linear-gradient(180deg, var(--night) 0%, var(--night-0) var(--dv-fade), var(--night-0) calc(100% - var(--dv-fade)), var(--night) 100%); }
+/* choose your store: the same blue glow, centred lower so the band's top edge is --night under the hero */
+.choose { background: radial-gradient(90% 64% at 50% 32%, #0d2546 0%, var(--night) 47%); }
+/* four seasons: still a touch darker up top, but it opens and closes on --night (rewards now ends on --night itself) */
+.seasonsband { background: linear-gradient(180deg, var(--night) 0%, color-mix(in srgb, var(--night-0) 50%, var(--night)) 30%, var(--night) 78%); }
+/* decorative layers (glows, aurora canvases, the rewards fade) dissolve before a band's edges */
+.band__clip {
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 var(--dv-fade), #000 calc(100% - var(--dv-fade)), transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 var(--dv-fade), #000 calc(100% - var(--dv-fade)), transparent 100%);
+}
+
+/* ---- 2. the glowing wave ---- */
+/* In front of the lower section, pulled across the seam by negative margins (net height zero, so the page never
+   moves): .wv--mid is centred on it, .wv--top hangs inside the lower section's top padding, .wv--bot sits inside the
+   upper section's bottom padding. z-index 1 lifts it over both sections' backgrounds; the paddings keep it off
+   their content. --wv-a = the colour the upper section ends on, --wv-b = the colour the lower one starts on (each is
+   painted only between the seam and the crest); --wv-ga / --wv-gb = how much halo spills above / below the crest
+   (less on the light bands, where light reads as a tint); --wv-light (default 1) scales all of the light, and 0
+   leaves the section colours alone, which is how private/wave-check.mjs --fills measures the seams exactly. */
+.wv {
+  position: relative; z-index: 1; height: var(--wv-h); margin-block: calc(var(--wv-h) * -.5); pointer-events: none;
+  --wv-a: var(--night); --wv-b: var(--night); --wv-ga: 1; --wv-gb: 1;
+}
+.wv--top { margin-block: 0 calc(var(--wv-h) * -1); }
+.wv--bot { margin-block: calc(var(--wv-h) * -1) 0; }
+.wv--tight { --wv-h: var(--wv-h-tight); }
+.wv--to-lamp { --wv-h: var(--wv-h-lamp); }
+.wv--to-white { --wv-h: var(--wv-h-menu); }
+.wv__svg, .wv__gl { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; display: block; }
+.wv__svg { overflow: hidden; }
+/* the live canvas fades in over its static twin (same crest at t = 0), then the twin steps aside */
+.wv__gl { opacity: 0; transition: opacity .5s var(--ease-out); }
+.wv.is-gl .wv__gl { opacity: 1; }
+.wv.is-gl .wv__svg { visibility: hidden; transition: visibility 0s .5s; }
+@media (prefers-reduced-motion: reduce) { .wv__gl, .wv.is-gl .wv__svg { transition: none; } }
+/* tones */
+.wv--from-lamp { --wv-a: var(--night-0); }                 /* the lamp band's radial glow ends on --night-0 all along its foot */
+.wv--from-paper { --wv-a: var(--paper); --wv-ga: .3; }
+.wv--from-white { --wv-a: #fff; --wv-ga: .3; }
+.wv--to-paper { --wv-b: var(--paper); --wv-gb: .3; }
+.wv--to-white { --wv-b: #fff; --wv-gb: .3; }
+.wv--to-lamp { --wv-b: var(--night-0); }                    /* (a .wv--top band never paints --wv-b) */
+/* the footer opens on --night (its sky fades from --night: chrome.css .ftr__sky::after) */
+.wv__fa { fill: var(--wv-a); }
+.wv__fb { fill: var(--wv-b); }
+.wv__halo { fill: none; stroke-width: 6px; opacity: .55; }
+.wv__line { fill: none; stroke-width: 1.6px; }
+.wv--from-paper .wv__halo, .wv--from-white .wv__halo, .wv--to-paper .wv__halo, .wv--to-white .wv__halo { opacity: .4; }
+
+/* room for the band where a section's own padding is short */
+.mhead.wv-a--bot { padding-bottom: calc(16px + var(--wv-h-menu)); }        /* the store bar holds the whole band */
+@media (max-width: 760px) { .mhead.wv-a--bot { padding-bottom: calc(10px + var(--wv-h-menu)); } }
+.menu.wv-a { padding-bottom: calc(24px + var(--wv-h) * .5); }              /* the live menu's foot, into the footer */
+@media (max-width: 680px) { .choose.wv-b--top { padding-top: calc(var(--wv-h) + 10px); } } /* chapter break under the hero */
+
+/* ---- 3. the aurora ribbon: the store's lines riding over the wave into the living room ---- */
+.dv-rb { position: relative; z-index: var(--z-float); height: var(--rb-h); margin-block: calc(var(--rb-h) * -.66) calc(var(--rb-h) * -.34); overflow: hidden; pointer-events: none; }
+.dv-rb__run { position: absolute; inset: 0; }
+.dv-rb__svg { position: absolute; left: 0; top: 0; height: 100%; width: auto; max-width: none; animation: dvRibbon 110s linear infinite; will-change: transform; }
+@keyframes dvRibbon { to { transform: translate3d(var(--rb-shift), 0, 0); } }
+.dv-rb__band { stroke-width: 34; }
+.dv-rb__glow { stroke-width: 46; opacity: .5; }
+.dv-rb__t { font-family: var(--f-sans); font-size: 24px; font-weight: 600; letter-spacing: .01em; fill: var(--night); }
+.dv-rb__stars { fill: var(--night); }
+@media (prefers-reduced-motion: reduce) { .dv-rb__svg { animation: none; will-change: auto; } }
+/* forced colours (Windows contrast themes): drop the decoration; the ribbon's words stay in its screen-reader copy */
+@media (forced-colors: active) { .wv, .dv-rb__run { display: none; } .dv-rb { height: 0; margin: 0; } }

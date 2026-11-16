@@ -54,7 +54,7 @@ export function storeCard(s, opts = {}) {
 
 function ageGate() {
   return `<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-q" hidden>
-  <div class="gate__sky" aria-hidden="true">${img('hero-aurora', { decorative: true, sizes: '100vw', min: 1400 })}<canvas class="aurora-canvas" data-aurora="gate"></canvas></div>
+  <div class="gate__sky" aria-hidden="true">${img('hero-aurora', { decorative: true, sizes: '100vw', min: 1400 })}<canvas class="gate__gl" data-aurora-gl data-stops="#55FFD6,#8A6BFF,#C25CFF" data-height=".44" aria-hidden="true"></canvas><canvas class="aurora-canvas" data-aurora="gate"></canvas></div>
   <div class="gate__card glass">
     <div class="gate__mono">${brandImg('monogram', { alt: 'Northern Lights' , eager: true })}</div>
     <div class="gate__step" data-gate-step="1">

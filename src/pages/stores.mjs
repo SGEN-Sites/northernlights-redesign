@@ -1,7 +1,7 @@
 // stores.mjs: the locations hub, a page per store (Whitehall first), same-day delivery, and the areas we serve
 // (a hub + one page per nearby town, the local-search pages of the adopted IA). Copy: src/content/places.mjs.
 import { esc, href, img, icon, inline, attrs } from '../lib/html.mjs';
-import { pageHero, blocks, faqList, ctaRow, catGrid, kicker, dh, postcard, light, statusSpan, storeStrip, btn, floatObj } from '../lib/parts.mjs';
+import { pageHero, blocks, faqList, ctaRow, catGrid, kicker, dh, light, statusSpan, storeStrip, btn, floatObj } from '../lib/parts.mjs';
 import { storeLd, storeCard } from '../lib/layout.mjs';
 import { livingMap } from '../lib/map.mjs';
 import { brand, stores, storeCats, storeById, DEFAULT_STORE } from '../content/site.mjs';
@@ -23,7 +23,7 @@ function storePage(s) {
     crumbs: [{ label: 'Home', href: '/' }, { label: 'Locations', href: '/locations/' }, { label: `${s.city}, ${s.region}`, href: s.page }],
     jsonld: [storeLd(s)],
     main: `<section class="shero shero--${s.id}" data-store-hero>
-  <div class="shero__bg" aria-hidden="true">${img(s.id === 'whitehall' ? 'canal-golden' : 'city-river', { decorative: true, sizes: '100vw', eager: true, min: 1600, depth: '0.08' })}<canvas class="aurora-canvas" data-aurora="soft"></canvas><div class="shero__scrim"></div></div>
+  <div class="shero__bg" aria-hidden="true">${img(s.id === 'whitehall' ? 'canal-golden' : 'city-river', { decorative: true, sizes: '100vw', eager: true, min: 1600, depth: '0.08' })}<canvas class="shero__gl" data-aurora-gl data-stops="#55FFD6,#4089FF,#C25CFF" data-height=".34" data-opacity=".85" aria-hidden="true"></canvas><canvas class="aurora-canvas" data-aurora="soft"></canvas><div class="shero__scrim"></div></div>
   <div class="wrap shero__in">
     <div class="shero__copy">
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="${href('/')}">Home</a></li><li><a href="${href('/locations/')}">Locations</a></li><li><span aria-current="page">${esc(s.city)}, ${esc(s.region)}</span></li></ol></nav>
@@ -55,7 +55,6 @@ function storePage(s) {
     <aside class="sinfo__side" data-reveal="right">
       <div class="sinfo__box glass"><h2 class="sinfo__h">${icon('clock')}Hours</h2>${hoursTable(s)}<p class="sinfo__note">Same-day delivery ${esc(s.delivery)}${s.curbside ? ` · Curbside ${esc(s.curbside)}` : ''}</p></div>
       <div class="sinfo__box glass"><h2 class="sinfo__h">${icon('cash')}Payment</h2><p>${s.payment.map(esc).join(' · ')}</p></div>
-      ${s.id === 'whitehall' ? postcard('store-whitehall', '132 Broadway, Whitehall', 'sinfo__card') : postcard('store-menands', '100 Broadway, Menands', 'sinfo__card')}
     </aside>
   </div>
 </section>

@@ -14,7 +14,6 @@
 @media (prefers-reduced-motion: reduce) {
   .js [data-reveal], .js [data-split] .w { opacity: 1 !important; transform: none !important; transition: none !important; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-  .tape__track { animation: none !important; }
   .coin__body { animation: none !important; }
   .lm__thread { stroke-dashoffset: 0 !important; }
 }

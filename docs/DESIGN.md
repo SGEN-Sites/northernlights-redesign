@@ -15,7 +15,6 @@ second point of light on the same map.
 | aurora strip | gradient topbar | kept as the topbar; the same gradient fills one accent word per heading |
 | display face | Vallejo Black (commercial) | Fraunces (open licence): heavy, soft serif with a 70s warmth; italic accent words |
 | body face | Futura Book (commercial) | Jost (open licence, Futura-inspired) |
-| hand | (none) | Caveat on photo postcards only |
 
 ## Three planes
 
@@ -26,19 +25,24 @@ second point of light on the same map.
 ## Signature moments
 
 - Hero: the aurora over the lake (still + generated 5 s loop), live canvas aurora, the 3D badge coin, and the real
-  Whitehall storefront photo as a taped postcard hanging into the next band.
+  Whitehall storefront in the Northern Lights frame.
+- The Northern Lights frame (`nlFrame`, `src/styles/frames.css`), drawn from the client's own badge: a slowly turning
+  aurora ring in the badge's violet-to-teal gradient, the logo's spike crown rising behind the top edge, the badge's
+  crescent moon and four-point stars, the badge's thin inner ring on the round variant, and a glass caption lit by
+  the store's own light. Arch (hero), round medallion (store pages, About) and landscape (the living room) variants.
 - One living map: the Upper Hudson, Lake George and the south end of Lake Champlain drawn from real coordinates; the
   Champlain Canal; the two stores as points of light; Whitehall lights first and the light travels down to Menands.
 - Category tiles: AI product cut-outs standing out of their cards, tilting in 3D, each opening the live menu on that shelf.
-- Crossing tapes of the stores' own lines over the seam into the living room.
-- The living room: framed interior with the guitar and a pothos floating out of the frame, the storefront postcard over it.
+- Seamless night bands; dividers drawn from the badge (mountain ridge into the warm and light bands, lake ripples out of them) and an aurora ribbon carrying the stores' own lines into the living room.
+- The living room: the interior in the landscape frame, with the guitar and a pothos floating out of it.
 - Rewards: the four real tiers as rising aurora rays.
 - Four seasons: staggered cards with the shop's own humor.
 
 ## Motion
 
 Reveal on scroll, split-word headings, parallax (`data-depth`), 3D tilt and magnetic buttons (fine pointers only), the
-coin spin, tape marquees, the map thread, the review deck. Everything is visible without JS and still under
+coin spin, the aurora ribbon, the map thread, the review deck, and a reactive layer: the aurora follows the pointer and
+the scroll, cards light up under the pointer, the hero layers move against the pointer, a scroll-progress aurora line. Everything is visible without JS and still under
 `prefers-reduced-motion` (the canvas draws one frame, loops never load).
 
 ## Store system

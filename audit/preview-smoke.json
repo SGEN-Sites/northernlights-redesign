@@ -1,13 +1,13 @@
 {
-  "at": "2026-11-16T01:54:58.599Z",
-  "url": "https://sgen-sites.github.io/northernlights-redesign/",
-  "pass": 12,
+  "at": "2026-11-16T04:11:25.584Z",
+  "url": "http://127.0.0.1:8787/",
+  "pass": 10,
   "total": 12,
   "results": [
     {
-      "name": "every page answers 200 with its own title and noindex (70 pages, 7 redirect stubs skipped)",
-      "ok": true,
-      "detail": ""
+      "name": "every page answers 200 with its own title and noindex (74 pages, 7 redirect stubs skipped)",
+      "ok": false,
+      "detail": "about-us/ 200  ; blog/four-seasons-on-broadway/ 200  ; blog/how-our-price-match-works/ 200  ; blog/ 200  ; blog/rewards-aurora-to-northern-light/ 200 "
     },
     {
       "name": "assets/css/site.css answers 200",
@@ -26,8 +26,8 @@
     },
     {
       "name": "robots.txt answers 200",
-      "ok": true,
-      "detail": "200 User-agent: * Disallow: / "
+      "ok": false,
+      "detail": "200 User-agent: * Allow: / Sitemap: https://northernlightsdispo.com/sitemap.xml "
     },
     {
       "name": "21+ gate shows on first visit",
@@ -52,12 +52,12 @@
     {
       "name": "sticky bar: Shop now, Call, Directions and today's hours, all for Menands",
       "ok": true,
-      "detail": "{\"on\":true,\"top\":726,\"bottom\":844,\"left\":0,\"right\":390,\"vw\":390,\"vh\":844,\"store\":\"menands\",\"city\":\"Menands\",\"shop\":\"/northernlights-redesign/menands/\",\"call\":\"tel:+15184720278\",\"maps\":\"https://www.google.com/maps/dir/?api=1&destination=Northern+Lights+Dispensary%2C+100+Broadway+%238%2C+Menands%2C+NY+12204\",\"hours\":\"Closed · opens 10am tomorrow\",\"labels\":[\"Shop now\",\"Call\",\"Directions\"]}"
+      "detail": "{\"on\":true,\"top\":726,\"bottom\":844,\"left\":0,\"right\":390,\"vw\":390,\"vh\":844,\"store\":\"menands\",\"city\":\"Menands\",\"shop\":\"/menands/\",\"call\":\"tel:+15184720278\",\"maps\":\"https://www.google.com/maps/dir/?api=1&destination=Northern+Lights+Dispensary%2C+100+Broadway+%238%2C+Menands%2C+NY+12204\",\"hours\":\"Closed · opens 10am tomorrow\",\"labels\":[\"Shop now\",\"Call\",\"Directions\"]}"
     },
     {
       "name": "category tiles follow the store (Flower -> Menands; Orals, a Whitehall-only shelf, -> Whitehall)",
       "ok": true,
-      "detail": "{\"flower\":\"/northernlights-redesign/menands/flower/\",\"orals\":\"/northernlights-redesign/whitehall/orals/\"}"
+      "detail": "{\"flower\":\"/menands/flower/\",\"orals\":\"/whitehall/orals/\"}"
     },
     {
       "name": "no script errors on the live preview (phone)",

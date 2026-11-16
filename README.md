@@ -8,7 +8,7 @@ store's own live menu, already on that shelf, with its products and cart.
 
 ## What is in it
 
-- 78 HTML files: the live site's pages at their live URLs (home, /whitehall/, /menands/, /loyalty-program/,
+- 82 HTML files: the live site's pages at their live URLs (home, /whitehall/, /menands/, /loyalty-program/,
   /contact/, /policies/, /vendor-intake/; the six testimonial posts now redirect to /reviews/), plus the page types of a
   full regional dispensary site: a live-menu page for every category each store carries, specials and brands per store,
   Shop and Deals, a page per store, Locations, Same-day Delivery, Areas We Serve (16 town pages), Rewards, Events,
@@ -36,7 +36,7 @@ node src/build.mjs --preview --out dist-preview --base /northernlights-redesign/
 |---|---|---|
 | every Shop, Specials and category destination shows products, prices and a working cart | 29/29 pass | `audit/menu-verification.json` |
 | site-reforge gate | 12 pass, 2 fail, 15 unproven | `audit/gate.json`, `docs/PUBLISH.md` |
-| the live preview: pages answer 200 with noindex; gate, store switch and sticky bar work | 12/12 pass | `audit/preview-smoke.json` |
+| the live preview: pages answer 200 with noindex; gate, store switch and sticky bar work | 10/12 pass | `audit/preview-smoke.json` |
 
 ## Imagery and marks
 

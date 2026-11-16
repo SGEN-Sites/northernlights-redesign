@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { esc, href, img, icon, inline, brandImg } from '../lib/html.mjs';
-import { pageHero, blocks, faqList, kicker, dh, tiers, reviewDeck, coin, postcard, floatObj, light, statusSpan } from '../lib/parts.mjs';
+import { pageHero, blocks, faqList, kicker, dh, tiers, reviewDeck, floatObj, light, statusSpan } from '../lib/parts.mjs';
 import { storeCard, orgLd } from '../lib/layout.mjs';
 import { livingMap } from '../lib/map.mjs';
 import { brand, stores, loyalty, reviews } from '../content/site.mjs';
@@ -20,7 +20,7 @@ function about() {
   return {
     path: '/about-us/', type: 'about', title: 'About Northern Lights Dispensary | Whitehall & Menands', description: 'Northern Lights is a family-owned, adult-use cannabis retailer on Broadway in Whitehall, NY, with a sister store in Menands. Fair prices, reliable service, community.',
     crumbs: cr, jsonld: [orgLd()],
-    main: pageHero({ kicker: 'About Northern Lights', h1: 'Family-owned, *lit from Broadway.*', lede: 'A neighborhood dispensary at the south tip of Lake Champlain, and its sister store just off I-787 near Albany.', image: 'canal-golden', crumbs: cr, aside: `<div class="phero__coin">${coin()}</div>`, variant: 'phero--split' }) + `
+    main: pageHero({ kicker: 'About Northern Lights', h1: 'Family-owned, *lit from Broadway.*', lede: 'A neighborhood dispensary at the south tip of Lake Champlain, and its sister store just off I-787 near Albany.', image: 'canal-golden', crumbs: cr }) + `
 <section class="band band--tight">
   <div class="wrap twocol twocol--about">
     <div class="prose" data-reveal>
@@ -28,9 +28,8 @@ function about() {
       ${brand.about.map((p) => `<p>${esc(p)}</p>`).join('')}
       ${blocks(c.story)}
     </div>
-    <aside class="about__art" data-reveal="right">
-      ${postcard('store-whitehall', 'Whitehall, 132 Broadway', 'about__pc1')}
-      ${postcard('store-menands', 'Menands, 100 Broadway', 'about__pc2')}
+    <aside class="about__art about__art--map" data-reveal="right">
+      ${livingMap({ id: 'about-top' })}
     </aside>
   </div>
 </section>
@@ -42,8 +41,7 @@ function about() {
 </section>
 <section class="band band--tight">
   <div class="wrap twocol">
-    <div data-reveal>${kicker('Two stores, one family')}${dh('Whitehall first, *Menands close behind.*', 'dh--md')}<div class="about__stores">${stores.map((s) => storeCard(s)).join('')}</div></div>
-    <div data-reveal="right">${livingMap({ id: 'about' })}</div>
+    <div class="about__two" data-reveal>${kicker('Two stores, one family')}${dh('Whitehall first, *Menands close behind.*', 'dh--md')}<div class="about__stores">${stores.map((s) => storeCard(s)).join('')}</div></div>
   </div>
 </section>`,
   };
