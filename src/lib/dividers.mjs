@@ -225,11 +225,15 @@ export function seams(html, page = {}) {
       place = RULES[key];
       if (!place) { if (!QUIET.has(key)) stats.unruled.set(key, (stats.unruled.get(key) || []).concat(where)); continue; }
     }
+    if (place === 'top' && b.footer) place = 'mid';
     const tight = a.cls.includes('band--tight') || b.cls.includes('band--tight');
     const rand = rng(hash(`${where}#${i}:${key}`));
-    // the wave goes in front of the lower section (inside <main>, or between </main> and <footer>); dividers.css
-    // pulls it up across the seam with negative margins, so it never changes the page's height
-    edits.push({ at: b.start, del: 0, ins: wave(`wv${i}`, rand, { place, from: a.tone, to: b.tone, chapter, tight }) });
+    // "mid": in front of the lower section (inside <main>, or between </main> and <footer>), pulled across the seam
+    // by negative margins (dividers.css), so it never changes the page's height. "top" / "bot": the last child of the
+    // section whose padding holds it, behind that section's content (anything that floats up into the padding, like
+    // the living room's guitar, stays in front of it)
+    const at = place === 'top' ? b.closeStart : place === 'bot' ? a.closeStart : b.start;
+    edits.push({ at, del: 0, ins: wave(`wv${i}`, rand, { place, from: a.tone, to: b.tone, chapter, tight }) });
     mark(a, 'wv-a', `wv-a--${place}`); mark(b, 'wv-b', `wv-b--${place}`);
     if (chapter) stats.chapter++; else stats.wave++;
     count++;

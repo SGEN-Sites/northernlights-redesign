@@ -3,14 +3,6 @@
 html { overflow-x: clip; }
 /* lists without a class get no bullets in the chrome */
 .ftr__col ul, .mega__col ul, .drawer__grp ul, .drawer__flat { list-style: none; padding: 0; margin: 0; }
-/* deals bento: no holes (match | specials | points / match | delivery x2) */
-.bento { grid-template-columns: 1.15fr 1fr 1fr; grid-template-areas: "match spec pts" "match dlv dlv"; }
-.bento__match { grid-area: match; grid-row: auto; }
-.bento__specials { grid-area: spec; }
-.bento__pts { grid-area: pts; }
-.bento__delivery { grid-area: dlv; grid-column: auto; }
-@media (max-width: 1000px) { .bento { grid-template-columns: 1fr 1fr; grid-template-areas: "match match" "spec pts" "dlv dlv"; } }
-@media (max-width: 640px) { .bento { grid-template-columns: 1fr; grid-template-areas: "match" "spec" "pts" "dlv"; } }
 /* reviews: the controls sit above the deck so a short review never leaves a gap before them */
 .rdeck { display: flex; flex-direction: column-reverse; gap: 18px; }
 /* the footer wordmark always fits its row */
@@ -102,3 +94,46 @@ html { overflow-x: clip; }
 .hero__in { grid-template-columns: minmax(0, 1fr); }
 .hero__copy { max-width: 720px; }
 @media (max-width: 900px) { .hero__in { padding-block: 72px 56px; } }
+
+/* ===== owner, round 4 ===== */
+/* eyebrows: no leading dash anywhere */
+.kicker::before, .hero__k::before { content: none !important; display: none !important; }
+.kicker, .hero__k { gap: 0; }
+
+/* deals bento, restacked into two balanced rows: price match (wide) + Rewards / specials + delivery (wide) */
+.bento { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto; grid-template-areas: "match match pts" "spec dlv dlv"; }
+.bento__match { grid-area: match !important; }
+.bento__pts { grid-area: pts !important; }
+.bento__specials { grid-area: spec !important; }
+.bento__delivery { grid-area: dlv !important; }
+.bento__a { min-height: 0; }
+.bento__match { align-content: end; }
+.bento__delivery { min-height: 250px; }
+@media (max-width: 1000px) { .bento { grid-template-columns: 1fr 1fr; grid-template-areas: "match match" "pts spec" "dlv dlv"; } }
+@media (max-width: 640px) { .bento { grid-template-columns: 1fr; grid-template-areas: "match" "pts" "spec" "dlv"; } }
+
+/* "Also on the shelves": centred under the grid */
+.shelves__more { text-align: center; }
+
+/* home store panels: one flush, compact card each (photo on top, details below, nothing overlapping) */
+.choose__grid { grid-template-columns: minmax(0, 1fr) minmax(220px, .62fr) minmax(0, 1fr); align-items: stretch; }
+.sp { display: flex; flex-direction: column; border-radius: var(--r-lg); overflow: hidden; background: linear-gradient(180deg, rgba(16, 38, 70, .75), rgba(8, 22, 42, .9)); border: 1px solid var(--line); box-shadow: var(--shadow-1); }
+.sp--lead { border-color: rgba(82, 235, 200, .45); box-shadow: 0 0 0 1px rgba(82, 235, 200, .15), 0 24px 60px -30px rgba(82, 235, 200, .45); }
+.sp__photo, .sp--menands .sp__photo, .sp--lead .sp__photo { border-radius: 0; aspect-ratio: 16 / 10; box-shadow: none; transform: none; }
+.sp__card, .sp__card.glass { margin: 0; flex: 1; border-radius: 0; border: 0; background: none; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; padding: 18px 20px 20px; gap: 6px; }
+.sp__name { font-size: clamp(1.8rem, 2.4vw, 2.3rem); }
+.sp__cta { margin-top: 6px; }
+.choose__map { align-self: center; }
+@media (max-width: 1000px) { .choose__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 680px) { .choose__grid { grid-template-columns: 1fr; } .sp__photo { aspect-ratio: 16 / 9; } }
+
+/* phones: every CTA uses the full width; two or more in a group stack, centred */
+@media (max-width: 760px) {
+  .btn:not(.hdr__shop) { width: 100%; justify-content: center; text-align: center; white-space: normal; }
+  .ctarow, .hero__cta, .sp__cta, .scard__cta { display: flex; flex-direction: column; align-items: stretch; gap: 10px; }
+  .rewards__foot, .brands__head { flex-direction: column; align-items: stretch; text-align: center; }
+  .gate__btns { grid-template-columns: 1fr; }
+  .sp__mine { justify-self: center; align-self: center; }
+  .bento__match .btn, .nights__over .btn, .neighbors__head .btn, .ftr__brand .btn, .events__card .btn, .read__shop .btn { justify-self: stretch; align-self: stretch; }
+}
+@media (max-width: 760px) { .sp__cta .btn, .scard__cta .btn, .ctarow .btn, .hero__cta .btn { flex: 0 0 auto; min-height: 52px; } }

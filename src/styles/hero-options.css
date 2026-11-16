@@ -30,6 +30,8 @@
    (dividers.mjs); while no wave is drawn under these heroes, the band starts at its normal padding */
 .hx + .choose:not(.wv-b--top) { padding-top: var(--band-y); }
 @media (max-width: 860px) { .hx__cue { display: none; } }
+/* phones: the topbar already shows today's hours (fix.css), so the heroes keep only delivery and price match */
+@media (max-width: 560px) { .hx__facts li:first-child { display: none; } }
 
 /* ================= B: Aurora Stage (centred, cinematic) =================
    --p: 0..1 as the first screen scrolls away; --mx/--my: -1..1, the eased fine pointer. Both stay 0 without JS. */
@@ -40,12 +42,12 @@
 .hxb__video { opacity: 0; transition: opacity 1.4s; }
 .hxb__video.is-playing { opacity: 1; }
 /* the aurora curtain at full strength across the top; it deepens and lengthens as the first screen scrolls away */
-.hxb__curtain { position: absolute; inset: 0 0 auto; height: 82%; mix-blend-mode: screen; opacity: calc(.84 + var(--p) * .16); transform: scaleY(calc(1 + var(--p) * .24)); transform-origin: 50% 0; -webkit-mask-image: linear-gradient(180deg, #000 62%, transparent); mask-image: linear-gradient(180deg, #000 62%, transparent); }
+.hxb__curtain { position: absolute; inset: 0 0 auto; height: 82%; mix-blend-mode: screen; opacity: calc(.84 + var(--p) * .16); transform: scaleY(calc(1 + var(--p) * .24)); transform-origin: 50% 0; -webkit-mask-image: linear-gradient(180deg, #000 42%, transparent 64%); mask-image: linear-gradient(180deg, #000 42%, transparent 64%); }
 .hxb__gl { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1.6s ease; }
 .hxb__gl.is-gl { opacity: 1; }
 .hxb__stars { transform: translate3d(calc(var(--mx) * -22px), calc(var(--my) * -14px), 0); }
 /* a dark pool behind the centred words; the top stays open for the aurora; the foot meets --night (the next band) */
-.hxb__scrim { position: absolute; inset: 0; background: radial-gradient(64% 42% at 50% 60%, rgba(3, 10, 20, .84) 0%, rgba(3, 10, 20, .7) 52%, rgba(3, 10, 20, 0) 100%), linear-gradient(180deg, rgba(3, 10, 20, .55) 0%, rgba(3, 10, 20, 0) 16%, rgba(3, 10, 20, 0) 60%, rgba(7, 21, 40, .86) 88%, var(--night) 100%); }
+.hxb__scrim { position: absolute; inset: 0; background: radial-gradient(72% 44% at 50% 60%, rgba(3, 10, 20, .86) 0%, rgba(3, 10, 20, .74) 56%, rgba(3, 10, 20, 0) 100%), linear-gradient(180deg, rgba(3, 10, 20, .55) 0%, rgba(3, 10, 20, 0) 16%, rgba(3, 10, 20, 0) 60%, rgba(7, 21, 40, .86) 88%, var(--night) 100%); }
 .hxb__stage { position: relative; display: grid; justify-items: center; gap: clamp(18px, 3svh, 30px); padding-block: clamp(16px, 3svh, 40px) clamp(84px, 11svh, 116px); }
 .hxb__lift { position: relative; display: grid; justify-items: center; gap: clamp(12px, 2svh, 20px); transform: translate3d(0, calc(var(--p) * -80px), 0) scale(calc(1 - var(--p) * .16)); transform-origin: 50% 20%; opacity: calc(1 - var(--p) * .75); }
 /* a soft shadow under the words themselves (it travels with them) */
@@ -86,7 +88,12 @@
   .hxb__lights { flex-direction: column; align-items: stretch; width: min(100%, 400px); gap: 10px; }
   .hxb__thread { display: none; }
   .hxb__pt { width: 100%; min-height: 64px; }
+  .hxb__pt-t { min-width: 0; flex: 1; }
   .hxb__facts { gap: 6px 16px; font-size: .9rem; }
+}
+@media (max-width: 380px) {
+  .hxb__pt { gap: 10px; padding-inline: 12px 14px; }
+  .hxb__pt .status { white-space: normal; }
 }
 
 /* ================= C: Two Lights (interactive split) =================
@@ -109,7 +116,7 @@
 .hxc__sky { position: absolute; inset: 0; pointer-events: none; }
 .hxc__gl { position: absolute; inset: 0 0 auto; width: 100%; height: 58%; mix-blend-mode: screen; opacity: 0; transition: opacity 1.6s ease; -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent); mask-image: linear-gradient(180deg, #000 55%, transparent); }
 .hxc__gl.is-gl { opacity: 1; }
-.hxc__veil { position: absolute; inset: 0; background: radial-gradient(48% 32% at 50% 25%, rgba(3, 10, 20, .84) 0%, rgba(3, 10, 20, .64) 55%, rgba(3, 10, 20, 0) 100%), linear-gradient(180deg, rgba(3, 10, 20, .5) 0%, rgba(3, 10, 20, 0) 14%); }
+.hxc__veil { position: absolute; inset: 0; background: radial-gradient(50% 33% at 50% 25%, rgba(3, 10, 20, .88) 0%, rgba(3, 10, 20, .7) 55%, rgba(3, 10, 20, 0) 100%), linear-gradient(180deg, rgba(3, 10, 20, .5) 0%, rgba(3, 10, 20, 0) 14%); }
 /* the seam: a beam of light, teal on Whitehall's side, orchid on Menands'; it dims where it passes under the headline */
 .hxc__seam { position: absolute; inset: 0; pointer-events: none; transform: translate3d(calc(var(--s) * 100%), 0, 0); }
 .hxc__beam { position: absolute; top: 0; bottom: 0; left: -1px; width: 2px; background: linear-gradient(180deg, rgba(242, 246, 255, 0) 0%, var(--teal) 16%, var(--star) 50%, var(--orchid) 84%, rgba(242, 246, 255, 0) 100%); background-size: 100% 160%; box-shadow: 0 0 14px 1px rgba(242, 246, 255, .5); animation: hxBeam 7s ease-in-out infinite alternate; -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .22) 12%, rgba(0, 0, 0, .22) 40%, #000 52%); mask-image: linear-gradient(180deg, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .22) 12%, rgba(0, 0, 0, .22) 40%, #000 52%); }
@@ -162,7 +169,7 @@
   .hxc__gl { height: 28%; }
   /* the veil darkens the headline over the lake's own aurora and the curtain (it lies above both) */
   .hxc__veil { background: linear-gradient(180deg, rgba(3, 10, 20, .45) 0%, rgba(3, 10, 20, .55) 8%, rgba(3, 10, 20, .72) 13%, rgba(3, 10, 20, .72) 38%, rgba(3, 10, 20, 0) 50%); }
-  .hxc__h1 .hx__t { font-size: min(14.6vw, 3.9rem); }
+  .hxc__h1 .hx__t { font-size: min(13.6vw, 3.6rem); }
   .hxc__lede { display: none; }
   .hxc__seam { position: relative; inset: auto; z-index: 2; grid-column: 1 / -1; grid-row: 3; align-self: start; height: 0; transform: none; }
   .hxc__beam { top: -1px; bottom: auto; left: 0; right: 0; width: auto; height: 2px; background: linear-gradient(90deg, rgba(242, 246, 255, 0) 0%, var(--teal) 16%, var(--star) 50%, var(--orchid) 84%, rgba(242, 246, 255, 0) 100%); background-size: 160% 100%; opacity: calc(.75 + var(--p) * .25); animation-name: hxBeamX; -webkit-mask-image: none; mask-image: none; }
@@ -170,14 +177,26 @@
   .hxc__beam::before { bottom: 1px; background: linear-gradient(0deg, rgba(82, 235, 200, .45), rgba(82, 235, 200, 0)); }
   .hxc__beam::after { top: 1px; background: linear-gradient(180deg, rgba(211, 105, 255, .45), rgba(211, 105, 255, 0)); }
   .hxc__grip { display: none; }
-  .hxc__head { grid-column: 2; grid-row: 1; gap: 12px; padding-top: 26px; }
+  .hxc__head { grid-column: 2; grid-row: 1; gap: 12px; padding-top: 18px; }
   .hxc__store { grid-column: 2; max-width: none; justify-self: stretch; gap: 6px; }
-  .hxc__store--whitehall { grid-row: 2; padding-block: 26px 28px; }
-  .hxc__store--menands { grid-row: 3; padding-block: 30px 40px; justify-items: start; text-align: left; }
+  .hxc__store--whitehall { grid-row: 2; padding-block: 18px 22px; }
+  .hxc__store--menands { grid-row: 3; padding-block: 24px 30px; justify-items: start; text-align: left; }
   .hxc__store--menands .hxc__n, .hxc__store--menands .hxc__cta { flex-direction: row; }
   .hxc__name { font-size: clamp(2.3rem, 10vw, 3rem); }
   .hxc__tag { font-size: .95rem; }
-  .hxc__cta { margin-top: 4px; }
+  /* phones: the Shop button takes the full width (the site's phone rule, fix.css), so "Store details" moves up beside
+     the hours to keep both stores on the first screen */
+  .hxc__store { grid-template-columns: minmax(0, 1fr) auto; column-gap: 12px; }
+  .hxc__store > * { grid-column: 1 / -1; }
+  .hxc__store > .status { grid-column: 1; grid-row: 4; white-space: normal; }
+  .hxc__cta { display: contents; }
+  .hxc__more { grid-column: 2; grid-row: 4; justify-self: end; min-height: 36px; }
+  .hxc__cta .btn { grid-column: 1 / -1; grid-row: 5; margin-top: 8px; }
+}
+@media (max-width: 380px) {
+  .hxc__street { display: none; } /* the address is one tap away, and in the next band */
+  .hxc__facts { gap: 4px 12px; font-size: .84rem; }
+  .hxc__store--menands { padding-bottom: 20px; }
 }
 
 /* ================= D: Orbit (floating objects) =================
@@ -210,7 +229,7 @@
 @media (hover: none) { .hxd__lbl { opacity: 1; translate: -50% 2px; padding: 3px 9px; font-size: .78rem; } .hxd__lbl .ico { display: none; } }
 @media (max-width: 860px) {
   .hxd { display: flex; flex-direction: column; justify-content: center; }
-  .hxd__orbit { position: relative; inset: auto; order: -1; height: clamp(180px, 50vw, 270px); margin-top: 6px; }
+  .hxd__orbit { position: relative; inset: auto; order: -1; height: clamp(170px, 46vw, 250px); margin-top: 6px; }
   .hxd__o { left: var(--mx); top: var(--my); width: min(calc(var(--mw) * 1vw), calc(var(--mw) * 5.4px)); }
   .hxd__o[data-m="0"] { display: none; }
   .hxd__in { padding-block: 0 52px; }
@@ -222,8 +241,8 @@
   .hxd__veil { background: linear-gradient(180deg, rgba(3, 10, 20, .35) 0%, rgba(3, 10, 20, 0) 12%, rgba(3, 10, 20, 0) 27%, rgba(3, 10, 20, .74) 36%, rgba(3, 10, 20, .74) 82%, var(--night) 100%); }
 }
 @media (max-width: 560px) {
-  .hxd__cta { width: 100%; }
-  .hxd__cta .btn { width: 100%; }
+  .hxd__cta { width: 100%; gap: 10px; }
+  .hxd__cta .btn { width: 100%; min-height: 52px; padding-block: 12px; }
   .hxd__facts { gap: 6px 16px; font-size: .9rem; }
 }
 
@@ -237,11 +256,18 @@
 .hxs__o:hover { background: rgba(82, 235, 200, .1); box-shadow: inset 0 0 0 1px var(--teal); }
 .hxs__o.is-on { background: var(--teal); color: var(--teal-ink); box-shadow: 0 0 20px -4px rgba(82, 235, 200, .7); }
 .gate-open .hxs, .gate-pending .hxs { visibility: hidden; }
+.hxs__tog { display: none; }
+/* phones: bottom-right (these heroes keep that corner clear), folded by hero-options.js into one toggle that opens the
+   list to its left; without JS the compact pill stays open */
 @media (max-width: 560px) {
-  .hxs { left: calc(8px + env(safe-area-inset-left)); bottom: calc(8px + env(safe-area-inset-bottom)); gap: 2px; padding: 4px; }
+  .hxs { left: auto; right: calc(8px + env(safe-area-inset-right)); bottom: calc(8px + env(safe-area-inset-bottom)); gap: 2px; padding: 4px; }
   .hxs__all { min-height: 42px; padding: 0 9px; }
   .hxs__all span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .hxs__o { width: 42px; height: 42px; }
+  .hxs.is-compact .hxs__tog { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 11px; font-family: var(--f-display); font-size: 1.05rem; font-weight: 800; color: var(--teal-ink); background: var(--teal); box-shadow: 0 0 20px -4px rgba(82, 235, 200, .7); }
+  .hxs.is-compact .hxs__tog .ico { width: 18px; height: 18px; }
+  .hxs.is-compact.is-open .hxs__tog { color: var(--star); background: rgba(255, 255, 255, .08); box-shadow: inset 0 0 0 1px var(--line-2); }
+  .hxs.is-compact:not(.is-open) .hxs__all, .hxs.is-compact:not(.is-open) .hxs__list { display: none; }
 }
 
 /* ================= the index (/hero-options/) ================= */

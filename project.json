@@ -4,7 +4,7 @@
   "targetUrl": "https://northernlightsdispo.com/",
   "origin": "https://northernlightsdispo.com",
   "createdAt": "2026-11-16T00:48:09.115Z",
-  "updatedAt": "2026-11-16T04:03:10.336Z",
+  "updatedAt": "2026-11-16T04:25:30.096Z",
   "config": {
     "maxPages": 300,
     "concurrency": 4,
@@ -108,7 +108,7 @@
     },
     "decontaminate": {
       "status": "done",
-      "at": "2026-11-16T04:03:10.336Z",
+      "at": "2026-11-16T04:25:30.096Z",
       "note": "CLEAN (0 traces)"
     },
     "parity": {

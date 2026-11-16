@@ -105,8 +105,14 @@
     if (!r.width || !r.height) return null;
     let k = Math.min(1.5, W.devicePixelRatio || 1);
     if (r.width * k > 2600) k = 2600 / r.width;
-    let n = w.el.nextElementSibling; while (n && !/^(SECTION|FOOTER)$/.test(n.tagName)) n = n.nextElementSibling;
-    const seam = n ? Math.max(0, Math.min(1, (n.getBoundingClientRect().top - r.top) / r.height)) : 0.5;
+    // a top / bot band sits inside its section (the seam is that section's top / bottom edge); a mid band sits in
+    // front of the lower section (the seam is where that section starts)
+    const cl = w.el.classList, host = w.el.parentElement;
+    let y = null;
+    if (cl.contains('wv--top') && host) y = host.getBoundingClientRect().top;
+    else if (cl.contains('wv--bot') && host) y = host.getBoundingClientRect().bottom;
+    else { let n = w.el.nextElementSibling; while (n && !/^(SECTION|FOOTER)$/.test(n.tagName)) n = n.nextElementSibling; if (n) y = n.getBoundingClientRect().top; }
+    const seam = y === null ? 0.5 : Math.max(0, Math.min(1, (y - r.top) / r.height));
     return { cw: Math.max(2, Math.round(r.width * k)), ch: Math.max(2, Math.round(r.height * k)), hc: r.height, seam };
   }
   function apply(w, m) {
@@ -181,9 +187,12 @@
     d.addEventListener('pointerout', (e) => { if (!e.relatedTarget) { mx = -1e5; my = -1e5; } });
     W.addEventListener('blur', () => { mx = -1e5; my = -1e5; });
   }
+  // after every batch of observer news (all flags first, so a wave that just left frees its slot): bring the waves on
+  // screen to life, then the ones about to arrive
+  const fill = () => { for (const w of waves) if (w.vis && !w.gl) acquire(w); for (const w of waves) if (w.near && !w.gl) acquire(w); };
   if ('IntersectionObserver' in W) {
-    const io = new IntersectionObserver((en) => { for (const e of en) { const w = byEl.get(e.target); if (!w) continue; w.vis = e.isIntersecting; if (w.vis) acquire(w); } wake(); }, { rootMargin: '40px 0px' });
-    const pre = new IntersectionObserver((en) => { for (const e of en) { const w = byEl.get(e.target); if (!w) continue; w.near = e.isIntersecting; if (w.near) acquire(w); } }, { rootMargin: '100% 0px' });
+    const io = new IntersectionObserver((en) => { for (const e of en) { const w = byEl.get(e.target); if (w) w.vis = e.isIntersecting; } fill(); wake(); }, { rootMargin: '40px 0px' });
+    const pre = new IntersectionObserver((en) => { for (const e of en) { const w = byEl.get(e.target); if (w) w.near = e.isIntersecting; } fill(); }, { rootMargin: '100% 0px' });
     waves.forEach((w) => { io.observe(w.el); pre.observe(w.el); });
   } else {
     waves.slice(0, MAX).forEach((w) => { w.vis = w.near = true; acquire(w); });

@@ -30,10 +30,22 @@
     const opts = [['A', 'Lights on Broadway', '?hx=a'], ['B', 'Aurora Stage', 'hero-options/b/'], ['C', 'Two Lights', 'hero-options/c/'], ['D', 'Orbit', 'hero-options/d/']];
     const nav = d.createElement('nav');
     nav.className = 'hxs'; nav.setAttribute('data-hxs', ''); nav.setAttribute('aria-label', 'Hero options');
-    nav.innerHTML = '<a class="hxs__all" href="' + base + 'hero-options/"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></svg><span>Hero options</span></a><ol class="hxs__list">'
+    nav.innerHTML = '<a class="hxs__all" href="' + base + 'hero-options/"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></svg><span>Hero options</span></a><ol class="hxs__list" id="hxs-list">'
       + opts.map(([k, name, to]) => '<li><a class="hxs__o' + (k === 'A' ? ' is-on' : '') + '" href="' + base + to + '" title="' + k + ': ' + name + '"' + (k === 'A' ? ' aria-current="page"' : '') + '><span aria-hidden="true">' + k + '</span><span class="sr-only">Option ' + k + ', ' + name + '</span></a></li>').join('')
-      + '</ol>';
+      + '</ol><button class="hxs__tog" type="button" aria-expanded="false" aria-controls="hxs-list"><span aria-hidden="true">A</span><span class="sr-only">Hero options, showing option A</span></button>';
     (d.querySelector('main') || d.body).appendChild(nav);
+  }
+  /* ---------------- phones: the switcher folds into one toggle (the current letter) that opens the list ---------------- */
+  const sw = d.querySelector('[data-hxs]');
+  if (sw) {
+    const tog = sw.querySelector('.hxs__tog'), narrow = W.matchMedia('(max-width: 560px)');
+    const open = (on) => { sw.classList.toggle('is-open', on); if (tog) tog.setAttribute('aria-expanded', on ? 'true' : 'false'); };
+    const fold = () => { sw.classList.toggle('is-compact', !!(tog && narrow.matches)); if (!narrow.matches) open(false); };
+    if (tog) tog.addEventListener('click', () => open(!sw.classList.contains('is-open')));
+    d.addEventListener('click', (e) => { if (sw.classList.contains('is-open') && !sw.contains(e.target)) open(false); });
+    d.addEventListener('keydown', (e) => { if (e.key === 'Escape' && sw.classList.contains('is-open')) { open(false); if (tog) tog.focus(); } });
+    fold();
+    if (narrow.addEventListener) narrow.addEventListener('change', fold);
   }
   if (!heroes.length || RM) return;
 

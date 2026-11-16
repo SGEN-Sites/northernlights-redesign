@@ -39,7 +39,7 @@ function hero() {
 
 function choose() {
   const panel = (s) => `<article class="sp sp--${s.id}${s.id === DEFAULT_STORE ? ' sp--lead' : ''}" data-store-card="${s.id}" data-reveal${s.id === DEFAULT_STORE ? '' : ' style="--d:150"'}>
-    <div class="sp__photo" data-tilt>${img(s.photo, { sizes: '(max-width: 900px) 90vw, 420px', min: 900 })}<span class="sp__badge">${light(s)}No. ${s.n}</span></div>
+    <div class="sp__photo">${img(s.photo, { sizes: '(max-width: 900px) 90vw, 420px', min: 900 })}<span class="sp__badge">${light(s)}No. ${s.n}</span></div>
     <div class="sp__card glass">
       <p class="sp__k">${esc(s.tagline)}</p>
       <h3 class="sp__name">${esc(s.city)}<span>, ${esc(s.region)}</span></h3>

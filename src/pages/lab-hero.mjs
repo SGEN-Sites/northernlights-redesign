@@ -35,11 +35,13 @@ const H1 = (cls) => `<h1 class="hx__h1 ${cls}"><span class="hx__k">${esc(brand.n
 // on phones the topbar drops delivery and price match (fix.css), so every hero carries them
 const facts = (cls) => `<ul class="hx__facts ${cls}"><li>${icon('clock')}${esc(brand.hoursLine)}</li><li>${icon('truck')}Same-day delivery</li><li>${icon('tag')}Price match guarantee</li></ul>`;
 
-// the floating switcher: A / B / C / D, the current one marked (fixed, bottom-left; hero-options.css)
+// the floating switcher: A / B / C / D, the current one marked (fixed, bottom-left; hero-options.css). On phones
+// hero-options.js folds it into one toggle (the current letter) that opens the list; without JS it stays open.
 export function switcher(cur = null) {
   return `<nav class="hxs" data-hxs aria-label="Hero options">
   <a class="hxs__all" href="${href('/hero-options/')}"${cur ? '' : ' aria-current="page"'}>${icon('spark')}<span>Hero options</span></a>
-  <ol class="hxs__list">${OPTS.map((o) => `<li><a class="hxs__o${o.k === cur ? ' is-on' : ''}" href="${href(o.to)}" title="${esc(`${o.k}: ${o.name}`)}"${o.k === cur ? ' aria-current="page"' : ''}><span aria-hidden="true">${o.k}</span><span class="sr-only">Option ${o.k}, ${esc(o.name)}</span></a></li>`).join('')}</ol>
+  <ol class="hxs__list" id="hxs-list">${OPTS.map((o) => `<li><a class="hxs__o${o.k === cur ? ' is-on' : ''}" href="${href(o.to)}" title="${esc(`${o.k}: ${o.name}`)}"${o.k === cur ? ' aria-current="page"' : ''}><span aria-hidden="true">${o.k}</span><span class="sr-only">Option ${o.k}, ${esc(o.name)}</span></a></li>`).join('')}</ol>
+  <button class="hxs__tog" type="button" aria-expanded="false" aria-controls="hxs-list"><span aria-hidden="true">${cur || icon('spark')}</span><span class="sr-only">Hero options${cur ? `, showing option ${cur}` : ''}</span></button>
 </nav>`;
 }
 
@@ -88,7 +90,7 @@ function heroC() {
   const store = (s) => `<div class="hxc__store hxc__store--${s.id}">
       <p class="hxc__n"><span class="hxc__dot" aria-hidden="true"></span>No. ${s.n}${s.id === DEFAULT_STORE ? ' · First stop' : ''}</p>
       <p class="hxc__name">${esc(s.city)}<span>, ${esc(s.region)}</span></p>
-      <p class="hxc__tag">${esc(s.street)} · ${esc(s.tagline)}</p>
+      <p class="hxc__tag"><span class="hxc__street">${esc(s.street)} · </span>${esc(s.tagline)}</p>
       ${statusSpan(s)}
       <p class="hxc__cta"><a class="btn ${s.id === DEFAULT_STORE ? 'btn--teal' : 'btn--orchid'}" href="${href(s.menuPage)}">Shop ${esc(s.city)}${icon('bag')}</a><a class="hxc__more" href="${href(s.page)}">Store details${icon('arrow')}</a></p>
     </div>`;
@@ -131,7 +133,7 @@ function heroD() {
   <div class="hxd__in">
     <div class="hxd__copy">
       ${H1('hxd__h1')}
-      <p class="hxd__lede" data-reveal style="--d:300">A family-owned dispensary in a red clapboard building on Whitehall’s Broadway, at the south tip of Lake Champlain, with a sister store in Menands near Albany.</p>
+      <p class="hxd__lede" data-reveal style="--d:300">A family-owned dispensary on Whitehall’s Broadway, at the south tip of Lake Champlain, with a sister store in Menands near Albany.</p>
       <div class="hxd__cta" data-reveal style="--d:450">${storeLink('menu', `<span>Shop <span data-store-city>${esc(W.city)}</span></span>${icon('bag')}`, { cls: 'btn btn--teal btn--lg' })}<button class="btn btn--ghost btn--lg" type="button" data-open-store>Choose your store${icon('pin')}</button></div>
       ${facts('hxd__facts')}
     </div>
@@ -165,7 +167,7 @@ function indexMain() {
   return pageHero({
     kicker: 'Design lab · not public',
     h1: 'Four heroes, *one home page.*',
-    lede: 'A is the hero on the home page today. B, C and D are three more dynamic layouts, each above the full home page so you can judge them in place. The switcher at the bottom left of every option flips between them.',
+    lede: 'A is the hero on the home page today. B, C and D are three more dynamic layouts, each above the full home page so you can judge them in place. The switcher in the bottom corner of every option flips between them.',
     crumbs: [{ label: 'Home', href: '/' }, { label: 'Hero options', href: '/hero-options/' }],
     image: 'hero-aurora',
     variant: 'phero--short',
