@@ -1,6 +1,6 @@
 {
-  "at": "2026-11-16T01:38:17.316Z",
-  "base": "http://127.0.0.1:8787/",
+  "at": "2026-11-16T01:53:22.934Z",
+  "base": "https://sgen-sites.github.io/northernlights-redesign/",
   "method": "headless page load: the menu frame the store’s embed script injects is read and compared to the expected store + shelf; product counts per shelf from the stores’ own menus in a real browser (facts/client-facts.json)",
   "results": [
     {

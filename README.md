@@ -36,7 +36,7 @@ node src/build.mjs --preview --out dist-preview --base /northernlights-redesign/
 |---|---|---|
 | every Shop, Specials and category destination shows products, prices and a working cart | 29/29 pass | `audit/menu-verification.json` |
 | site-reforge gate | 12 pass, 2 fail, 15 unproven | `audit/gate.json`, `docs/PUBLISH.md` |
-| the live preview: pages answer 200 with noindex; gate, store switch and sticky bar work | 10/12 pass | `audit/preview-smoke.json` |
+| the live preview: pages answer 200 with noindex; gate, store switch and sticky bar work | 12/12 pass | `audit/preview-smoke.json` |
 
 ## Imagery and marks
 

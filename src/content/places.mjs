@@ -94,7 +94,7 @@ export const storePages = {
       { title: 'Shop the live menu, then pick up', text: 'Fill your cart on the [Menands live menu](/menands/) and pick up in store. Each store keeps its own menu and cart, so check that you’re shopping Menands.' },
       { title: 'Curbside, 10am–8pm', text: 'Order ahead on the [Menands live menu](/menands/) and pick up curbside any time from 10am to 8pm.' },
       { title: 'Free same-day delivery', text: 'Delivery runs 11am–7pm and it’s free. Check your address at checkout and have a valid government-issued photo ID ready ([state info](https://cannabis.ny.gov/adult-use-information)).' },
-      { title: 'Walk in, every day', text: 'Doors are open 10am–8pm daily. Bring your ID and your questions.' },
+      { title: 'Walk in, every day', text: 'Doors are open 10am–8pm daily. Bring your questions.' },
     ],
     faq: [
       { q: 'Where is Northern Lights Menands?', a: 'At 100 Broadway #8, Menands, NY 12204, on Broadway (NY 32) just off I-787, near Albany.' },
@@ -167,7 +167,7 @@ export const delivery = {
   description: 'Free same-day cannabis delivery from Northern Lights Whitehall and Menands, 11am–7pm. Order on your store’s live menu and check your address at checkout.',
   h1: 'Free same-day delivery',
   kicker: 'Delivery from both stores',
-  lede: 'Both stores deliver the same day, from 11am to 7pm, and delivery is free. Order on your store’s live menu, check your address at checkout and have your ID ready.',
+  lede: 'Both stores deliver the same day, from 11am to 7pm, and delivery is free. Order on your store’s live menu and check your address at checkout.',
   blocks: [
     { t: 'h2', text: 'How to order delivery' },
     { t: 'ol', items: [
@@ -267,13 +267,13 @@ export const areas = {
   hub: {
     slug: '/dispensary-near/',
     title: 'Dispensary Near You: Towns We Serve | Northern Lights',
-    description: 'Find the closer Northern Lights store: Whitehall for Washington County, Lake George and Vermont visitors, Menands for Albany and the Capital Region.',
+    description: 'Find the closer Northern Lights store: Whitehall for Glens Falls, Lake George, Ticonderoga and Vermont visitors, Menands for Albany and the Capital Region.',
     h1: 'Which store is closer to you?',
     kicker: 'Towns we serve',
-    lede: 'Two stores and one simple rule of thumb: Whitehall for the North Country and the Vermont line, Menands for Albany and the Capital Region.',
+    lede: 'Two stores and one simple rule of thumb: Whitehall for the lakes, the Glens Falls area and the Vermont line, Menands for Albany and the Capital Region.',
     blocks: [
       { t: 'h2', text: 'Towns closer to our Whitehall store' },
-      { t: 'p', text: 'Whitehall sits where US 4 and NY 22 come through town at the south tip of Lake Champlain, which makes it the natural stop from Washington County, the Lake George area and across the line in Vermont.' },
+      { t: 'p', text: 'Whitehall sits where US 4 and NY 22 come through town at the south tip of Lake Champlain, so it’s the natural stop for these towns, from the Glens Falls area to Ticonderoga and across the line in Vermont.' },
       { t: 'ul', items: [
         '[Granville, NY](/dispensary-near/granville-ny/)',
         '[Fort Ann, NY](/dispensary-near/fort-ann-ny/)',
@@ -286,7 +286,7 @@ export const areas = {
       ] },
       { t: 'callout', title: 'Coming from Vermont?', text: 'Buy and enjoy in New York, and never carry cannabis back across the state line; it’s federal law. See [New York’s adult-use guide](https://cannabis.ny.gov/adult-use-information).' },
       { t: 'h2', text: 'Towns closer to our Menands store' },
-      { t: 'p', text: 'Menands is on Broadway (NY 32) just off I-787, near Albany and across the Troy–Menands Bridge from Troy, so it’s the easy pick from Albany, Rensselaer and Schenectady counties.' },
+      { t: 'p', text: 'Menands is on Broadway (NY 32) just off I-787, near Albany and across the Troy–Menands Bridge from Troy, so it’s the easy pick for these Capital Region towns.' },
       { t: 'ul', items: [
         '[Albany, NY](/dispensary-near/albany-ny/)',
         '[Troy, NY](/dispensary-near/troy-ny/)',
@@ -494,7 +494,7 @@ export const areas = {
       description: 'From Fair Haven, US 4 runs west across the state line to Northern Lights Whitehall, NY. Buy and enjoy in New York, and never carry cannabis back into Vermont.',
       h1: 'A dispensary near Fair Haven, VT',
       kicker: 'Fair Haven to Whitehall',
-      lede: 'Cross the state line on US 4 and you’re in Whitehall, New York, home of Northern Lights Whitehall. Buy here, enjoy it here, and leave it on the New York side.',
+      lede: 'Follow US 4 west across the state line to Whitehall, New York, home of Northern Lights Whitehall. Buy here, enjoy it here, and leave it on the New York side.',
       blocks: [
         { t: 'p', text: 'From Fair Haven, US 4 runs west across the state line into Whitehall, home of the closer of our two stores and the one Vermont neighbors already stop in at. It sits at the south tip of Lake Champlain, in a bright red clapboard building on Broadway with a pizza place downstairs. You can’t miss the red.' },
         { t: 'callout', title: 'Keep it in New York', text: 'Buy and enjoy in New York. Never carry cannabis back across the state line into Vermont; that’s federal law. [New York’s adult-use guide](https://cannabis.ny.gov/adult-use-information) has the details.' },
@@ -529,7 +529,7 @@ export const areas = {
       kicker: 'Rutland to Whitehall',
       lede: 'US 4 is already Rutland’s road west. Follow it through Fair Haven and across the state line, and Northern Lights Whitehall is on Broadway.',
       blocks: [
-        { t: 'p', text: 'Rutland folks know US 4 well. Point it west, pass through Fair Haven, cross into New York and you’re in Whitehall, at the south tip of Lake Champlain. Northern Lights Whitehall is the closer of our two stores, in a bright red clapboard building on Broadway, with a pizza place downstairs for anyone who plans errands around lunch.' },
+        { t: 'p', text: 'Rutland folks know US 4 well. Point it west, pass through Fair Haven, cross into New York and keep going to Whitehall, at the south tip of Lake Champlain. Northern Lights Whitehall is the closer of our two stores, in a bright red clapboard building on Broadway, with a pizza place downstairs for anyone who plans errands around lunch.' },
         { t: 'callout', title: 'New York stays in New York', text: 'Buy it here, enjoy it here. Never carry cannabis across the state line into Vermont: federal law says no. And never drive impaired. [New York’s adult-use guide](https://cannabis.ny.gov/adult-use-information) explains the rules.' },
         { t: 'h2', text: 'Worth knowing before you come in' },
         { t: 'p', text: 'The store is family-owned, and it feels like it. Picture a jam-band living room inside a village general store, with a Jerry Garcia portrait over a guitar on its stand, houseplants and live-edge wood. The staff are friendly and quick-witted, and nobody minds a first-timer with a lot of questions.' },
@@ -595,7 +595,7 @@ export const areas = {
         { t: 'h2', text: 'A small gallery and a sharp crew' },
         { t: 'p', text: 'It has the same family-run spirit as our Whitehall store, a quick-witted staff that knows the industry and a small art gallery inside. If you make art in Troy, ask about showing it there: [get in touch](/contact/) and choose the Menands store.' },
         { t: 'h2', text: 'Shop from across the river' },
-        { t: 'p', text: 'Order on the [Menands live menu](/menands/) and pick up in store, or use curbside from 10am to 8pm. Free same-day delivery runs 11am–7pm (check your address at checkout), and the doors are open every day, 10am–8pm. If the bridge is the last thing you want to see after work, let delivery do the crossing for you.' },
+        { t: 'p', text: 'Order on the [Menands live menu](/menands/) and pick up in store, or use curbside from 10am to 8pm. The doors are open every day, 10am–8pm. Rather not cross the river twice after work? Free same-day delivery runs 11am–7pm; enter your address at checkout to see whether it reaches you.' },
         { t: 'p', text: 'Found a lower price at another recreational dispensary in the Capital Region? We price match. Sign up for [Rewards](/loyalty-program/) and you start at 50 points.' },
         { t: 'cta', items: [
           { label: 'Shop the Menands menu', href: '/menands/' },
@@ -771,7 +771,7 @@ export const areas = {
       blocks: [
         { t: 'p', text: 'Schenectady has the Mohawk River and the nickname Electric City. Menands has the Hudson, I-787 and the closer of our two stores. Head east toward Albany, finish on I-787 or Broadway (NY 32), and look for the white and teal storefront at 100 Broadway #8 with green Northern Lights Cannabis Dispensary letters.' },
         { t: 'h2', text: 'What you’ll find in Menands' },
-        { t: 'p', text: 'A sister store to Northern Lights Whitehall, run in the same family-run spirit. The staff are quick-witted and know the industry, the room has a good feel, and there’s a small art gallery. Every so often there’s music or a brand pop-up too; the [events page](/events/) tells you how to hear about the next one.' },
+        { t: 'p', text: 'A sister store to Northern Lights Whitehall, with the same family-run spirit. The staff are quick-witted and know the industry, the room has a good feel, and there’s a small art gallery. Every so often there’s music or a brand pop-up too; the [events page](/events/) tells you how to hear about the next one.' },
         { t: 'h2', text: 'Make the trip, or don’t' },
         { t: 'ul', items: [
           'Order on the [Menands live menu](/menands/) and pick up in store.',
