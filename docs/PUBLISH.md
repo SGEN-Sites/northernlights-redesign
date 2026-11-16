@@ -10,6 +10,12 @@
   12/12, menus 29/29 live.
 - Round 4 (2026-11-16 12:35, main 56cf330, gh-pages 4404137): no eyebrow dashes, balanced deals bento, centred shelves
   line, flush store cards, full-width stacked CTAs on phones. Smoke 12/12 live.
+- Round 5 (2026-11-16 14:04, main 03e4315, gh-pages b69575c): cinematic AI-edited storefront photos (no people, signs
+  kept, labelled), the map store switcher on home and /locations/ (tap a light = set your store; tall storefront frame),
+  the new Locations hub, the owner's "Logo match" fonts (Merriweather wdth 87 + Roboto Slab + Jost, self-hosted), three
+  splash options at /splash-options/ (try-out only: ?splash=1|2|3); decided labs (hero B-D, fonts) archived.
+  Checks: publish scan CLEAN, sr-decontaminate CLEAN, sweep 172/172 ok (43 pages x 4 widths), smoke 12/12 live,
+  menus 29/29 live, store switcher driven in Chromium (map light / pin / tab), fonts measured (812 px at wdth 87).
 
 ## Checks on record
 
