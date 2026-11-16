@@ -707,7 +707,7 @@
     set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) { /* private mode: no memory */ } },
     del: (k) => { try { sessionStorage.removeItem(k); } catch (e) { /* private mode */ } },
   };
-  const LIVE = 0; // ship one: 1, 2 or 3 (every visitor, once per session, never under reduced motion)
+  const LIVE = 2; // the owner's pick (2026-11-16): Two Lights, for every visitor, once per session, never under reduced motion
   const KEY = 'nl.splash', SEEN = 'nl.splashed';
   const NAMES = ['', 'Aurora Ignition', 'Two Lights', 'Badge Reveal'];
   // when each splash starts to leave (ms after it starts) and how long leaving takes; a skip leaves at once, faster
@@ -1059,10 +1059,12 @@ ${MAP.towns.map(([x, y]) => `<circle class="s2__town" cx="${x}" cy="${y}" r="1.7
 
   /* ---------------- start ---------------- */
   const m = location.search.match(/[?&]splash=([^&#]*)/), q = m ? m[1] : null;
-  if (q === 'off') ss.del(KEY); else if (valid(q)) ss.set(KEY, q);
+  if (q === 'off') { ss.del(KEY); ss.set(SEEN, '1'); } else if (valid(q)) ss.set(KEY, q); // ?splash=off also skips the live one
   const pick = q === 'off' ? null : valid(q) ? q : valid(ss.get(KEY)) ? ss.get(KEY) : null;
+  // the live splash needs sessionStorage to remember it played; without it, it never plays (never on every page)
+  const remembers = (() => { try { sessionStorage.setItem('nl.t', '1'); sessionStorage.removeItem('nl.t'); return true; } catch (e) { return false; } })();
   if (pick) { switcher(+pick); play(+pick); }
-  else if (LIVE && !ss.get(SEEN) && !RMQ.matches) { ss.set(SEEN, '1'); play(LIVE); }
+  else if (LIVE && remembers && !ss.get(SEEN) && !RMQ.matches) { ss.set(SEEN, '1'); play(LIVE); }
   root.classList.remove('splash-pending');
 })();
 
